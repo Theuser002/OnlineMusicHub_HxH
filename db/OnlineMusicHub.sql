@@ -1,10 +1,12 @@
 ﻿create database OnlineMusicHub;
 use OnlineMusicHub;
+--select DB_NAME()
 
 create table Account (
 	AccountID int primary key,
 	Username nvarchar(15),
-	HashedPassword varbinary(max),
+	--HashedPassword varbinary(max)
+	HashedPassword nvarchar(max),
 	AvatarLink varchar(max),
 	isAdmin bit
 );
@@ -69,31 +71,40 @@ create table MVPerformedBy(
 	on delete cascade on update cascade
 );
 
-go
-create procedure AddUser
-	@pAccountID int = 0,
-	@pUsername nvarchar(15) = NULL,
-	@pPassword nvarchar(30) = NULL,
-	@pAvatarLink varchar(max) = NULL,
-	@pIsAdmin bit,
-	@responseMessage nvarchar(250) output
-as
-begin
-	set nocount on
+----drop table Account;
+----drop table Song;
+----drop table Track;
+----drop table Singer;
+----drop table PerformedBy;
 
-	begin try
-		insert into Account (AccountID, Username, HashedPassword, AvatarLink, isAdmin)
-		values (@pAccountID, @pUsername, hashbytes('SHA2_256', @pPassword), @pAvatarLink, @pIsAdmin);
+
+--#################################################################################
+
+
+--go
+--create procedure AddUser
+--	@pAccountID int = 0,
+--	@pUsername nvarchar(15) = NULL,
+--	@pPassword nvarchar(30) = NULL,
+--	@pAvatarLink varchar(max) = NULL,
+--	@pIsAdmin bit,
+--	@responseMessage nvarchar(250) output
+--as
+--begin
+--	set nocount on
+
+--	begin try
+--		insert into Account (AccountID, Username, HashedPassword, AvatarLink, isAdmin)
+--		values (@pAccountID, @pUsername, hashbytes('SHA2_256', @pPassword), @pAvatarLink, @pIsAdmin);
 		
-		set @responseMessage = 'Successfully inserted into table Account.';
-	end try
+--		set @responseMessage = 'Successfully inserted into table Account.';
+--	end try
 
-	begin catch
-		set @responseMessage = error_message();
-	end catch
-end
-
---drop procedure AddUser
+--	begin catch
+--		set @responseMessage = error_message();
+--	end catch
+--end
+----drop procedure AddUser
 
 --go
 --declare @responseMessage nvarchar(250)
@@ -115,11 +126,60 @@ end
 --	@pIsAdmin = 0,
 --	@responseMessage = @responseMessage OUTPUT;
 
+go
+create procedure AddUser
+	@pAccountID int = 0,
+	@pUsername nvarchar(15) = NULL,
+	@pHashedPassword nvarchar(max) = NULL,
+	@pAvatarLink varchar(max) = NULL,
+	@pIsAdmin bit,
+	@responseMessage nvarchar(250) output
+as
+begin
+	set nocount on
 
-----drop table Account;
-----drop table Song;
-----drop table Track;
-----drop table Singer;
-----drop table PerformedBy;
+	begin try
+		insert into Account (AccountID, Username, HashedPassword, AvatarLink, isAdmin)
+		values (@pAccountID, @pUsername, @pHashedPassword, @pAvatarLink, @pIsAdmin);
+		
+		set @responseMessage = 'Successfully inserted into table Account.';
+	end try
 
---select DB_NAME()
+	begin catch
+		set @responseMessage = error_message();
+	end catch
+end
+
+
+--#################################################################################
+
+
+--go
+--if object_id('HashString', 'P') is not NULL
+--	drop procedure HashString;
+--go
+--create procedure HashString
+--	@string nvarchar(30) = NULL,
+--	@hashedString varbinary(max) output
+--as
+--begin
+--	set nocount on;
+--	set @hashedString = HASHBYTES('SHA2_256', @string);
+--return
+--end
+----drop procedure HashString
+
+--declare @testHashedString as varbinary(max);
+--exec HashString
+--	@string = 'admin',
+--	@hashedString = @testHashedString output
+--print @testHashedString
+
+
+--#################################################################################
+
+
+select * from Account;
+delete from Account;
+select 1
+select Username from Account where HashedPassword = '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918';

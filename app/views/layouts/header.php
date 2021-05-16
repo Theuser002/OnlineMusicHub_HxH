@@ -82,9 +82,10 @@ session_start();
 </style>
 
 <body>
-    <!---navbar--->
+    <!---AUTO-CHANGING NAVBAR--->
     <nav class="navbar navbar-expand-md navbar-light fixed-top">
         <div class="container">
+<!--			//In the header, if you click to logo you'll always go back to the home page (index.php)-->
             <a class="navbar-brand" href="index.php">
                 <strong><em>Music Hub</em></strong>
             </a>
@@ -94,55 +95,61 @@ session_start();
             <div class="collapse navbar-collapse" id="navi">
                 <ul class="navbar-nav mr-auto">
 
-
+					<!--auto change based on login status-->
                     <?php
-                    //set navigation bar when logged in
-                    if (isset($_SESSION['user_id'])) {
-                        echo '
-                    <li class="nav-item">
-                        <a class="nav-link" href="reservation.php" >Songs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="view_reservations.php" >MVs</a>
-                    </li>
-					<li class="nav-item">
-                        <a class="nav-link" href="view_reservations.php" >Artists</a>
-                    </li>
-					<li class="nav-item">
-                        <a class="nav-link" href="view_reservations.php" >Account</a>
-                    </li>';
-
-                        //set navigation bar when logged in and role of admin
-                        if ($_SESSION['role'] == 2) {
-                            echo '
-                    <li class="nav-item">
-                        <a class="nav-link" href="schedule.php" >Edit Schedule</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="tables.php" >Edit Tables</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="view_tables.php" >View Tables</a>
-                    </li>';
-                        }
-                    }
-                    //main page not logged in navigation bar
-                    else {
-                        echo '
-                    <li class="nav-item">
-	                 <a class="nav-link" href="#intro">Introduction</a>
-	             </li>
-	            <li class="nav-item">
-	                <a class="nav-link" href="#gallery">Gallery</a>
-	            </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about-us">About us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#footer">Contact us</a>
-                    </li>
-                    ';
-                    }
+						//set navigation bar when logged in
+						if (isset($_SESSION['user_id'])) {
+						//set navigation bar when logged in and role of admin
+							if ($_SESSION['role'] == 2) {
+								echo '
+									<li class="nav-item">
+										<a class="nav-link" href="song-page.php" >Songs</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="mv-page.php" >MVs</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="artist-page.php" >Artists</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="account-page.php" >Account</a>
+									</li>';
+							}
+							else
+							{
+								 echo '
+									<li class="nav-item">
+										<a class="nav-link" href="song-page.php" >Songs</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="mv-page.php" >MVs</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="artist-page.php" >Artists</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="account-page.php" >Account</a>
+									</li>';
+							}	
+						}	
+						//main page not logged in navigation bar
+						else 
+						{
+							echo '
+								<li class="nav-item">
+									<a class="nav-link" href="#intro">Introduction</a>
+								</li>
+								<li class="nav-item">
+								<a class="nav-link" href="#gallery">Gallery</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#about-us">About us</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#footer">Contact us</a>
+								</li>
+								';
+						}
                     ?>
 
                 </ul>
@@ -152,15 +159,15 @@ session_start();
                 if (isset($_SESSION['user_id'])) {
                     echo '
                     <form class="navbar-form navbar-right" action="includes/logout.inc.php" method="post">
-                    <button type="submit" name="logout-submit" class="btn btn-outline-dark">Logout</button>
+                    	<button type="submit" name="logout-submit" class="btn btn-outline-dark">Logout</button>
                     </form>';
                 } else {
                     echo '
                     <div>
-                    <ul class="navbar-nav ml-auto">
-			<li><a class="nav-link fa fa-sign-in" data-toggle="modal" data-target="#myModal_reg">&nbsp;Sign Up</a></li>
-			<li><a class="nav-link fa fa-user-plus" data-toggle="modal" data-target="#myModal_login">&nbsp;Login</a></li>
-                    </ul> 
+						<ul class="navbar-nav ml-auto">
+							<li><a class="nav-link fa fa-sign-in" data-toggle="modal" data-target="#myModal_reg">&nbsp;Sign Up</a></li>
+							<li><a class="nav-link fa fa-user-plus" data-toggle="modal" data-target="#myModal_login">&nbsp;Login</a></li>
+						</ul> 
                     </div>
                     ';
                 }
@@ -169,7 +176,8 @@ session_start();
             </div>
         </div>
     </nav>
-
+	
+<!--MY MODEL LOGIN-->
     <div class="container">
         <!-- The Modal -->
         <div class="modal fade" id="myModal_login">
@@ -178,7 +186,7 @@ session_start();
 
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h4 class="modal-title">Login</h4>
+                        <h4 class="modal-title">Login Form</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
@@ -188,12 +196,13 @@ session_start();
                         <?php
                         if (isset($_GET['error1'])) {
 
-                            //script for modal to appear when error 
-                            echo '  <script>
-                    $(document).ready(function(){
-                    $("#myModal_login").modal("show");
-                    });
-                    </script> ';
+                            //script for modal to re-appear when error (to allow user to keep entering if they made a mistake) 
+                            echo '  
+							<script>
+								$(document).ready(function(){
+									$("#myModal_login").modal("show");
+								});
+							</script> ';
 
 
                             //error handling of log in
@@ -207,14 +216,14 @@ session_start();
                             } else if ($_GET['error1'] == "error2") {
                                 echo '<h5 class="text-danger text-center">Error Occured, Please try again!</h5>';
                             } else if ($_GET['error1'] == "nouser") {
-                                echo '<h5 class="text-danger text-center">Username or email not found, Please try again!</h5>';
+                                echo '<h5 class="text-danger text-center">Username not found, Please try again!</h5>';
                             }
                         }
                         echo '<br>';
                         ?>
 
                         <div class="signin-form">
-                            <form action="includes/login.inc.php" method="post">
+                            <form action="../../controllers/login.controller.php" method="post">
                                 <p class="hint-text">If you have already an account please log in.</p>
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="username" placeholder="Username" required="required">
@@ -239,7 +248,7 @@ session_start();
         </div>
     </div>
 
-
+<!--MY MODEL REGISTER-->
     <div class="container">
         <!-- The Modal -->
         <div class="modal fade" id="myModal_reg">
@@ -256,9 +265,10 @@ session_start();
                         <?php
                         if (isset($_GET['error'])) {
                             //script for modal to appear when error 
-                            echo '  <script>
+                            echo '  
+							<script>
                                 $(document).ready(function(){
-                                $("#myModal_reg").modal("show");
+                                	$("#myModal_reg").modal("show");
                                 });
                             </script> ';
 
@@ -287,11 +297,12 @@ session_start();
                         }
                         if (isset($_GET['signup'])) {
                             //script for modal to appear when success
-                            echo '  <script>
-                                $(document).ready(function(){
-                                $("#myModal_reg").modal("show");
-                                });
-                            </script> ';
+                            echo '  
+								<script>
+									$(document).ready(function(){
+									$("#myModal_reg").modal("show");
+									});
+								</script> ';
 
                             if ($_GET['signup'] == "success") {
                                 echo '<h5 class="bg-success text-center">Sign up was successfull! Please Log in!</h5>';

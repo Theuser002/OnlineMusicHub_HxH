@@ -1,18 +1,24 @@
 <?php
 	if(isset($_POST['login-submit'])){
 		require '../../configs/connection.php';
-		require ''
+		require '../models/account.entity.php';
+		require '../models/account.model.php';
 		
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 		
-		if(empty($username) || empty($password)) {
+		if(empty($username) || empty($password)){
 			header("Location: ../index.php?error1=emptyfields");
-        	exit();
+			exit();
+		}else{
+			print("Helllo");
+			$account = new AccountModel();
+			
 		}
-		else{
-			$sql = "select * from Account where username= ?";
-			$res = sqlsrv_query($conn, $sql, $username);
-		}
+		
+		
+	}else{
+		header("Location: ../index.php");
+    	exit();
 	}
 ?>
