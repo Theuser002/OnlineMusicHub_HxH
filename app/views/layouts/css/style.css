@@ -23,21 +23,17 @@ h3{
 /*headers*/
 .header
 {
-	background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../images/study_music.jpg);
+	
 	height:40vh;
-/*	background-position:center;*/
 	background-size:cover;
+	background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../images/study_music.jpg);
 }
 
-.header2
-{
-	background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../images/ocean.jpg);
-	height:25vh;
-	background-position:center;
+.header-account{
+	height: 25vh;
 	background-size:cover;
-	background-attachment:fixed;
+	background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../images/study_music.jpg);
 }
-
 
 /*navbar*/
 .navbar{
@@ -114,6 +110,3 @@ color:black;
 	margin:0 auto;
 	margin-top:20px;
 }
-
-
-
