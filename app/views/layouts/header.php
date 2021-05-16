@@ -98,9 +98,9 @@ session_start();
 					<!--auto change based on login status-->
                     <?php
 						//set navigation bar when logged in
-						if (isset($_SESSION['user_id'])) {
+						if (isset($_SESSION['accountID'])) {
 						//set navigation bar when logged in and role of admin
-							if ($_SESSION['role'] == 2) {
+							if ($_SESSION['isAdmin'] == 1) {
 								echo '
 									<li class="nav-item">
 										<a class="nav-link" href="song-page.php" >Songs</a>
@@ -110,6 +110,9 @@ session_start();
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="artist-page.php" >Artists</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="news-page.php" >News</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="account-page.php" >Account</a>
@@ -126,6 +129,9 @@ session_start();
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="artist-page.php" >Artists</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="news-page.php" >News</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="account-page.php" >Account</a>
@@ -155,10 +161,10 @@ session_start();
                 </ul>
 
                 <?php
-                //log out button when user is logged in
-                if (isset($_SESSION['user_id'])) {
+                //logout button when user is logged in
+                if (isset($_SESSION['accountID'])) {
                     echo '
-                    <form class="navbar-form navbar-right" action="includes/logout.inc.php" method="post">
+                    <form class="navbar-form navbar-right" action="../../controllers/logout.controller.php" method="post">
                     	<button type="submit" name="logout-submit" class="btn btn-outline-dark">Logout</button>
                     </form>';
                 } else {
@@ -195,7 +201,6 @@ session_start();
 
                         <?php
                         if (isset($_GET['error1'])) {
-
                             //script for modal to re-appear when error (to allow user to keep entering if they made a mistake) 
                             echo '  
 							<script>
@@ -206,17 +211,8 @@ session_start();
 
 
                             //error handling of log in
-
-                            if ($_GET['error1'] == "emptyfields") {
-                                echo '<h5 class="text-danger text-center">Fill all fields, Please try again!</h5>';
-                            } else if ($_GET['error1'] == "error") {
-                                echo '<h5 class="text-danger text-center">Error Occured, Please try again!</h5>';
-                            } else if ($_GET['error1'] == "wrongpwd") {
-                                echo '<h5 class="text-danger text-center">Wrong Password, Please try again!</h5>';
-                            } else if ($_GET['error1'] == "error2") {
-                                echo '<h5 class="text-danger text-center">Error Occured, Please try again!</h5>';
-                            } else if ($_GET['error1'] == "nouser") {
-                                echo '<h5 class="text-danger text-center">Username not found, Please try again!</h5>';
+                            if ($_GET['error1'] == "loginfailed") {
+                                echo '<h5 class="text-danger text-center">Wrong username or password, Please try again!</h5>';
                             }
                         }
                         echo '<br>';

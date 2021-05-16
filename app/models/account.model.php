@@ -121,8 +121,6 @@ class AccountModel{
 		
 	}
 	
-
-	
 	function checkUserForSignUp($username){
 		try{
 			$db = DB::getInstance();
@@ -142,17 +140,16 @@ class AccountModel{
 			$stm = $db->prepare('select * from Account where Username = ? and HashedPassword = ?');
 			$passwordHash = hash('sha256', $password);
 			$stm->execute([$username, $passwordHash]);
-			#0: Login successful
-			#1: Login unsucessful
+			#0: Login unsuccessful
+			#1: Login sucessful
 			return iterator_count($stm) == 1 ? 1 : 0;
 		}catch (Exception $e){
 			echo 'Error checking user for signup. Caught exception: ', $e->getMessage(), "\n";
 		}
-		
 	}
 }
 
-echo "Hello!<br>";
+//echo "Hello!<br>";
 //$modelAccount = new AccountModel();
 //$accList = $modelAccount->getAllAccounts();
 //var_dump($accList);
