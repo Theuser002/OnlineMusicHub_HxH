@@ -6,6 +6,7 @@ session_start();
 <html>
 	<head>
 		<title>Account</title>
+		<link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
 	</head>
 	<body id="account-body">
 		<?php require "navbar.php";	?>

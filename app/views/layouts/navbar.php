@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
 		<!--favicon-->
 		<title>Nav-bar</title>
 		<meta charset="utf-8">
@@ -160,8 +159,8 @@
 						echo '
 						<div>
 							<ul class="navbar-nav ml-auto">
-								<li><a class="nav-link fa fa-sign-in" data-toggle="modal" data-target="#myModal_reg">&nbsp;Sign Up</a></li>
-								<li><a class="nav-link fa fa-user-plus" data-toggle="modal" data-target="#myModal_login">&nbsp;Login</a></li>
+								<li><a class="nav-link fa fa-sign-in" data-toggle="modal" data-target="#myModal_signup">&nbsp;Sign Up</a></li>
+								<li><a class="nav-link fa fa-user-plus" data-toggle="modal" data-target="#myModal_login">&nbsp;Log In</a></li>
 							</ul> 
 						</div>
 						';
@@ -181,7 +180,7 @@
 
 						<!-- Modal Header -->
 						<div class="modal-header">
-							<h4 class="modal-title">Login</h4>
+							<h4 class="modal-title">Log In</h4>
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</div>
 
@@ -236,12 +235,12 @@
 	<!--MY MODEL REGISTER-->
 		<div class="container">
 			<!-- The Modal -->
-			<div class="modal fade" id="myModal_reg">
+			<div class="modal fade" id="myModal_signup">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<!-- Modal Header -->
 						<div class="modal-header">
-							<h4 class="modal-title">Register</h4>
+							<h4 class="modal-title">Sign Up</h4>
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</div>
 						<!-- Modal body -->
@@ -253,7 +252,7 @@
 								echo '  
 								<script>
 									$(document).ready(function(){
-										$("#myModal_reg").modal("show");
+										$("#myModal_signup").modal("show");
 									});
 								</script> ';
 
@@ -285,7 +284,7 @@
 								echo '  
 									<script>
 										$(document).ready(function(){
-										$("#myModal_reg").modal("show");
+										$("#myModal_signup").modal("show");
 										});
 									</script> ';
 
@@ -298,14 +297,11 @@
 
 							<!---sign up form -->
 							<div class="signup-form">
-								<form action="includes/signup.inc.php" method="post">
+								<form action="../../controllers/signup.controller.php" method="post">
 									<p class="hint-text">Create your account. It's free and only takes a minute.</p>
 									<div class="form-group">
 										<input type="text" class="form-control" name="uid" placeholder="Username" required="required">
 										<small class="form-text text-muted">Username must be 4-20 characters long</small>
-									</div>
-									<div class="form-group">
-										<input type="email" class="form-control" name="mail" placeholder="Email" required="required">
 									</div>
 									<div class="form-group">
 										<input type="password" class="form-control" name="pwd" placeholder="Password" required="required">
@@ -318,10 +314,9 @@
 										<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
 									</div>
 									<div class="form-group">
-										<button type="submit" name="signup-submit" class="btn btn-dark btn-lg btn-block">Register Now</button>
+										<button type="submit" name="signup-submit" class="btn btn-dark btn-lg btn-block">Sign Up</button>
 									</div>
 								</form>
-								<div class="text-center">Already have an account? <a href="#">Sign in</a></div>
 							</div>
 						</div>
 						<!-- Modal footer -->

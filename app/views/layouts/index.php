@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
 		<!--favicon-->
 		<title>Online Music Website</title>
 <!--		<meta charset="utf-8">-->
