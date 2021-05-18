@@ -4,7 +4,7 @@ require '../../configs/connection.php';
 require '../models/account.entity.php';
 require '../models/account.model.php';
 
-class LoginController{
+class LogInController{
 	function logIn (){
 		if(isset($_POST['login-submit'])){
 			$username = $_POST['username'];
@@ -38,7 +38,7 @@ class LoginController{
 }
 	
 //Login handler (but I combine it with the controller to make things simpler)
-$loginController = new LoginController();
-$loginController->logIn();
+$logInController = new LogInController();
+$logInController->logIn();
 
 ?>

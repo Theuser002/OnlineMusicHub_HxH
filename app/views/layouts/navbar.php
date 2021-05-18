@@ -217,7 +217,7 @@
 									</div>
 									<div class="form-group">
 										<button type="submit" name="login-submit" class="btn btn-dark btn-lg btn-block">Log In</button>
-										<button type="reset" name="login-reset" class="btn btn-decondary btn-lg btn-block">Clear
+										<button type="reset" name="login-reset" class="btn btn-secondary btn-lg btn-block">Clear
 										</button>
 									</div>
 								</form>
@@ -261,21 +261,15 @@
 
 								if ($_GET['error'] == "emptyfields") {
 									echo '<h5 class="bg-danger text-center">Fill all fields, Please try again!</h5>';
-								} else if ($_GET['error'] == "invalidemailusername") {
-									echo '<h5 class="bg-danger text-center">Username or Email are taken!</h5>';
-								} else if ($_GET['error'] == "invalidemail") {
-									echo '<h5 class="bg-danger text-center">Invalid Email, Please try again!</h5>';
-								} else if ($_GET['error'] == "usernameemailtaken") {
-									echo '<h5 class="bg-danger text-center">Username or email is taken, Please try again!</h5>';
 								} else if ($_GET['error'] == "invalidusername") {
 									echo '<h5 class="bg-danger text-center">Invalid Username, Please try again!</h5>';
 								} else if ($_GET['error'] == "invalidpassword") {
 									echo '<h5 class="bg-danger text-center">Invalid password, Please try again!</h5>';
 								} else if ($_GET['error'] == "passworddontmatch") {
 									echo '<h5 class="bg-danger text-center">Password must match, Please try again!</h5>';
-								} else if ($_GET['error'] == "error1") {
-									echo '<h5 class="bg-danger text-center">Error Occured, Try again!</h5>';
-								} else if ($_GET['error'] == "error2") {
+								} else if ($_GET['error'] == "usernametaken") {
+									echo '<h5 class="bg-danger text-center">Username taken, please choose another one.</h5>';
+								} else if ($_GET['error'] == "unknownerror") {
 									echo '<h5 class="bg-danger text-center">Error Occured, Try again!</h5>';
 								}
 							}
@@ -294,27 +288,24 @@
 							}
 							echo '<br>';
 							?>
-
 							<!---sign up form -->
 							<div class="signup-form">
 								<form action="../../controllers/signup.controller.php" method="post">
 									<p class="hint-text">Create your account. It's free and only takes a minute.</p>
 									<div class="form-group">
-										<input type="text" class="form-control" name="uid" placeholder="Username" required="required">
-										<small class="form-text text-muted">Username must be 4-20 characters long</small>
+										<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+										<small class="form-text text-muted">Username must be between 4-15 characters long. Can only contain letters and numbers</small>
 									</div>
 									<div class="form-group">
-										<input type="password" class="form-control" name="pwd" placeholder="Password" required="required">
-										<small class="form-text text-muted">Password must be 6-20 characters long</small>
+										<input type="password" class="form-control" name="password" placeholder="Password" required="required">
+										<small class="form-text text-muted">Password must be between 4 - 20 charaters long</small>
 									</div>
 									<div class="form-group">
-										<input type="password" class="form-control" name="pwd-repeat" placeholder="Confirm Password" required="required">
-									</div>
-									<div class="form-group">
-										<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+										<input type="password" class="form-control" name="password-repeat" placeholder="Confirm Password" required="required">
 									</div>
 									<div class="form-group">
 										<button type="submit" name="signup-submit" class="btn btn-dark btn-lg btn-block">Sign Up</button>
+										<button type="reset" name="signup-clear" class="btn btn-secondary btn-lg btn-block">Clear</button>
 									</div>
 								</form>
 							</div>
