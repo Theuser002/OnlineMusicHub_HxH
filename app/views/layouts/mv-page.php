@@ -1,3 +1,6 @@
 <?php
-require "header.php";
+session_start();
+?>
+<?php
+require "navbar.php";
 ?>

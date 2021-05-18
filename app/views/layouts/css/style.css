@@ -10,7 +10,6 @@ body
 {
 	overflow-y: scroll;
 	overflow-x: hidden;
-    background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../images/ocean.jpg);
 	background-position:center;
 	background-size:cover;
 	background-attachment:fixed;
@@ -18,21 +17,6 @@ body
 
 h3{
     text-shadow: 2px 1px grey;
-}
-
-/*headers*/
-.header
-{
-	
-	height:40vh;
-	background-size:cover;
-	background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../images/study_music.jpg);
-}
-
-.header-account{
-	height: 25vh;
-	background-size:cover;
-	background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../images/study_music.jpg);
 }
 
 /*navbar*/
@@ -109,4 +93,34 @@ color:black;
 	border-bottom:2px solid white;
 	margin:0 auto;
 	margin-top:20px;
+}
+
+
+/*body*/
+#index-body{
+	background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../images/ocean.jpg);
+}
+
+#account-body{
+	background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../images/ocean.jpg);	
+}
+
+/*headers*/
+#index-header
+{
+	
+	height:40vh;
+	background-size:cover;
+	background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../images/study_music.jpg);
+}
+
+#header-account{
+	position: relative;
+	height: 20vh;
+	margin-top: 5vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-size:cover;
+	background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../images/study_music.jpg);
 }

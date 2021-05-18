@@ -156,7 +156,7 @@ class AccountModel{
 //var_dump($accList[0]);
 //print ($accList[0]->getHashedPassword());
 //$modelAccount->addAccount('Cascada', 'admin');
-//$modelAccount->addAccount('Rick Roll', 'user');
+//$modelAccount->addAccount('Hung', 'Hung1804');
 //$modelAccount->deleteAccount(2);
 //$accList = $modelAccount->getAllAccounts();
 //$modelAccount->deleteAccount('125');
