@@ -12,26 +12,26 @@ class Model_MV{
 		$MVList = array();
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ //to fetch result of each row in table
 			
-			array_push($MVList, new Entity_MV($row['MVID'],$row['MVTitle'],$row['MVImage'],$row['MVLink']));
+			array_push($MVList, new Entity_MV($row['MVID'],$row['MVTitle'],$row['MVImage'],$row['MVLink'],$row['MVView']));
 		}
 		return $MVList; //return an object list
 	}
 	
-	function getPaginationPage($pageNum, $resultPerPage){
+	function getPaginationAZ($pageNum, $resultPerPage){
 		$db = DB::getInstance();
 		$stmt = $db->prepare('DECLARE @PageNumber AS INT
 								DECLARE @RowsOfPage AS INT
 								SET @PageNumber=?
 								SET @RowsOfPage=?
 								SELECT * FROM MV
-								ORDER BY MVID
+								ORDER BY MVTitle
 								OFFSET (@PageNumber-1)*@RowsOfPage ROWS
 								FETCH NEXT @RowsOfPage ROWS ONLY');
 		$result = $stmt->execute(array($pageNum, $resultPerPage)); //$result = 1 means execute successfully
 		$MVList = array();
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ //to fetch result of each row in table
 			
-			array_push($MVList, new Entity_MV($row['MVID'],$row['MVTitle'],$row['MVImage'],$row['MVLink']));
+			array_push($MVList, new Entity_MV($row['MVID'],$row['MVTitle'],$row['MVImage'],$row['MVLink'],$row['MVView']));
 		}
 		return $MVList; //return an object list
 	}
@@ -42,7 +42,7 @@ class Model_MV{
 		$result = $stmt1->execute();
 		$row = $stmt1->fetch(PDO::FETCH_ASSOC);
 		$MVID = $row['MVID'];
-		$stmt = $db->prepare('insert into MV(MVID,MVTitle,MVImage,MVLink) values (?,?,?,?)');
+		$stmt = $db->prepare('insert into MV(MVID,MVTitle,MVImage,MVLink,MVView) values (?,?,?,?,0)');
 		$result = $stmt->execute(array($MVID, $MVTitle, $MVImage, $MVLink));
 	}
 	
@@ -67,13 +67,26 @@ class Model_MV{
 		$result = $stmt->execute(array($MVID));
 		$mv;
 		while($row = $stmt->fetch(PDO::FETCH_ASSOC)){ //to fetch result of each row in table
-			$mv = new Entity_MV($row['MVID'],$row['MVTitle'],$row['MVImage'],$row['MVLink']);
+			$mv = new Entity_MV($row['MVID'],$row['MVTitle'],$row['MVImage'],$row['MVLink'],$row['MVView']);
 		}
 		return $mv;
+	}
+	
+	function getMVbyAZ(){
+		$db = DB::getInstance();
+		$stmt = $db->prepare('select * from MV order by MVTitle asc');
+		$result = $stmt->execute();
+		$MVList = array();
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ //to fetch result of each row in table
+			
+			array_push($MVList, new Entity_MV($row['MVID'],$row['MVTitle'],$row['MVImage'],$row['MVLink'],$row['MVView']));
+		}
+		return $MVList;
 	}
 }
 
 //$m = new Model_MV();
+//$list = $m->getMVbyAZ();
 //$list = $m->getAllMV();
 //echo $list[0]->getMVTitle();
 //$m->insertMV(1,'First MV','jimi.jpeg','https://www.youtube.com/watch?v=dhcapOWDATY');
@@ -81,5 +94,5 @@ class Model_MV{
 //$m->updateMV(1,'Title after update','afterupdate.png','afterupdate.mp4');
 
 //$MV = $m->getMVbyID(1);
-//echo $MV->getMVID()."<br>".$MV->getMVTitle()."<br>".$MV->getMVImage()."<br>".$MV->getMVLink();
+//echo $MV->ge/tMVID()."<br>".$MV->getMVTitle()."<br>".$MV->getMVImage()."<br>".$MV->getMVLink();
 ?>

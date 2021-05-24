@@ -15,9 +15,9 @@ class Ctrl_MV{
 		$modelMV->insertMV($MVID,$MVTitle,$MVImage,$MVLink);
 	}
 	
-	public function getPaginationResult($pageNum, $resultPerPage){
+	public function getPaginationAZ($pageNum, $resultPerPage){
 		$modelMV = new Model_MV();
-		$MVList = $modelMV->getPaginationPage($pageNum, $resultPerPage);
+		$MVList = $modelMV->getPaginationAZ($pageNum, $resultPerPage);
 		return $MVList;
 	}
 	
@@ -25,6 +25,12 @@ class Ctrl_MV{
 		$modelMV = new Model_MV();
 		$mv = $modelMV->getMVbyID($MVID);
 		return $mv;
+	}
+	
+	public function getAZList(){
+		$modelMV = new Model_MV();
+		$list = $modelMV->getMVbyAZ();
+		return $list;
 	}
 }
 

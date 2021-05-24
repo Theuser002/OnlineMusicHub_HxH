@@ -1,8 +1,8 @@
 <?php
 session_start();
-?>
-<head>
+?><head>
 </head>
+
 <style>
 	.mv-title{
 		text-align: left;
@@ -23,7 +23,6 @@ $c = new Ctrl_MV();
 <br>
 <br>
 <div id="gallery">
-<br>
 <nav class="navbar navbar-expand-md navbar-light">
   <div class="container">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -45,25 +44,7 @@ $c = new Ctrl_MV();
    <div class="tab-pane fade show active" id="content-javascript"
       role="tabpanel" aria-labelledby="tab-javascript">
 	   <br>
-				   <div class="container">
-						<h3 class="text-center"><br>A-Z List<br>
-						  <hr><br>
-						</h3>
-						<div class="d-flex flex-row flex-wrap justify-content-center">
-						  <?php
-							for($i=0;$i<4;$i++){
-								echo "<div class=\"d-flex flex-column\">";
-								for($j=0;$j<2;$j++){
-							echo "<a href=\"single-mv-page.php?MVID=".($j+2*$i)."\"><img src=\"images/dave.jpg\" class=\"img-fluid\"></a>
-							<div class=\"container\">
-							<h5 class=\"mv-title\">MV Title ABCXYZJKL #".($j+2*$i)."</h5><h6 class=\"mv-view\">View: xxx</h6>
-							</div>";
-							 	}
-						  echo "</div>";
-							}?>
-						<br><br>
-					  </div>
-	   </div>
+		<?php include_once('mv-nav.php'); ?>
    </div>
    <div class="tab-pane fade" id="content-css"
       role="tabpanel" aria-labelledby="tab-css">

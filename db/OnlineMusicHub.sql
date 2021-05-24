@@ -18,15 +18,15 @@ create table Song(
 	Genre nvarchar(60),
 	SongViews int,
 	AudioLink nvarchar(max),
-	SongImageLink nvarchar(max) 
-
+	SongImageLink nvarchar(max)
 );
 
 create table MV(
 	MVID int primary key,
 	MVTitle nvarchar(100),
 	MVImage nvarchar(max),
-	MVLink nvarchar(max)
+	MVLink nvarchar(max),
+	MVView int
 );
 
 --Track is a song belongs to an account
