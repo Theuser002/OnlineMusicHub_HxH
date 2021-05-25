@@ -21,17 +21,18 @@ class Ctrl_MV{
 		return $MVList;
 	}
 	
+	public function getPaginationLatest($pageNum, $resultPerPage){
+		$modelMV = new Model_MV();
+		$MVList = $modelMV->getPaginationLatest($pageNum, $resultPerPage);
+		return $MVList;
+	}
+	
 	public function getSingleMV($MVID){
 		$modelMV = new Model_MV();
 		$mv = $modelMV->getMVbyID($MVID);
 		return $mv;
 	}
-	
-	public function getAZList(){
-		$modelMV = new Model_MV();
-		$list = $modelMV->getMVbyAZ();
-		return $list;
-	}
+
 }
 
 //$c = new Ctrl_MV();

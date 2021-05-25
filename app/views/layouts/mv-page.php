@@ -1,6 +1,8 @@
 <?php
 session_start();
-?><head>
+?>
+<head>
+	<link href="css/pagination.css" rel="stylesheet" type="text/css">
 </head>
 
 <style>
@@ -15,10 +17,7 @@ session_start();
 <?php
 require "navbar.php";
 ?>
-<?php
-include_once('../../controllers/mv.controller.php');
-$c = new Ctrl_MV();
-?>
+
 <body id="index-body">
 <br>
 <br>
@@ -44,35 +43,12 @@ $c = new Ctrl_MV();
    <div class="tab-pane fade show active" id="content-javascript"
       role="tabpanel" aria-labelledby="tab-javascript">
 	   <br>
-		<?php include_once('mv-nav.php'); ?>
+		<?php include_once('mv-nav-1.php'); ?>
    </div>
    <div class="tab-pane fade" id="content-css"
       role="tabpanel" aria-labelledby="tab-css">
       <br>
-				   <div class="container">
-						<h3 class="text-center"><br>Top view<br>
-						  <hr><br>
-						</h3>
-						<div class="d-flex flex-row flex-wrap justify-content-center">
-						  <div class="d-flex flex-column">
-							<img src="images/dave.jpg" class="img-fluid">
-							  <img src="images/jimi.jpeg" class="img-fluid">
-						  </div>
-						  <div class="d-flex flex-column">
-							<img src="images/drake.jpg" class="img-fluid">
-							<img src="images/album2.jpg" class="img-fluid">
-						  </div>
-						  <div class="d-flex flex-column">
-							<img src="images/album3.jpg" class="img-fluid">
-							<img src="images/album4.jpg" class="img-fluid">
-						  </div>
-						<div class="d-flex flex-column">
-							<img src="images/album1.jpg" class="img-fluid">
-							<img src="images/alanw.jpg" class="img-fluid">
-						  </div>
-						</div>
-						<br><br>
-					  </div>
+		<?php include_once('mv-nav-3.php'); ?>
    </div>
    <div class="tab-pane fade" id="content-bootstrap"
       role="tabpanel" aria-labelledby="tab-bootstrap">
@@ -103,6 +79,32 @@ $c = new Ctrl_MV();
 					  </div>
    </div>
 </div>
+	<div class="container">
+	<div class="pagination">
+		<?php //display pagination list bar << 1 2 3 >>
+	   $pagLink = "";
+	   if($page>=2){   
+            echo "<a href='mv-page.php?page=".($page-1)."'>  Prev </a>";   
+        }       
+                   
+        for ($i=1; $i<=$number_of_page; $i++) {   
+          if ($i == $page) {   
+              $pagLink .= "<a class = 'active' href='mv-page.php?page="  
+                                                .$i."'>".$i." </a>";   
+          }               
+          else  {   
+              $pagLink .= "<a href='mv-page.php?page=".$i."'>   
+                                                ".$i." </a>";     
+          }   
+        };     
+        echo $pagLink;   
+  
+        if($page<$number_of_page){   
+            echo "<a href='mv-page.php?page=".($page+1)."'>  Next </a>";   
+        }   
+	   ?>
+	   </div>
+	</div>
   </div>
   <br>
   <br>
