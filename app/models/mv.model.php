@@ -80,6 +80,16 @@ class Model_MV{
 		$result = $stmt->execute(array($MVTitle, $MVImage, $MVLink, $MVID));
 	}
 	
+	function getMVbyID($MVID){
+		$db = DB::getInstance();
+		$stmt = $db->prepare('select * from MV where MVID = ?');
+		$result = $stmt->execute(array($MVID));
+		$mv;
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ //to fetch result of each row in table
+			$mv = new Entity_MV($row['MVID'],$row['MVTitle'],$row['MVImage'],$row['MVLink'],$row['MVView']);
+		}
+		return $mv;
+	}
 
 }
 
