@@ -90,6 +90,12 @@ class Model_MV{
 		}
 		return $mv;
 	}
+	
+	function updateMVView($MVView,$MVID){
+		$db = DB::getInstance();
+		$stmt = $db->prepare('update MV set [MVView] = ? where MVID = ?');
+		$result = $stmt->execute(array($MVView,$MVID));
+	}
 
 }
 

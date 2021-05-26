@@ -34,5 +34,9 @@ class Entity_MV{
 		return $this->MVView;
 	}
 	
+	function setMVView($MVView){
+		$this->MVView = $MVView;
+	}
+	
 }
 ?>

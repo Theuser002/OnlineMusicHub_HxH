@@ -32,6 +32,14 @@ class Ctrl_MV{
 		$mv = $modelMV->getMVbyID($MVID);
 		return $mv;
 	}
+	
+	public function updateView($MVID){
+		$modelMV = new Model_MV();
+		$mv = $modelMV->getMVbyID($MVID);
+		$oldView = $mv->getMVView();
+		$newView = $oldView+1;
+		$modelMV->updateMVView($newView,$MVID);
+	}
 
 }
 
