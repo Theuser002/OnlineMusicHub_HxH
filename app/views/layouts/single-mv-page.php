@@ -35,8 +35,6 @@ if(isset($_GET['MVID'])){
 include_once('../../controllers/mv.controller.php');
 $c = new Ctrl_MV();
 $mv = $c->getSingleMV($MVID);
-echo $mv->getMVView();
-$c->updateView($MVID);
 ?>
 <br><br><br>
 <div class="container">
