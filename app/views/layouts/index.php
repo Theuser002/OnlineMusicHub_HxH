@@ -43,7 +43,9 @@ session_start();
 		<header id="index-header">
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<a class="logo"><img src="images/logo.png" alt="logo"></a>
+					<a class="logo">
+						<img src="images/logo.svg">
+					</a>
 				</div>
 			</div>
 		</header>
