@@ -1,5 +1,10 @@
 
 /app/views/layouts/_notes
+/app/views/layouts/css/_notes
+/app/views/layouts/images/_notes
+/app/views/layouts/js/_notes
+
 /app/models/_notes
 /app/controllers/_notes
+
 /configs/
