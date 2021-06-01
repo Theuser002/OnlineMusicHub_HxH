@@ -1,3 +1,5 @@
 
 /app/views/layouts/_notes
+/app/models/_notes
+/app/controllers/_notes
 /configs/
