@@ -59,7 +59,7 @@ session_start();
 			}
 		</style>
 		
-		<header id="header-account">
+		<header id="account-header">
 			<div class="responsive-pic">
 				<div class="responsive-box" id="profile-pic">
 <!--					<img src="./images/ocean.jpg">-->
@@ -67,7 +67,8 @@ session_start();
 				</div>
 			</div>
 			<div id="profile-name">
-				<?php print($_SESSION['username'])?>
+				<h1><?php print($_SESSION['username'])?></h1>
+				
 			</div>
 		</header>
 		

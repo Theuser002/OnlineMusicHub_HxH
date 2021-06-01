@@ -1,12 +1,12 @@
 <?php
-	include_once ('account.entity.php');
 	include_once ('../../configs/connection.php');
+	include_once ('account.entity.php');
 
 class AccountModel{
 	function __construct(){
 	}
 	function getAllAccounts(){
-		$db = DB::getInstance();// creating db DO connection
+		$db = DB::getInstance();// creating db PDO connection
 		$stm = $db->prepare('select * from account');
 		$stm->execute(); //returns true on success, false on failure
 		
