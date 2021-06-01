@@ -23,7 +23,7 @@ class SongsDisplayController {
 				<hr />
 				<div class="view">
 				  <!--       Views -->
-					'.$views.'
+					'.$views.'&nbsp views
 				</div>
 			  </div>
 			</div>
