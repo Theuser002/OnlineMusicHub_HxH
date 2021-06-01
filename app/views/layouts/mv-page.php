@@ -66,6 +66,7 @@ if(!isset($_GET['tab'])){
   </div>
   <br>
   <br>
+<script src="js/ajax.js"></script>
 </body>
 <?php
 require 'footer.php';
