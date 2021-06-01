@@ -18,7 +18,9 @@ require "navbar.php";
 	}
 	.relate-img{
 		float: left;
-		max-width: 40%;
+		width: 40%;
+		max-height: 100%;
+		margin-right: 5px;
 	}
 	.relate-video-holder{
 		display: block;
@@ -36,6 +38,7 @@ include_once('../../controllers/mv.controller.php');
 $c = new Ctrl_MV();
 $mv = $c->getSingleMV($MVID);
 ?>
+<body id="index-body">
 <br><br><br>
 <div class="container">
 	<div class="mv-holder">
@@ -45,15 +48,15 @@ $mv = $c->getSingleMV($MVID);
 			<?php echo $mv->getMVView(); ?>
 		</div>
 	</div>
-	<div class="relate-video">
-		<div class="relate-video-holder"><img class="relate-img" src="images/alanw.jpg">Other MV</div><div class="clearfix"></div><br>
-		<div class="relate-video-holder"><img class="relate-img" src="images/alanw.jpg">Other MV</div><div class="clearfix"></div><br>
-		<div class="relate-video-holder"><img class="relate-img" src="images/alanw.jpg">Other MV</div><div class="clearfix"></div><br>
-		<div class="relate-video-holder"><img class="relate-img" src="images/alanw.jpg">Other MV</div><div class="clearfix"></div><br>
-		<div class="relate-video-holder"><img class="relate-img" src="images/alanw.jpg">Other MV</div><div class="clearfix"></div><br>
+	<div class="relate-video container"><br>
+		<div class="relate-video-holder"><img class="relate-img" src="images/2002.jpg">Other MV</div><div class="clearfix"></div><br>
+		<div class="relate-video-holder"><img class="relate-img" src="images/tonesandi.jpg">Other MV</div><div class="clearfix"></div><br>
+		<div class="relate-video-holder"><img class="relate-img" src="images/badliar.jpg">Other MV</div><div class="clearfix"></div><br>
+		<div class="relate-video-holder"><img class="relate-img" src="images/kingandqueen.jpg">Other MV</div><div class="clearfix"></div><br>
 	</div>
 </div>
 <div class="clearfix"></div>
+</body>
 <?php
 require 'footer.php';
 ?>

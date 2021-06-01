@@ -55,6 +55,25 @@ class Model_MV{
 		return $MVList; //return an object list
 	}
 	
+	function getPaginationView($pageNum, $resultPerPage){
+		$db = DB::getInstance();
+		$stmt = $db->prepare('DECLARE @PageNumber AS INT
+								DECLARE @RowsOfPage AS INT
+								SET @PageNumber=?
+								SET @RowsOfPage=?
+								SELECT * FROM MV
+								ORDER BY MVView desc
+								OFFSET (@PageNumber-1)*@RowsOfPage ROWS
+								FETCH NEXT @RowsOfPage ROWS ONLY');
+		$result = $stmt->execute(array($pageNum, $resultPerPage)); //$result = 1 means execute successfully
+		$MVList = array();
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ //to fetch result of each row in table
+			
+			array_push($MVList, new Entity_MV($row['MVID'],$row['MVTitle'],$row['MVImage'],$row['MVLink'],$row['MVView']));
+		}
+		return $MVList; //return an object list
+	}
+	
 	function insertMV($MVTitle, $MVImage, $MVLink){
 		$db = DB::getInstance();
 		$stmt1 = $db->prepare('select top 1 MVID +1 as MVID from MV order by MVID desc');
