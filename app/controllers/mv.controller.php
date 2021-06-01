@@ -3,27 +3,33 @@ include_once('../../models/mv.model.php');
 include_once('../../models/mv.entity.php');
 
 class Ctrl_MV{
-	public function invoke(){
+	function invoke(){
 		$modelMV = new Model_MV();
 		$MVList = $modelMV->getAllMV();
 //		include_once('View/mv-page-test.php');
 		return $MVList;
 	}
 	
-	public function insert($MVID,$MVTitle,$MVImage,$MVLink){
+	function insert($MVID,$MVTitle,$MVImage,$MVLink){
 		$modelMV = new Model_MV();
 		$modelMV->insertMV($MVID,$MVTitle,$MVImage,$MVLink);
 	}
 	
-	public function getPaginationAZ($pageNum, $resultPerPage){
+	function getPaginationAZ($pageNum, $resultPerPage){
 		$modelMV = new Model_MV();
 		$MVList = $modelMV->getPaginationAZ($pageNum, $resultPerPage);
 		return $MVList;
 	}
 	
-	public function getPaginationLatest($pageNum, $resultPerPage){
+	function getPaginationLatest($pageNum, $resultPerPage){
 		$modelMV = new Model_MV();
 		$MVList = $modelMV->getPaginationLatest($pageNum, $resultPerPage);
+		return $MVList;
+	}
+	
+	function getPaginationView($pageNum, $resultPerPage){
+		$modelMV = new Model_MV();
+		$MVList = $modelMV->getPaginationView($pageNum, $resultPerPage);
 		return $MVList;
 	}
 	
@@ -33,13 +39,18 @@ class Ctrl_MV{
 		return $mv;
 	}
 	
-	public function updateView($MVID){
+	function updateView($MVID){
 		$modelMV = new Model_MV();
 		$mv = $modelMV->getMVbyID($MVID);
 		$oldView = $mv->getMVView();
 		$newView = $oldView+1;
 		$modelMV->updateMVView($newView,$MVID);
 	}
+	
+	function getRelateVideo($MVID){
+		
+	}
+	
 
 }
 
