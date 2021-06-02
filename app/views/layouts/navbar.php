@@ -104,7 +104,10 @@
 										</li>
 										<li class="nav-item">
 											<a class="nav-link" href="account-page.php" >Account</a>
-										</li>';
+										</li>
+										<li class="nav-item">';
+										include_once('searchbar.php');
+									echo '</li>';
 								}
 								else
 								{
@@ -123,7 +126,10 @@
 										</li>
 										<li class="nav-item">
 											<a class="nav-link" href="account-page.php" >Account</a>
-										</li>';
+										</li>
+										<li class="nav-item">';
+										include_once('searchbar.php');
+									echo '</li>';
 								}	
 							}	
 							//main page not logged in navigation bar
@@ -145,9 +151,7 @@
 									';
 							}
 						?>
-						<li class="nav-item">
-						<?php include('searchbar.php'); ?>
-						</li>
+						
 
 					</ul>
 
