@@ -56,12 +56,114 @@ class SongModel{
 		}
 		
 	}
+	
+	function deleteSong($songID){
+		try{
+			$db = DB::getInstance();
+			$stm = $stm->prepare(
+				''
+			);
+			
+			$stm->execute([$songID]);
+		}catch (Exception $e){
+			echo 'Error deleting song from db. Caught exception: ', $e->getMessage(), "\n";
+		}
+	}
+	
+	function updateSong($songID, $songTitle, $genre, $songImageLink){
+		try{
+			$db = DB::getInstance();
+			$stm = $stm->prepare(
+				''
+			);
+			
+			$stm->execute([$songID]);
+		}catch (Exception $e){
+			echo 'Error editing song from db. Caught exception: ', $e->getMessage(), "\n";
+		}
+	}
+	
+	function updateSongView($songID, $songViews){
+		$db = DB::getInstance();
+		$stm = $db->prepare('update Song set SongViews = ? where SongID = ?');
+		$stm->execute([$songViews, $songID]);
+	}
+	
+	function getPaginationAZ($pageNum, $entriesPerPage){
+		$db = DB::getInstance();
+		$stm = $db->prepare('
+							declare @PageNumber as int
+							declare @RowsPerPage as int
+							set @PageNumber = ?
+							set @RowsPerPage = ?
+							select * from Song
+							order by SongTitle
+							offset (@PageNumber - 1)*@RowsPerPage rows
+							fetch next @RowsPerPage rows only');
+		$stm->execute([$pageNum, $entriesPerPage]);
+		
+		$songList = array();
+		while ($row = $stm->fetch(PDO::FETCH_ASSOC)){
+			$song = new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
+			
+			array_push($songList, $song);
+		}
+		
+		return $songList;
+	}
+	
+	function getPaginationTopViews($pageNum, $entriesPerPage){
+		$db = DB::getInstance();
+		$stm = $db->prepare('
+							declare @PageNumber as int
+							declare @RowsPerPage as int
+							set @PageNumber = ?
+							set @RowsPerPage = ?
+							select * from Song
+							order by SongViews desc
+							offset (@PageNumber - 1)*@RowsPerPage rows
+							fetch next @RowsPerPage rows only');
+		$stm->execute([$pageNum, $entriesPerPage]);
+		
+		$songList = array();
+		while ($row = $stm->fetch(PDO::FETCH_ASSOC)){
+			$song = new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
+			
+			array_push($songList, $song);
+		}
+		
+		return $songList;
+	}function getPaginationLatest($pageNum, $entriesPerPage){
+		$db = DB::getInstance();
+		$stm = $db->prepare('
+							declare @PageNumber as int
+							declare @RowsPerPage as int
+							set @PageNumber = ?
+							set @RowsPerPage = ?
+							select * from Song
+							order by SongID desc
+							offset (@PageNumber - 1)*@RowsPerPage rows
+							fetch next @RowsPerPage rows only');
+		$stm->execute([$pageNum, $entriesPerPage]);
+		
+		$songList = array();
+		while ($row = $stm->fetch(PDO::FETCH_ASSOC)){
+			$song = new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
+			
+			array_push($songList, $song);
+		}
+		
+		return $songList;
+	}
+	
+	
 }
 
 //$songModel = new SongModel();
 //$songModel->addSong('Star Sky - Two Steps From Hell', 'Instrumental', '../songs/StarSky.m4a');
 //$songModel->addSong('Arcade - Duncan Laurence', 'Pop', '../songs/Arcade\ -\ Duncan\ Laurence.m4a');
 //$songModel->addSong('Believer - Imagine Dragons', 'Rock', '../songs/Believer\ -\ Imagine\ Dragons');
+//$songModel->updateSongView(1, 1);
 //var_dump($songModel->getAllSongs());
 //var_dump($songModel->getSongByID(2));
 ?>

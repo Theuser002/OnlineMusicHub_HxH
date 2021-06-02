@@ -1,7 +1,6 @@
 <!--Fetch from DB and use loop to display the songs in the form of html via single-song.php-->
 
 <?php
-require '../../../configs/connection.php';
 require '../../models/song.entity.php';
 require '../../models/song.model.php';
 
@@ -39,17 +38,63 @@ class SongsDisplayController {
 			$i++;
 		}
 	}
-
+	
+	function displaySongPagAZ($entriesPerPage){
+		$songModel = new SongModel();
+		$songList = $songModel->getAllSongs();
+		$listLength = count($songList);
+		$numberOfPage = ceil($listLength/$entriesPerPage);
+		
+		$songPagList = $songModel->getPaginationAZ($pageNum, $entriesPerPage);
+		
+		$i = 0;
+		while($i < count($songPagList)){
+			$this->displaySingleSong($songPagList[$i]->getSongTitle(), $songPagList[$i]->getViews(), $songPagList[$i]->getSongImageLink());
+			$i++;
+		}
+	}
+	
+	function displaySongPagTopViews($entriesPerPage){
+		$songModel = new SongModel();
+		$songList = $songModel->getAllSongs();
+		$listLength = count($songList);
+		$numberOfPage = ceil($listLength/$entriesPerPage);
+		
+		if(!isset($GET_['page'])){
+			$pageNum = 1;
+		}else{
+			$pageNum = $_GET['page'];
+		}
+		
+		$songPagList = $songModel->getPaginationTopViews($pageNum, $entriesPerPage);
+		
+		$i = 0;
+		while($i < count($songPagList)){
+			$this->displaySingleSong($songPagList[$i]->getSongTitle(), $songPagList[$i]->getViews(), $songPagList[$i]->getSongImageLink());
+			$i++;
+		}
+	}
+	
+	function displaySongPagLatest($entriesPerPage){
+		$songModel = new SongModel();
+		$songList = $songModel->getAllSongs();
+		$listLength = count($songList);
+		$numberOfPage = ceil($listLength/$entriesPerPage);
+		
+		if(!isset($GET_['page'])){
+			$pageNum = 1;
+		}else{
+			$pageNum = $_GET['page'];
+		}
+		
+		$songPagList = $songModel->getPaginationLatest($pageNum, $entriesPerPage);
+		
+		$i = 0;
+		while($i < count($songPagList)){
+			$this->displaySingleSong($songPagList[$i]->getSongTitle(), $songPagList[$i]->getViews(), $songPagList[$i]->getSongImageLink());
+			$i++;
+		}
+	}
 }
 
-//$songsDisplayController = new SongsDisplayController();
-//$songsDisplayController->displaySingleSong("Yolargrasias", 120, defaultSongImageLink);
-//$songsDisplayController->displayAllSongs();
 ?>
-
-<!--
-<!doctype html>
-<html>
-	<?php echo defaultSongImageLink ?>
-	<img src=<?php echo defaultSongImageLink ?>/>
-</html>-->
