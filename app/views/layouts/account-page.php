@@ -11,38 +11,6 @@ session_start();
 	<body id="account-body">
 		<?php require "navbar.php";	?>
 		<style>
-		
-			.responsive-pic{
-				position: absolute;
-				height: 20vh;
-				width: 25vh;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-			}
-			
-			.responsive-box {
-				position: absolute;
-				width: 13vh;
-			}
-			.responsive-box:after {
-				content: "";
-				display: block;
-				padding-bottom: 100%; /* The padding depends on the width, not on the height, so with a padding-bottom of 100% you will get a square */
-			}
-
-			.responsive-box img {
-				position: absolute; /* Take your picture out of the flow */
-				top: 0;
-				bottom: 0;
-				left: 0;
-				right: 0; /* Make the picture taking the size of it's parent */
-				width: 100%; /* This if for the object-fit */
-				height: 100%; /* This if for the object-fit */
-				object-fit: cover; /* Equivalent of the background-size: cover; of a background-image */
-				object-position: center;
-				border-radius: 50%;
-			}
 			
 			.content{
 				margin-top: 10vh;
@@ -64,7 +32,7 @@ include_once('../../controllers/addFav.controller.php');
 $c = new Ctrl_MV();
 ?>
 		
-		<header id="header-account">
+		<header id="account-header">
 			<div class="responsive-pic">
 				<div class="responsive-box" id="profile-pic">
 <!--					<img src="./images/ocean.jpg">-->
@@ -72,7 +40,8 @@ $c = new Ctrl_MV();
 				</div>
 			</div>
 			<div id="profile-name">
-				<?php print($_SESSION['username'])?>
+				<h1><?php print($_SESSION['username'])?></h1>
+				
 			</div>
 		</header>
 		
