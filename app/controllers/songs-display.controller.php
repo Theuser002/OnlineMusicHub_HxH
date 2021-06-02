@@ -8,10 +8,13 @@ class SongsDisplayController {
 	function displaySingleSong( $songTitle, $views, $songImageLink ) {
 		echo'
 			<div class="single-song">
-			  <div class="song-img-wrap">
-				<!--     Song image -->
-				<img class="img" src="'.$songImageLink.'" />
-			  </div>
+				<div class = "responsive-pic song-img-wrap">
+				  <div class="responsive-box">
+					<!--     Song image -->
+					<!-- <img class="img" src="'.$songImageLink.'" /> -->
+					<img src="./images/ocean.jpg">
+				  </div>
+				 </div>
 			  <div class="vr"></div>
 			  <div class="title-and-views">
 				<!--     Song title & views-->
@@ -44,6 +47,12 @@ class SongsDisplayController {
 		$songList = $songModel->getAllSongs();
 		$listLength = count($songList);
 		$numberOfPage = ceil($listLength/$entriesPerPage);
+		
+		if(!isset($GET_['page'])){
+			$pageNum = 1;
+		}else{
+			$pageNum = $_GET['page'];
+		}
 		
 		$songPagList = $songModel->getPaginationAZ($pageNum, $entriesPerPage);
 		
