@@ -67,14 +67,9 @@ session_start();
 		
 		<section class="content">
 			<?php
-			
-//				include_once('song-board.php');
-			
-				if($isPlaying = false){
+				if($isPlaying == false){
 					include_once('song-board.php');
-//					echo $isPlaying;
 				}else{
-//					echo $isPlaying;
 					include ('music-player.php');
 				}
 					
