@@ -56,7 +56,7 @@ if(!isset($_GET['tab'])){
 	if($tab==1){
 		include_once('mv-nav-1.php');
 	}elseif($tab==2){
-		include_once('mv-nav-3.php');
+		include_once('mv-nav-2.php');
 	}else{
 		include_once('mv-nav-3.php');
 	}
