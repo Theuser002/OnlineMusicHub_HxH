@@ -1,126 +1,319 @@
-*
-{
-	margin:0;
-	padding:0;
-        font-family: "Times New Roman", Times, serif;
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "Times New Roman", Times, serif;
 }
+
 
 /*body*/
-body
-{
+
+body {
 	overflow-y: scroll;
 	overflow-x: hidden;
-	background-position:center;
-	background-size:cover;
-	background-attachment:fixed;
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
 }
 
-h3{
-    text-shadow: 2px 1px grey;
+h3 {
+	text-shadow: 2px 1px grey;
 }
+
 
 /*navbar*/
-.navbar{
-	background-color:white;
+
+.navbar {
+	background-color: white;
 }
 
 .navbar-brand {
-font-family: "Brush Script MT", "Brush Script Std", cursive;
+	font-family: "Brush Script MT", "Brush Script Std", cursive;
 }
 
-.navbar .navbar-nav .active{
-	border-bottom:1px solid  white;
+.navbar .navbar-nav .active {
+	border-bottom: 1px solid white;
 }
 
-.navbar .navbar-nav .nav-item a{
-	color:#3A3B3B;
+.navbar .navbar-nav .nav-item a {
+	color: #3A3B3B;
 }
 
-.navbar .navbar-nav .nav-item a:hover{
+.navbar .navbar-nav .nav-item a:hover {
 	background-color: #d1c8c8;
-	color:black;
+	color: black;
 }
 
-.navbar .navbar-nav  li a{
+.navbar .navbar-nav li a {}
+
+.header-button .btn {
+	margin-top: 40vh;
 }
-
-
-
-.header-button .btn{
-    
-margin-top:40vh;
-}
-
 
 .row {
-  margin: 15px;
+	margin: 15px;
 }
 
 .nav-link {
-	cursor:pointer;
+	cursor: pointer;
 }
+
 
 /*footer*/
-.footer{
-padding-top:30px;
-padding-bottom:30px;
-color:black;
+
+.footer {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	color: black;
 }
 
-.social-icon a{
-	margin:0 16px 20px 16px;
-	display:inline-block;
+.social-icon a {
+	margin: 0 16px 20px 16px;
+	display: inline-block;
 }
 
-.social-icon .fa{
-
-	color:black;
-	width:50px;
-	height:50px;
-	border-radius:50%;
-	background:lightgray;
+.social-icon .fa {
+	color: black;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: lightgray;
 	line-height: 2;
 	transition: .3s;
-	border:10px solid lightgray;
+	border: 10px solid lightgray;
 }
 
-.social-icon a:hover .fa{
-	border:10px solid black;
+.social-icon a:hover .fa {
+	border: 10px solid black;
 }
 
-.bordernow{
-	width:80px;
-	border-bottom:2px solid white;
-	margin:0 auto;
-	margin-top:20px;
+.bordernow {
+	width: 80px;
+	border-bottom: 2px solid white;
+	margin: 0 auto;
+	margin-top: 20px;
 }
 
 
 /*body*/
-#index-body{
-	background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../images/ocean.jpg);
+
+#index-body {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/ocean.jpg);
 }
 
-#account-body{
-	background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../images/ocean.jpg);	
+#account-body {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/ocean.jpg);
 }
+
+#song-body {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/ocean.jpg);
+}
+
 
 /*headers*/
-#index-header
-{
-	
-	height:40vh;
-	background-size:cover;
-	background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../images/study_music.jpg);
+
+#index-header {
+	position: relative;
+	margin-top: 5vh;
+	height: 40vh;
+	background-size: cover;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/study_music.jpg);
 }
 
-#header-account{
+#account-header {
 	position: relative;
-	height: 20vh;
 	margin-top: 5vh;
+	height: 20vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-size:cover;
-	background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../images/study_music.jpg);
+	background-size: cover;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/study_music.jpg);
+}
+
+#song-header {
+	position: relative;
+	margin-top: 5vh;
+	height: 20vh;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	background-size: cover;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/study_music.jpg);
+}
+
+.single-song {
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: 8em;
+	width: 80%;
+	padding: 5px;
+	margin: 5px;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	cursor: pointer;
+}
+
+.single-song > div {
+	color: black;
+}
+
+.song-img-wrap {
+	position: relative;
+	margin: 0px 30px 0px 25px;
+	width: 7em;
+	box-shadow: 2px 2px 5px 6px grey inset;
+	border-radius: 50%;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.song-img-wrap:after {
+	content: "";
+	display: block;
+	padding-bottom: 100%;
+}
+
+.img {
+	position: absolute;
+	
+/*	img fits parents*/
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	
+	border-radius: 50%;
+}
+
+.vr {
+	border-left: 1px solid #e6e6e6;
+	height: 100%;
+}
+
+.title-and-views {
+	margin: 0px 30px;
+	width: 70%;
+}
+
+.flex-row-break{
+/*	flex-basis: 100%;*/
+	width: 100%;
+	height: 0;
+}
+
+.song-board{
+	position:relative;
+/*				width: 50em;*/
+	margin-top: 50px;
+	padding: 10px;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+}
+
+#sortbar{
+	width: 80%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.sort-button{
+	width: 20%;
+	text-align: center;
+/*				border: 1px solid black;*/
+	color: white;
+	margin: 5px;
+	background-color: black;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	cursor: pointer;
+	border: none;
+
+}
+
+.sort-button:hover{
+	background-color: white;
+	color: black;
+	border-radius: 10px;
+}
+
+.sort-button:active{
+	border-radius: 10px;
+	background-color: white;
+	color: black;
+	box-shadow: 0 0px 0px 0 black;
+}
+.focus{
+	background-color: #c95d5d;
+	color: white;
+	outline: none;
+}
+
+.searchbar{
+	width: 80%;
+	height: 2em;
+	background-color: transparent;
+	border: 2px solid black;
+	color: black;
+	border-radius: 25px;
+	padding: 5px;
+}
+
+.searchbar:focus{
+	outline: none;
+}
+
+.search-button{
+	background-color:#c95d5d;
+	width: 10%;
+}
+
+.search-button:hover{
+	background-color:#c95d5d;
+}
+
+.search-button:focus{
+	background-color:#c95d5d;
+}
+
+/*RESPONSIVE BOX FOR PICTURE*/
+/*source: https://stackoverflow.com/questions/51447317/image-height-same-as-width*/
+
+.responsive-pic{
+/*	position: absolute;*/
+	height: 20vh;
+	width: 25vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.responsive-box {
+	position: absolute;
+	width: 8vh;
+}
+.responsive-box:after {
+	content: "";
+	display: block;
+	padding-bottom: 100%; /* The padding depends on the width, not on the height, so with a padding-bottom of 100% you will get a square */
+}
+
+.responsive-box img {
+	position: absolute; /* Take your picture out of the flow */
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0; /* Make the picture taking the size of it's parent */
+	width: 100%; /* This if for the object-fit */
+	height: 100%; /* This if for the object-fit */
+	object-fit: cover; /* Equivalent of the background-size: cover; of a background-image */
+	object-position: center;
+	border-radius: 50%;
 }
