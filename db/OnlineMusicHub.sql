@@ -4,7 +4,7 @@ use OnlineMusicHub;
 
 create table Account (
 	AccountID int primary key,
-	Username nvarchar(15),
+	Username nvarchar(15) unique,
 	--HashedPassword varbinary(max)
 	HashedPassword nvarchar(max),
 	AvatarLink varchar(max),
@@ -43,7 +43,7 @@ create table Track(
 
 --MyMV is a MV belongs to an account
 create table MyMV(
-	MyMVID int primary key,
+	MyMVID int primary key identity(1,1),
 	MVID int,
 	AccountID int,
 
@@ -196,3 +196,6 @@ select * from Account;
 delete from Account;
 select 1
 select Username from Account where HashedPassword = '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918';
+
+select MV.* from MV inner join MyMV
+on MV.MVID = MyMV.MVID where MyMV.AccountID = 1

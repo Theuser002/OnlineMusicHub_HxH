@@ -26,6 +26,7 @@ require "navbar.php";
 		display: block;
 		height: 80px;
 	}
+
 </style>
 <?php
 if(isset($_GET['MVID'])){
@@ -37,6 +38,7 @@ if(isset($_GET['MVID'])){
 include_once('../../controllers/mv.controller.php');
 $c = new Ctrl_MV();
 $mv = $c->getSingleMV($MVID);
+
 ?>
 <body id="index-body">
 <br><br><br>
@@ -44,8 +46,13 @@ $mv = $c->getSingleMV($MVID);
 	<div class="mv-holder">
 		<video src="videos/<?php echo $mv->getMVLink();?>" controls autoplay muted width="100%"></video>
 		<div class="container">
-			<?php echo $mv->getMVTitle(); ?>
-			<?php echo $mv->getMVView(); ?>
+			<?php
+			echo "<font size=\"6\">".$mv->getMVTitle()."</font>"."<br>View: ".$mv->getMVView(); 
+			if(isset($_SESSION['accountID'])){
+				echo "<button class=\"btn btn-light btn-lg btn-block\" onclick=\"addFavMV(".$MVID.")\">Add to favourite</button>";
+			}
+			?>	
+			
 		</div>
 	</div>
 	<div class="relate-video container"><br>
@@ -53,9 +60,11 @@ $mv = $c->getSingleMV($MVID);
 		<div class="relate-video-holder"><img class="relate-img" src="images/tonesandi.jpg">Other MV</div><div class="clearfix"></div><br>
 		<div class="relate-video-holder"><img class="relate-img" src="images/badliar.jpg">Other MV</div><div class="clearfix"></div><br>
 		<div class="relate-video-holder"><img class="relate-img" src="images/kingandqueen.jpg">Other MV</div><div class="clearfix"></div><br>
+		<div class="relate-video-holder"><img class="relate-img" src="images/kingandqueen.jpg">Other MV</div><div class="clearfix"></div><br>
 	</div>
 </div>
 <div class="clearfix"></div>
+<script src="js/ajax.js"></script>
 </body>
 <?php
 require 'footer.php';

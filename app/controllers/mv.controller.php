@@ -51,6 +51,10 @@ class Ctrl_MV{
 		
 	}
 	
+	function addFavMV($MVID,$accID){
+		$modelMV = new Model_MV();
+		$modelMV->addFavMV($MVID,$accID);
+	}
 
 }
 
