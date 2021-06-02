@@ -41,6 +41,19 @@ create table Track(
 	on delete cascade on update cascade,
 );
 
+--MyMV is a MV belongs to an account
+create table MyMV(
+	MyMVID int primary key,
+	MVID int,
+	AccountID int,
+
+	foreign key (MVID) references MV(MVID) 
+	on delete cascade on update cascade,
+	foreign key (AccountID) references Account(AccountID) 
+	on delete cascade on update cascade,
+);
+
+
 create table Singer(
 	SingerID int primary key,
 	SingerName nvarchar(30),
