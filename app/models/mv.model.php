@@ -115,6 +115,24 @@ class Model_MV{
 		$stmt = $db->prepare('update MV set [MVView] = ? where MVID = ?');
 		$result = $stmt->execute(array($MVView,$MVID));
 	}
+	
+	function addFavMV($MVID,$accID){
+		$db = DB::getInstance();
+		$stmt = $db->prepare('insert into MyMV(MVID,AccountID) values (?,?)');
+		$result = $stmt->execute(array($MVID, $accID));
+	}
+	
+	function getFavMVList($accID){
+		$db = DB::getInstance();
+		$stmt = $db->prepare('select MV.* from MV inner join MyMV on MV.MVID = MyMV.MVID where MyMV.AccountID = ?');
+		$result = $stmt->execute(array($accID));
+		$MVList = array();
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ //to fetch result of each row in table
+			
+			array_push($MVList, new Entity_MV($row['MVID'],$row['MVTitle'],$row['MVImage'],$row['MVLink'],$row['MVView']));
+		}
+		return $MVList;
+	}
 
 }
 

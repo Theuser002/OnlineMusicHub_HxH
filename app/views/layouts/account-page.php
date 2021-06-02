@@ -58,6 +58,11 @@ session_start();
 				transform: translateY(-50%);
 			}
 		</style>
+	
+<?php
+include_once('../../controllers/addFav.controller.php');
+$c = new Ctrl_MV();
+?>
 		
 		<header id="header-account">
 			<div class="responsive-pic">
@@ -77,7 +82,18 @@ session_start();
 			</div>
 
 			<div class="container" style="margin-top: 50px;">
-				<h3 class="text-center"><br>My MVs<hr><br></h3><hr>
+				<h3 class="text-center"><br>My MVs<hr><br></h3>
+				<?php
+				$myMV =$c->getFavMVList($_SESSION['accountID']);
+				?>
+				<div class="d-flex flex-row flex-wrap justify-content-center">
+				<?php
+				for($i=0;$i<count($myMV);$i++){
+					echo '<div class="d-flex flex-column">
+				<img src="images/'.$myMV[$i]->getMVImage().'" class="img-fluid">
+			  </div>';
+				}?>
+			</div>
 			</div>
 		</section>
 		

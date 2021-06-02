@@ -27,14 +27,12 @@ $c = new Ctrl_MV();
 							}
 							$MVPagList = $c->getPaginationAZ($page, $result_per_page);
 //							echo count($MVPagList);
-								for($i=0;$i<count($MVPagList)/2;$i++){
+								for($i=0;$i<count($MVPagList);$i++){
 									echo "<div class=\"d-flex flex-column\">";
-									for($j=0;$j<2;$j++){
-									echo "<a href=\"single-mv-page.php?MVID=".$MVPagList[2*$i+$j]->getMVID()."\" onclick=\"updateView(".$MVPagList[2*$i+$j]->getMVID().")\"><img src=\"images/".$MVPagList[2*$i+$j]->getMVImage()."\" class=\"img-fluid\"></a>
+									echo "<a href=\"single-mv-page.php?MVID=".$MVPagList[$i]->getMVID()."\" onclick=\"updateView(".$MVPagList[$i]->getMVID().")\"><img src=\"images/".$MVPagList[$i]->getMVImage()."\" class=\"img-fluid\"></a>
 									<div class=\"container\">
-									<h5 class=\"mv-title\">".$MVPagList[2*$i+$j]->getMVTitle()." #".(2*$i+$j)."</h5><h6 class=\"mv-view\">View: ".$MVPagList[2*$i+$j]->getMVView()."</h6>
+									<h5 class=\"mv-title\">".$MVPagList[$i]->getMVTitle()." #".($i)."</h5><h6 class=\"mv-view\">View: ".$MVPagList[$i]->getMVView()."</h6>
 									</div>";
-									}
 							  echo "</div>";
 							}?>
 						<br><br>
