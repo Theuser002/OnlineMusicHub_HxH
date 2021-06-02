@@ -32,10 +32,6 @@
 			border-radius: 25px;
 		}
 
-		.img {
-			margin: 5px;
-		}
-
 		.logo img {
 			width: 250px;
 			height: 250px;

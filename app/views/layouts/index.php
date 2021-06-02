@@ -33,6 +33,9 @@ session_start();
 			font-size: 20px;
 			font-family: "Segoe", "Segoe UI", "DejaVu Sans", "Trebuchet MS", "Verdana", "sans-serif"
 		}
+		.img {
+			margin: 5px;
+		}
 	</style>
 
 	<body id="index-body">

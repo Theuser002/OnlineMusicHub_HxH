@@ -8,13 +8,10 @@ class SongsDisplayController {
 	function displaySingleSong( $songTitle, $views, $songImageLink ) {
 		echo'
 			<div class="single-song">
-				<div class = "responsive-pic song-img-wrap">
-				  <div class="responsive-box">
+				  <div class="song-img-wrap">
 					<!--     Song image -->
-					<!-- <img class="img" src="'.$songImageLink.'" /> -->
-					<img src="./images/ocean.jpg">
+					<img class="img" src="'.$songImageLink.'" />
 				  </div>
-				 </div>
 			  <div class="vr"></div>
 			  <div class="title-and-views">
 				<!--     Song title & views-->
@@ -42,19 +39,17 @@ class SongsDisplayController {
 		}
 	}
 	
-	function displaySongPagAZ($entriesPerPage){
+	function displaySongPagAZ($page, $entriesPerPage){
+		if($entriesPerPage == 0){
+			$entriesPerPage = 1;
+		}
+		
 		$songModel = new SongModel();
 		$songList = $songModel->getAllSongs();
 		$listLength = count($songList);
-		$numberOfPage = ceil($listLength/$entriesPerPage);
+		$numberOfPages = ceil($listLength/$entriesPerPage);
 		
-		if(!isset($GET_['page'])){
-			$pageNum = 1;
-		}else{
-			$pageNum = $_GET['page'];
-		}
-		
-		$songPagList = $songModel->getPaginationAZ($pageNum, $entriesPerPage);
+		$songPagList = $songModel->getPaginationAZ($page, $entriesPerPage);
 		
 		$i = 0;
 		while($i < count($songPagList)){
@@ -63,19 +58,17 @@ class SongsDisplayController {
 		}
 	}
 	
-	function displaySongPagTopViews($entriesPerPage){
+	function displaySongPagTopViews($page, $entriesPerPage){
+		if($entriesPerPage == 0){
+			$entriesPerPage = 1;
+		}
+		
 		$songModel = new SongModel();
 		$songList = $songModel->getAllSongs();
 		$listLength = count($songList);
-		$numberOfPage = ceil($listLength/$entriesPerPage);
+		$numberOfPages = ceil($listLength/$entriesPerPage);
 		
-		if(!isset($GET_['page'])){
-			$pageNum = 1;
-		}else{
-			$pageNum = $_GET['page'];
-		}
-		
-		$songPagList = $songModel->getPaginationTopViews($pageNum, $entriesPerPage);
+		$songPagList = $songModel->getPaginationTopViews($page, $entriesPerPage);
 		
 		$i = 0;
 		while($i < count($songPagList)){
@@ -84,25 +77,34 @@ class SongsDisplayController {
 		}
 	}
 	
-	function displaySongPagLatest($entriesPerPage){
+	function displaySongPagLatest($page, $entriesPerPage){
+		if($entriesPerPage == 0){
+			$entriesPerPage = 1;
+		}
+		
 		$songModel = new SongModel();
 		$songList = $songModel->getAllSongs();
 		$listLength = count($songList);
-		$numberOfPage = ceil($listLength/$entriesPerPage);
-		
-		if(!isset($GET_['page'])){
-			$pageNum = 1;
-		}else{
-			$pageNum = $_GET['page'];
-		}
-		
-		$songPagList = $songModel->getPaginationLatest($pageNum, $entriesPerPage);
+		$numberOfPages = ceil($listLength/$entriesPerPage);
+	
+		$songPagList = $songModel->getPaginationLatest($page, $entriesPerPage);
 		
 		$i = 0;
 		while($i < count($songPagList)){
 			$this->displaySingleSong($songPagList[$i]->getSongTitle(), $songPagList[$i]->getViews(), $songPagList[$i]->getSongImageLink());
 			$i++;
 		}
+	}
+	
+	function getNumberOfPages($entriesPerPage){
+		if($entriesPerPage == 0){
+			$entriesPerPage = 1;
+		}
+		
+		$songModel = new SongModel();
+		$totalSongs = count($songModel->getAllSongs());
+		$numberOfPages = ceil($totalSongs/$entriesPerPage);
+		return $numberOfPages;
 	}
 }
 
