@@ -145,6 +145,9 @@
 									';
 							}
 						?>
+						<li class="nav-item">
+						<?php include('searchbar.php'); ?>
+						</li>
 
 					</ul>
 
