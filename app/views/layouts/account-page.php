@@ -30,8 +30,8 @@ session_start();
 		<header id="account-header">
 			<div class="responsive-pic">
 				<div class="responsive-box" id="profile-pic">
-					<img src="./images/ocean.jpg">
-<!--					<img src=<?php print("\"".$_SESSION['avatarLink']."\"")?>>-->
+<!--					<img src="./images/ocean.jpg">-->
+					<img src=<?php print("\"".$_SESSION['avatarLink']."\"")?>>
 				</div>
 			</div>
 			<div id="profile-name">

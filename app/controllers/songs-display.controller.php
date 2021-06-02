@@ -7,10 +7,11 @@ require '../../models/song.model.php';
 class SongsDisplayController {
 	function displaySingleSong( $songTitle, $views, $songImageLink ) {
 		echo'
-			<div class="single-song">
+			<a class="single-song" href="song-page.php?isPlaying=true">
 				  <div class="song-img-wrap">
 					<!--     Song image -->
-					<img class="img" src="'.$songImageLink.'" />
+					<!-- <img class="img" src="'.$songImageLink.'" /> -->
+						<img class="img" src="./images/ocean.jpg">
 				  </div>
 			  <div class="vr"></div>
 			  <div class="title-and-views">
@@ -25,7 +26,7 @@ class SongsDisplayController {
 					'.$views.'&nbsp views
 				</div>
 			  </div>
-			</div>
+			</a>
 		';
 	}
 	
