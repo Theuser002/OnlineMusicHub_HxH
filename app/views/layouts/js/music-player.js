@@ -70,3 +70,28 @@ function setProgress(e){
     
     audio.currentTime = (clickX / width) * duration;
 }
+
+//Event Listener for the Play/Pause button
+playBtn.addEventListener("click", ()=>{
+//    classList: list all the class of an element
+    const isPlaying = musicContainer.classList.contains("play");
+    
+    if(isPlaying){
+        pauseSong();
+    }else{
+        playSong();
+    }
+});
+
+//Change Song
+prevBtn.addEventListener("click", prevSong);
+nextBtn.addEventListener("click", nextSong);
+
+//Time and Song update
+audio.addEventListener('timeupdate', updateProgress);
+
+//Click on Progress Bar
+progressContainer.addEventListener("click", setProgress);
+
+//Song ends
+audio.addEventListener('ended', nextSong);
