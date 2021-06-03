@@ -53,7 +53,7 @@
 						</div>';
 					}
 				?>
-				<br><br><br>
+				<br><br>
 <!--				Call the songs display controller here.-->
 				<?php 
 					if($tab==1){
@@ -64,8 +64,6 @@
 						$songDisplayController->displaySongPagTopViews($page, $entriesPerPage);
 					}
 				?>
-				
-				<div class="flex-row-break"></div> 
 				<br><br>
 				<div class="pagebar">
 					<?php
