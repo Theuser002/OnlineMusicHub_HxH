@@ -156,6 +156,20 @@ class SongModel{
 		return $songList;
 	}
 	
+	function searchSong($key){
+		$db = DB::getInstance();
+		$stmt = $db->prepare('select * from Song where SongTitle like ?');
+		$prekey = "%".$key."%";
+		$result = $stmt->execute(array($prekey));
+		$songList = array();
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+			$song = new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
+			
+			array_push($songList, $song);
+		}
+		
+		return $songList;
+	}
 	
 }
 

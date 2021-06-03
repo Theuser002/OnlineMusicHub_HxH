@@ -133,6 +133,19 @@ class Model_MV{
 		}
 		return $MVList;
 	}
+	
+	function searchMV($key){
+		$db = DB::getInstance();
+		$stmt = $db->prepare('select * from MV where MVTitle like ?');
+		$prekey = "%".$key."%";
+		$result = $stmt->execute(array($prekey));
+		$MVList = array();
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ //to fetch result of each row in table
+			
+			array_push($MVList, new Entity_MV($row['MVID'],$row['MVTitle'],$row['MVImage'],$row['MVLink'],$row['MVView']));
+		}
+		return $MVList;
+	}
 
 }
 
