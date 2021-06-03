@@ -35,8 +35,8 @@ $c = new Ctrl_MV();
 		<header id="account-header">
 			<div class="responsive-pic">
 				<div class="responsive-box" id="profile-pic">
-<!--					<img src="./images/ocean.jpg">-->
-					<img src=<?php print("\"".$_SESSION['avatarLink']."\"")?>>
+<!--					<img class="img" src="./images/ocean.jpg">-->
+					<img class= "img" src=<?php print("\"".$_SESSION['avatarLink']."\"")?>>
 				</div>
 			</div>
 			<div id="profile-name">

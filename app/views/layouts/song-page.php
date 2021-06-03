@@ -62,7 +62,13 @@ session_start();
 		</style>
 		
 		<header id="song-header">
-			<h1>All Songs</h1>
+			<?php 
+                if ($isPlaying == false){
+                    echo '<h1>All Songs</h1>';
+                }else{
+                    echo '<h1>Now Playing</h1>';
+                }
+            ?>
 		</header>
 		
 		<section class="content">
