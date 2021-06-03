@@ -1,6 +1,6 @@
-function updateView(id){
+function updateMVView(id){
 	var xhttp;
-	var url = "updateViewAction.php?MVID="+id;
+	var url = "updateMVViewAction.php?MVID="+id;
 	if (window.XMLHttpRequest) {
 		xhttp = new XMLHttpRequest();
 	} else {

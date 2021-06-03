@@ -199,3 +199,17 @@ select Username from Account where HashedPassword = '8c6976e5b5410415bde908bd4de
 
 select MV.* from MV inner join MyMV
 on MV.MVID = MyMV.MVID where MyMV.AccountID = 1
+
+Select Song.* from Song inner join SongPerformedBy 
+on Song.SongID = SongPerformedBy.SongID where SongPerformedBy.SingerID = 1
+
+DECLARE @PageNumber AS INT
+DECLARE @RowsOfPage AS INT
+SET @PageNumber=1
+SET @RowsOfPage=2
+select MV.* from MV inner join MVPerformedBy
+on MV.MVID = MVPerformedBy.MVID
+where MVPerformedBy.SingerID = 1
+order by MV.MVID asc
+OFFSET (@PageNumber-1)*@RowsOfPage ROWS
+FETCH NEXT @RowsOfPage ROWS ONLY
