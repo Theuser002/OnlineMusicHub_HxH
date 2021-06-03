@@ -53,3 +53,20 @@ function prevSong(){
 function nextSong(){
     
 };
+
+//Update Progress Bar
+function updateProgress(e){
+    //event.srcElement (or event.target): Sets of retrieves te object that fired the event.
+    const {duration, currentTime} = e.srcElement;
+    const progressPercent = (currentTime/duration) * 100;
+    progress.style.width = `${progressPercent}%`;
+}
+
+//Set progress when click on Progress Bar
+function setProgress(e){
+    const width = this.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audio.duration;
+    
+    audio.currentTime = (clickX / width) * duration;
+}
