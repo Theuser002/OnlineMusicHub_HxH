@@ -10,32 +10,42 @@ if(!isset($_GET['tab'])){
 }else{
 	$tab = $_GET['tab'];
 }
+include_once('../../controllers/singer.controller.php');
+$c = new SingerController();
+$singerList = $c->invoke();
 ?>
+<style>
+	.hide{
+		display: none;
+	}
+	.onhover:hover + .hide{
+		display: block;
+		
+	}
+</style>
 <body id="index-body">
 <br>
 <br>
-<div id="gallery">
-<nav class="navbar navbar-expand-md navbar-light">
-	<div class="container">
-		<?php
-			if($tab==1){
-				echo "<ul class=\"navbar-nav\"><li class=\"nav-item\"><a class=\"nav-link active\" href=\"mv-page.php?tab=1\">A-Z List</a></li>
-			<li class=\"nav-item\"><a class=\"nav-link\" href=\"mv-page.php?tab=2\">Latest</a></li>
-			<li class=\"nav-item\"><a class=\"nav-link\" href=\"mv-page.php?tab=3\">Top View</a></li></ul>";
-			}elseif($tab==2){
-				echo "<ul class=\"navbar-nav\"><li class=\"nav-item\"><a class=\"nav-link\" href=\"mv-page.php?tab=1\">A-Z List</a></li>
-			<li class=\"nav-item\"><a class=\"nav-link active\" href=\"mv-page.php?tab=2\">Latest</a></li>
-			<li class=\"nav-item\"><a class=\"nav-link\" href=\"mv-page.php?tab=3\">Top View</a></li></ul>";
-			}elseif($tab==3){
-				echo "<ul class=\"navbar-nav\"><li class=\"nav-item\"><a class=\"nav-link\" href=\"mv-page.php?tab=1\">A-Z List</a></li>
-			<li class=\"nav-item\"><a class=\"nav-link\" href=\"mv-page.php?tab=2\">Latest</a></li>
-			<li class=\"nav-item\"><a class=\"nav-link active\" href=\"mv-page.php?tab=3\">Top View</a></li></ul>";
-			}
-			?>
-	</div>
-</nav>
-<br>
-  </div>
+<div id="gallery"><br>
+		  <div class="container">
+			<h3 class="text-center"><br>Artist Gallery<br>
+			  <hr><br>
+			</h3>
+			<div class="d-flex flex-row flex-wrap justify-content-center">
+				<?php
+				for($i=0;$i<8;$i++){ ?>
+			  <div class="d-flex flex-column">
+				  <a href="single-singer-page.php?singerID=<?php echo $singerList[$i]->getSingerID(); ?>" class="onhover">
+				<img src="images/<?php echo $singerList[$i]->getSingerImage(); ?>" class="img-fluid">
+					  <h5><?php echo $singerList[$i]->getSingerName(); ?></h5>
+				  </a>
+				  <div class="hide"><?php echo 'Song: 10'.'<br>'.'MV: 5' ?></div>
+			  </div>
+				<?php } ?>
+			</div>
+			<br><br>
+		  </div>
+		</div>
   <br>
   <br>
 </body>

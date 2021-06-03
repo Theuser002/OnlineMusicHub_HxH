@@ -70,7 +70,7 @@ session_start();
 			
 //				include_once('song-board.php');
 			
-				if($isPlaying = false){
+				if($isPlaying == false){
 					include_once('song-board.php');
 //					echo $isPlaying;
 				}else{

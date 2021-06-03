@@ -6,7 +6,6 @@ class Ctrl_MV{
 	function invoke(){
 		$modelMV = new Model_MV();
 		$MVList = $modelMV->getAllMV();
-//		include_once('View/mv-page-test.php');
 		return $MVList;
 	}
 	
