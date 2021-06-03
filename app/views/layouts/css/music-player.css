@@ -77,7 +77,11 @@
 .action-btn{
     background-color: inherit;
     border: 0; /*remove the border*/
+<<<<<<< HEAD
     color: #f5b5b5 !important;
+=======
+    color: #f5b5b5;
+>>>>>>> cb3bcde (update music-player.css part 2)
     font-size: 20px;
     cursor: pointer;
     padding: 10px;
@@ -85,7 +89,11 @@
 }
 
 .action-btn.action-btn-big {
+<<<<<<< HEAD
     color: #eb7c7c !important;
+=======
+    color: #eb7c7c;
+>>>>>>> cb3bcde (update music-player.css part 2)
     font-size: 30px;
 }
 
