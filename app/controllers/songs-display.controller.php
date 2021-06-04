@@ -15,17 +15,7 @@ class SongsDisplayController {
         $songModel = new SongModel();
         return count($songModel->getAllSongs());
     }
-    
-	function displayAllSongs(){
-		$songModel = new SongModel();
-		$songList = $songModel->getAllSongs();
-		$i = 0;
-		while($i < count($songList)){
-			$this->displaySingleSong($songList[$i]->getSongID());
-			$i++;
-		}
-	}
-	
+
     function getPaginationAZ($page, $entriesPerPage){
         if($entriesPerPage == 0){
 			$entriesPerPage = 1;
