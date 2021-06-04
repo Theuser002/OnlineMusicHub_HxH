@@ -20,7 +20,6 @@ class SongsDisplayController {
         $song = $this->getSongByID($songID);
         $songImageLink = $song->getSongImageLink();
         $songTitle = $song->getSongTitle();
-        $songImageLink = $song->getSongImageLink();
         $views = $song->getViews();
         
 		echo'
