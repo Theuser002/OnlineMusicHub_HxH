@@ -1,6 +1,8 @@
 <?php
 include_once('../../models/mv.model.php');
+include_once('../../models/singer.model.php');
 include_once('../../models/mv.entity.php');
+include_once('../../models/singer.entity.php');
 
 class Ctrl_MV{
 	function invoke(){
@@ -53,6 +55,12 @@ class Ctrl_MV{
 	function addFavMV($MVID,$accID){
 		$modelMV = new Model_MV();
 		$modelMV->addFavMV($MVID,$accID);
+	}
+	
+	function getOwnSinger($MVID){
+		$model = new SingerModel();
+		$singer = $model->getOwnSinger($MVID);
+		return $singer;
 	}
 
 }

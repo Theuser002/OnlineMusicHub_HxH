@@ -95,5 +95,18 @@ class SingerModel{
 		}
 		return $songList;
 	}
+	
+	function getOwnSinger($MVID){
+		$db = DB::getInstance();
+		$stmt = $db->prepare('select Singer.* from Singer inner join MVPerformedBy
+								on Singer.SingerID = MVPerformedBy.SingerID
+								where MVPerformedBy.MVID = ?');
+		$result = $stmt->execute(array($MVID));
+		$singer;
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ //to fetch result of each row in table
+			$singer = new SingerEntity($row['SingerID'],$row['SingerName'],$row['Background'],$row['SingerImage']);
+		}
+		return $singer;
+	}
 }
 ?>
