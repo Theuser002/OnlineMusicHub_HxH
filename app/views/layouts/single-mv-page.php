@@ -39,6 +39,7 @@ include_once('../../controllers/mv.controller.php');
 $c = new Ctrl_MV();
 $mv = $c->getSingleMV($MVID);
 $singer = $c->getOwnSinger($MVID);
+$relateList =  $c->getRelateVideo($MVID);
 ?>
 <body id="index-body">
 <br><br><br>
@@ -56,11 +57,10 @@ $singer = $c->getOwnSinger($MVID);
 		</div>
 	</div>
 	<div class="relate-video container"><br>
-		<div class="relate-video-holder"><img class="relate-img" src="images/2002.jpg">Other MV<br>View: 10</div><div class="clearfix"></div><br>
-		<div class="relate-video-holder"><img class="relate-img" src="images/tonesandi.jpg">Other MV</div><div class="clearfix"></div><br>
-		<div class="relate-video-holder"><img class="relate-img" src="images/badliar.jpg">Other MV</div><div class="clearfix"></div><br>
-		<div class="relate-video-holder"><img class="relate-img" src="images/kingandqueen.jpg">Other MV</div><div class="clearfix"></div><br>
-		<div class="relate-video-holder"><img class="relate-img" src="images/kingandqueen.jpg">Other MV</div><div class="clearfix"></div><br>
+		<?php
+		foreach($relateList as $data){ ?>
+		<div class="relate-video-holder"><img class="relate-img" src="images/<?php echo $data->getMVImage() ?>"><?php echo $data->getMVTitle() ?><br>View: <?php echo $data->getMVView() ?></div><div class="clearfix"></div><br>
+		<?php } ?>
 	</div>
 </div>
 <div class="clearfix"></div>

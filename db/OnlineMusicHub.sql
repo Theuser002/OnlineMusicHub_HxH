@@ -213,3 +213,5 @@ where MVPerformedBy.SingerID = 1
 order by MV.MVID asc
 OFFSET (@PageNumber-1)*@RowsOfPage ROWS
 FETCH NEXT @RowsOfPage ROWS ONLY
+
+select top 3 MV.MVID from MV
