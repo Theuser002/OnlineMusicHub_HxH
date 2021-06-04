@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+* {
+	box-sizing: border-box;
+}
+
+.content{
+	position: relative;
+	height: 60vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Montserrat', sans-serif;
+	margin: 30px 0px;
+}
+
+.underlay-square{
+    position: absolute;
+    width: 700px;
+    height: 70%;
+    border-radius: 15px;
+    z-index: 0;
+}
+
+.music-container{
+    position: absolute;
+    width: 700px;
+    height: 70%;
+	background-color: #fff; /*equivalent to #ffffff*/
+	border-radius: 15px;
+	box-shadow: 6px 6px 10px 0 rgba(0, 0, 0, 0.2), 8px 6px 20px 0 rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    padding: 20px 30px;
+    margin: 100px 0;
+    z-index: 10;
+}
+
+.right-down{
+    transform: translateX(60px) translateY(60px);
+}
+
+.left-up{
+    transform: translateX(-25px) translateY(-25px);
+}
+
+.img-container{
+	position: absolute; /*We are gonna use position absolute for the img inside it*/
+	width: 25vh;
+/*    left: 0;*/
+/*    top: 0;*/
+    margin: 20px;
+}
+
+.img-container img{
+    position: absolute; /*we are gonna make it fit the parent*/
+    border-radius: 50%;
+    object-fit: cover;
+    height: 25vh;
+    width: inherit; /*take the exact value from the parent  so if the parent's width is 50% (of the grandparent) the child's width is 50% of the parent, so 25% of the grandparent*/
+    top: 0;
+    left: 0;
+    
+    box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    animation: rotate 3s linear infinite;
+    animation-play-state: paused;
+}
+
+
+.music-container.play .img-container img{
+    animation-play-state: running;
+}
