@@ -196,7 +196,7 @@ h3 {
 }
 
 .vr {
-	border-left: 1px solid #e6e6e6;
+	border-left: 1px solid #f58787;
 	height: 100%;
 }
 
@@ -221,6 +221,8 @@ h3 {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+    
+    
 }
 
 #sortbar{
@@ -322,4 +324,19 @@ h3 {
 	object-fit: cover; /* Equivalent of the background-size: cover; of a background-image */
 	object-position: center;
 	border-radius: 50%;
+}
+/*--------------------------------------------------------------------------------*/
+
+.bright-blurry{
+    background-color: rgba(255,255,255,0.2) !important;
+    backdrop-filter: blur(10px);
+}
+
+.dark-blurry{
+    background-color: rgba(0,0,0,0.20) !important;
+    backdrop-filter: blur(10px);
+}
+
+.shadow{
+    box-shadow: box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
