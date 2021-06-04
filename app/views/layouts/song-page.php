@@ -16,12 +16,6 @@ session_start();
 		$page = $_GET['page'];
 	}
 
-	if(!isset($_GET['isPlaying'])){
-		$isPlaying = false;
-	}else{
-		$isPlaying = $_GET['isPlaying'];
-	}
-
 	$songDisplayController = new SongsDisplayController(); 
 	$entriesPerPage = 5;
 ?>
@@ -38,10 +32,6 @@ session_start();
 		?>
 		
 		<style>
-			h1{
-				color: white;
-			}
-			
 			.pagebar{
 				background-color: #e0e0e0;
 				border-radius: 20px;
@@ -61,24 +51,15 @@ session_start();
 			}
 		</style>
 		
-		<header id="song-header">
+		<header class="song-header">
 			<?php 
-                if ($isPlaying == false){
-                    echo '<h1>All Songs</h1>';
-                }else{
-                    echo '<h1>Now Playing</h1>';
-                }
+               echo '<h1>All Songs</h1>';
             ?>
 		</header>
 		
 		<section class="content">
 			<?php
-				if($isPlaying == false){
-					include_once('song-board.php');
-				}else{
-					include ('music-player.php');
-				}
-					
+				include_once('song-board.php');
 			?>
 		</section>
 		
