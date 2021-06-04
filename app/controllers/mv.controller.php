@@ -49,7 +49,9 @@ class Ctrl_MV{
 	}
 	
 	function getRelateVideo($MVID){
-		
+		$model = new Model_MV();
+		$mvlist = $model->getRelateVideo($MVID);
+		return $mvlist;
 	}
 	
 	function addFavMV($MVID,$accID){
