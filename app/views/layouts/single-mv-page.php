@@ -38,7 +38,7 @@ if(isset($_GET['MVID'])){
 include_once('../../controllers/mv.controller.php');
 $c = new Ctrl_MV();
 $mv = $c->getSingleMV($MVID);
-
+$singer = $c->getOwnSinger($MVID);
 ?>
 <body id="index-body">
 <br><br><br>
@@ -47,7 +47,7 @@ $mv = $c->getSingleMV($MVID);
 		<video src="videos/<?php echo $mv->getMVLink();?>" controls autoplay muted width="100%"></video>
 		<div class="container">
 			<?php
-			echo "<font size=\"6\">".$mv->getMVTitle()."</font>"."<br>View: ".$mv->getMVView(); 
+			echo "<font size=\"6\">".$mv->getMVTitle()."</font>"."<br>Artist: ".$singer->getSingerName()."<br>View: ".$mv->getMVView(); 
 			if(isset($_SESSION['accountID'])){
 				echo "<button class=\"btn btn-light btn-lg btn-block\" onclick=\"addFavMV(".$MVID.")\">Add to favourite</button>";
 			}
@@ -56,7 +56,7 @@ $mv = $c->getSingleMV($MVID);
 		</div>
 	</div>
 	<div class="relate-video container"><br>
-		<div class="relate-video-holder"><img class="relate-img" src="images/2002.jpg">Other MV</div><div class="clearfix"></div><br>
+		<div class="relate-video-holder"><img class="relate-img" src="images/2002.jpg">Other MV<br>View: 10</div><div class="clearfix"></div><br>
 		<div class="relate-video-holder"><img class="relate-img" src="images/tonesandi.jpg">Other MV</div><div class="clearfix"></div><br>
 		<div class="relate-video-holder"><img class="relate-img" src="images/badliar.jpg">Other MV</div><div class="clearfix"></div><br>
 		<div class="relate-video-holder"><img class="relate-img" src="images/kingandqueen.jpg">Other MV</div><div class="clearfix"></div><br>
