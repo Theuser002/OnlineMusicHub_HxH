@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap');
+
 * {
 	margin: 0;
 	padding: 0;
-	font-family: "Times New Roman", Times, serif;
+	font-family: "Montserrat", "Times New Roman", Times, serif;
 }
 
 
@@ -208,11 +210,13 @@ h3 {
 
 .song-board{
 	position:relative;
-/*				width: 50em;*/
+/*	width: 50em;*/
 	margin-top: 50px;
 	padding: 10px;
 	display: flex;
-	flex-flow: row wrap;
+/*	flex-flow: row wrap;*/
+	flex-direction: column;
+	align-items: center;
 	justify-content: center;
 }
 
