@@ -1,15 +1,13 @@
-<script type="text/javascript">
+var musicContainer = document.getElementById('music-container');
+var playBtn = document.getElementById('play');
+var prevBtn = document.getElementById('prev');
+var nextBtn = document.getElementById('next');
+var audio = document.getElementById('audio');
+var progress = document.getElementById('progress');
+var progressContainer= document.getElementById('progress-container');
+var title = document.getElementById('title');
+var cover = document.getElementById('cover');
 
-const musicContainer = document.getElementById('music-container');
-const playBtn = document.getElementById('play');
-const prevBtn = document.getElementById('prev');
-const nextBtn = document.getElementById('next');
-const audio = document.getElementById('audio');
-const progress = document.getElementById('progress');
-const progressContainer= document.getElementById('progress-container');
-const title = document.getElementById('title');
-const cover = document.getElementById('cover');
-    
 //Chrome's policy does not allow Playing on refresh
 playSong();
 
@@ -22,6 +20,7 @@ function loadSong (songTitle, songAudioLink, songImgLink){
 
 //Play Song
 function playSong(){
+    console.log("PLAY SONG");
     musicContainer.classList.add("play");
 //    The querySelector() method returns the first element that matches a specified CSS selector(s) in the document.
     playBtn.querySelector("i.fas").classList.remove("fa-play");
@@ -44,29 +43,24 @@ function pauseSong(){
 //Update Progress Bar
 function updateProgress(e){
     //event.srcElement (or event.target): Sets of retrieves te object that fired the event.
-    const {duration, currentTime} = e.srcElement;
-    const progressPercent = (currentTime/duration) * 100;
+    var {duration, currentTime} = e.srcElement;
+    var progressPercent = (currentTime/duration) * 100;
     progress.style.width = `${progressPercent}%`;
 }
 
 //Set progress when click on Progress Bar
 function setProgress(e){
-    const width = this.clientWidth;
-    const clickX = e.offsetX;
-    const duration = audio.duration;
+    var width = this.clientWidth;
+    var clickX = e.offsetX;
+    var duration = audio.duration;
     
     audio.currentTime = (clickX / width) * duration;
-}
-    
-function nextSong(){
-    console.log('SONG END');
-    nextBtn.click();
 }
 
 //Event Listener for the Play/Pause button
 playBtn.addEventListener("click", ()=>{
 //    classList: list all the class of an element
-    const isPlaying = musicContainer.classList.contains("play");
+    var isPlaying = musicContainer.classList.contains("play");
     
     if(isPlaying){
         pauseSong();
@@ -82,5 +76,6 @@ audio.addEventListener('timeupdate', updateProgress);
 progressContainer.addEventListener("click", setProgress);
 
 //Song ends
-audio.addEventListener('ended', nextSong);
-</script>
+audio.addEventListener('ended', ()=>{
+    nextBtn.click();
+});
