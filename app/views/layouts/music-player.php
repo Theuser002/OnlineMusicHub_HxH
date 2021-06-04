@@ -65,9 +65,13 @@ $song = $songPagList[$songIndex];
     <audio src="<?php echo $song->getAudioLink(); ?>" id="audio"></audio>
     <div class="img-container"><img src="<?php echo $song->getSongImageLink(); ?>" alt="music-cover" id="cover"></div>
     <div class="navigation">
+<<<<<<< HEAD
         <a id="prev" class="action-btn" href="<?php
                                                 echo 'music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.($songIndex-1);
                                               ?>">
+=======
+        <a id="prev" class="action-btn" href="music-player.php?songID=<?php echo($prevID); ?>&prevID=<?php echo($prevID); ?>&nextID=<?php echo($nextID); ?>">
+>>>>>>> 8a18e47 (rewrite some functions)
             <i class="fas fa-backward"></i>
         </a>
         
@@ -75,16 +79,26 @@ $song = $songPagList[$songIndex];
             <i class="fas fa-play"></i>
         </a>
         
+<<<<<<< HEAD
         <a id="next" class="action-btn" href="<?php
                                                 echo 'music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.($songIndex+1);
                                               ?>">
+=======
+        <a id="next" class="action-btn" href="music-player.php?songID=<?php echo($nextID); ?>&prevID=<?php echo($prevID); ?>&nextID=<?php echo($nextID); ?>">
+>>>>>>> 8a18e47 (rewrite some functions)
             <i class="fas fa-forward"></i>
         </a>
     </div>
     <?php
         include 'music-player.script.php';
+<<<<<<< HEAD
 //        echo $songIndex+1;
 //        echo $song->getSongID();
+=======
+        echo $songID;
+        echo $prevID;
+        echo $nextID;
+>>>>>>> 8a18e47 (rewrite some functions)
     ?>
         
         
