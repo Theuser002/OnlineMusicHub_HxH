@@ -71,3 +71,90 @@
 .music-container.play .img-container img{
     animation-play-state: running;
 }
+
+@keyframes rotate{
+    from{
+        transform: rotate(0deg);
+    }to{
+        transform: rotate(360deg);
+    }
+}
+
+.navigation{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+/*    left: 0;*/
+    bottom: 0;
+    margin-bottom: 30px;
+    
+    z-index: 1;
+}
+
+.action-btn{
+    background-color: inherit;
+    border: 0; /*remove the border*/
+    color: #f5b5b5 !important;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 50px;
+}
+
+.action-btn.action-btn-big {
+    color: #eb7c7c !important;
+    font-size: 35px;
+}
+
+.action-btn:focus{
+    outline: none;
+}
+
+.music-info{
+    position: absolute;
+    background-color: rgba(228, 228, 228, 0.35);
+    color: #fff;
+    border-radius: 15px 15px 0px 0px;
+    top: 0;
+    left: 30px;
+    width: calc(100% - 40%);
+    padding: 10px;
+    opacity: 0;
+    transform: translateY(0%);
+    transition: .3s ease-in, opacity .3s ease-in;
+    z-index: 0;
+}
+
+/* when the music does not play, hide behind the container (z-index: 0 and top:0, left:20, transform: translateY(0%))*/
+/*when the music plays, push it up by using translateY:(<something != 0>)*/
+.music-container.play .music-info {
+    opacity: 1;
+    transform: translateY(-100%);
+}
+
+.music-info h4{
+    margin: 0;
+    font-size: 20px;
+}
+
+.progress-container {
+    position: absolute;
+    background-color: rgba(175, 175, 175, 0.39);
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    height: 3px;
+    width: 100%;
+    bottom: 0;
+    margin-bottom: 10px;
+}
+
+.progress {
+    background-color: #fc4747 !important;
+    border-radius: 5px;
+    height: 100% !important;
+    width: 0%;
+    transition: width .1s linear;
+}
