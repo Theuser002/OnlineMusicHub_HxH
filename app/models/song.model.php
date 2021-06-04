@@ -52,7 +52,7 @@ class SongModel{
 			$row=$stm->fetch(PDO::FETCH_ASSOC);
 			return new SongEntity($row['SongID'],$row['SongTitle'],$row['Genre'],$row['SongViews'],$row['AudioLink'],$row['SongImageLink']);
 		}catch (Exception $e){
-			echo 'Error getting song ID from db. Caught exception: ', $e->getMessage(), "\n";
+			echo 'Error getting song by ID from db. Caught exception: ', $e->getMessage(), "\n";
 		}
 		
 	}
@@ -160,9 +160,10 @@ class SongModel{
 }
 
 //$songModel = new SongModel();
-//$songModel->addSong('Star Sky - Two Steps From Hell', 'Instrumental', '../songs/StarSky.m4a');
-//$songModel->addSong('Arcade - Duncan Laurence', 'Pop', '../songs/Arcade\ -\ Duncan\ Laurence.m4a');
-//$songModel->addSong('Believer - Imagine Dragons', 'Rock', '../songs/Believer\ -\ Imagine\ Dragons');
+//$songModel->addSong('Victory - Two Steps From Hell', 'Instrumental', '../../songs/Victory.mp3');
+//$songModel->addSong('Arcade - Duncan Laurence', 'Pop', '../../songs/Arcade - Duncan Laurence.mp3');
+//$songModel->addSong('Believer - Imagine Dragons', 'Rock', '../../songs/Believer - Imagine Dragons.mp3');
+//$songModel->addSong('Star Sky - Two Steps From Hell', 'Rock', '../../songs/Star Sky - Two Steps From Hell.mp3');
 //$songModel->updateSongView(1, 1);
 //var_dump($songModel->getAllSongs());
 //var_dump($songModel->getSongByID(2));

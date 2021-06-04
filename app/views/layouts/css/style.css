@@ -110,7 +110,9 @@ h3 {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/ocean.jpg);
 }
 
-
+#music-player-body {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/ocean.jpg);
+}
 /*headers*/
 
 #index-header {
@@ -132,7 +134,7 @@ h3 {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/study_music.jpg);
 }
 
-#song-header {
+.song-header {
 	position: relative;
 	margin-top: 5vh;
 	height: 20vh;
@@ -141,6 +143,7 @@ h3 {
 	justify-content: center;
 	align-items: center;
 	background-size: cover;
+    color: white;
 	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/study_music.jpg);
 }
 

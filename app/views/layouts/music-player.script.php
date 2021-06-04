@@ -1,13 +1,19 @@
+<script type="text/javascript">
+
 const musicContainer = document.getElementById('music-container');
 const playBtn = document.getElementById('play');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 const audio = document.getElementById('audio');
 const progress = document.getElementById('progress');
-const progressContainer= document.getElementById('profress-container');
+const progressContainer= document.getElementById('progress-container');
 const title = document.getElementById('title');
 const cover = document.getElementById('cover');
-
+    
+//const songTitle = ;
+//const songAudioLink = ;
+//const songImgLink = ;
+    
 //Song Titles
 //const songs = ['StarSky', 'Victory', 'Arcade'];
 
@@ -15,7 +21,7 @@ const cover = document.getElementById('cover');
 //let songIndex = 2;
 
 //Load song details into DOM
-//loadSong(songs[songIndex]);
+//loadSong(songTitle, songAudio, songCover);
 
 //Update song details
 function loadSong (songTitle, songAudioLink, songImgLink){
@@ -44,15 +50,6 @@ function pauseSong(){
     
     audio.pause();
 }
-
-//Previous Song
-function prevSong(){
-    
-};
-//Next Song
-function nextSong(){
-    
-};
 
 //Update Progress Bar
 function updateProgress(e){
@@ -83,10 +80,6 @@ playBtn.addEventListener("click", ()=>{
     }
 });
 
-//Change Song
-prevBtn.addEventListener("click", prevSong);
-nextBtn.addEventListener("click", nextSong);
-
 //Time and Song update
 audio.addEventListener('timeupdate', updateProgress);
 
@@ -95,3 +88,4 @@ progressContainer.addEventListener("click", setProgress);
 
 //Song ends
 audio.addEventListener('ended', nextSong);
+</script>

@@ -5,9 +5,26 @@ require '../../models/song.entity.php';
 require '../../models/song.model.php';
 
 class SongsDisplayController {
-	function displaySingleSong( $songTitle, $views, $songImageLink ) {
+    
+    function getSongByID ($songID){
+        $songModel = new SongModel();
+        return $songModel->getSongByID($songID);
+    }
+    
+    function getNumberOfSongs (){
+        $songModel = new SongModel();
+        return count($songModel->getAllSongs());
+    }
+    
+	function displaySingleSong($songID, $prevID, $nextID) {
+        $song = $this->getSongByID($songID);
+        $songImageLink = $song->getSongImageLink();
+        $songTitle = $song->getSongTitle();
+        $songImageLink = $song->getSongImageLink();
+        $views = $song->getViews();
+        
 		echo'
-			<a class="single-song" href="song-page.php?isPlaying=true">
+			<a class="single-song" href="music-player.php?songID='.$songID.'&prevID='.$prevID.'&nextID='.$nextID.'">
 				  <div class="song-img-wrap">
 					<!--     Song image -->
 					<!-- <img class="img" src="'.$songImageLink.'" /> -->
@@ -35,13 +52,13 @@ class SongsDisplayController {
 		$songList = $songModel->getAllSongs();
 		$i = 0;
 		while($i < count($songList)){
-			$this->displaySingleSong($songList[$i]->getSongTitle(), $songList[$i]->getViews(), $songList[$i]->getSongImageLink());
+			$this->displaySingleSong($songList[$i]->getSongID());
 			$i++;
 		}
 	}
 	
-	function displaySongPagAZ($page, $entriesPerPage){
-		if($entriesPerPage == 0){
+    function getPaginationAZ($page, $entriesPerPage){
+        if($entriesPerPage == 0){
 			$entriesPerPage = 1;
 		}
 		
@@ -51,16 +68,11 @@ class SongsDisplayController {
 		$numberOfPages = ceil($listLength/$entriesPerPage);
 		
 		$songPagList = $songModel->getPaginationAZ($page, $entriesPerPage);
-		
-		$i = 0;
-		while($i < count($songPagList)){
-			$this->displaySingleSong($songPagList[$i]->getSongTitle(), $songPagList[$i]->getViews(), $songPagList[$i]->getSongImageLink());
-			$i++;
-		}
-	}
-	
-	function displaySongPagTopViews($page, $entriesPerPage){
-		if($entriesPerPage == 0){
+        return $songPagList;
+    }
+    
+    function getPaginationTopViews($page, $entriesPerPage){
+        if($entriesPerPage == 0){
 			$entriesPerPage = 1;
 		}
 		
@@ -70,16 +82,12 @@ class SongsDisplayController {
 		$numberOfPages = ceil($listLength/$entriesPerPage);
 		
 		$songPagList = $songModel->getPaginationTopViews($page, $entriesPerPage);
-		
-		$i = 0;
-		while($i < count($songPagList)){
-			$this->displaySingleSong($songPagList[$i]->getSongTitle(), $songPagList[$i]->getViews(), $songPagList[$i]->getSongImageLink());
-			$i++;
-		}
-	}
-	
-	function displaySongPagLatest($page, $entriesPerPage){
-		if($entriesPerPage == 0){
+        
+        return $songPagList;
+    }
+    
+    function getPaginationLatest($page, $entriesPerPage){
+        if($entriesPerPage == 0){
 			$entriesPerPage = 1;
 		}
 		
@@ -89,10 +97,72 @@ class SongsDisplayController {
 		$numberOfPages = ceil($listLength/$entriesPerPage);
 	
 		$songPagList = $songModel->getPaginationLatest($page, $entriesPerPage);
-		
+        
+        return $songPagList;
+    }
+    
+	function displaySongPagAZ($page, $entriesPerPage){
+		$songPagList = $this->getPaginationAZ($page, $entriesPerPage);
 		$i = 0;
-		while($i < count($songPagList)){
-			$this->displaySingleSong($songPagList[$i]->getSongTitle(), $songPagList[$i]->getViews(), $songPagList[$i]->getSongImageLink());
+        $total = count($songPagList);
+        
+		while($i < $total){
+            if($i == 0){
+                $prevIndex = $total-1;
+            }else{
+                $prevIndex = $i - 1;
+            }
+            if($i == $total-1){
+                $nextIndex = 0;
+            }else{
+                $nextIndex = $i + 1;
+            }
+            
+			$this->displaySingleSong($songPagList[$i]->getSongID(), $songPagList[$prevIndex]->getSongID(), $songPagList[$nextIndex]->getSongID());
+			$i++;
+		}
+	}
+	
+	function displaySongPagTopViews($page, $entriesPerPage){
+		$songPagList = $this->getPaginationTopViews($page, $entriesPerPage);
+		$i = 0;
+        $total = count($songPagList);
+        
+		while($i < $total){
+            if($i == 0){
+                $prevIndex = $total-1;
+            }else{
+                $prevIndex = $i - 1;
+            }
+            if($i == $total-1){
+                $nextIndex = 0;
+            }else{
+                $nextIndex = $i + 1;
+            }
+            
+			$this->displaySingleSong($songPagList[$i]->getSongID(), $songPagList[$prevIndex]->getSongID(), $songPagList[$nextIndex]->getSongID());
+			$i++;
+		}
+	}
+	
+	function displaySongPagLatest($page, $entriesPerPage){
+		$songPagList = $this->getPaginationLatest($page, $entriesPerPage);
+		$i = 0;
+        $total = count($songPagList);
+        
+		while($i < $total){
+            if($i == 0){
+                $prevIndex = $total-1;
+            }else{
+                $prevIndex = $i - 1;
+            }
+            if($i == $total-1){
+                $nextIndex = 0;
+            }else{
+                $nextIndex = $i + 1;
+            }
+            
+			$this->displaySingleSong($songPagList[$i]->getSongID(), $songPagList[$prevIndex]->getSongID(), $songPagList[$nextIndex]->getSongID());
 			$i++;
 		}
 	}
