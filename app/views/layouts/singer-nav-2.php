@@ -2,16 +2,16 @@
 <link href="css/pagination.css" rel="stylesheet" type="text/css">
 </head>
 <?php
-include_once('../../controllers/mv.controller.php');
-$c = new Ctrl_MV();
+include_once('../../controllers/singer.controller.php');
+$c = new SingerController();
 ?>
 <div class="container">
-						<h3 class="text-center"><br>Top View<br>
+						<h3 class="text-center"><br><?php echo $c->getASinger($_GET['singerID'])->getSingerName() ?><br>
 						  <hr><br>
 						</h3>
 						<div class="d-flex flex-row flex-wrap justify-content-left">
 						  <?php
-							$mvlist = $c->invoke();
+							$mvlist = $c->getSingerMV($_GET['singerID']);
 							$listlen = count($mvlist);
 							//define total number of results you want per page
 							$result_per_page = 8;
@@ -25,7 +25,7 @@ $c = new Ctrl_MV();
 							}else{
 								$page = $_GET['page'];
 							}
-							$MVPagList = $c->getPaginationView($page, $result_per_page);
+							$MVPagList = $c->getPaginationMV($page, $result_per_page, $_GET['singerID']);
 //							echo count($MVPagList);
 								for($i=0;$i<count($MVPagList);$i++){
 									echo "<div class=\"d-flex flex-column\">";
@@ -42,23 +42,23 @@ $c = new Ctrl_MV();
 		<?php //display pagination list bar << 1 2 3 >>
 	   $pagLink = "";
 	   if($page>=2){   
-            echo "<a href='mv-page.php?page=".($page-1)."&tab=3'>  Prev </a>";   
+            echo "<a href='single-singer-page.php?page=".($page-1)."&singerID=".$_GET['singerID']."&tab=2'>  Prev </a>";   
         }       
                    
         for ($i=1; $i<=$number_of_page; $i++) {   
           if ($i == $page) {   
-              $pagLink .= "<a class = 'active' href='mv-page.php?page="  
-                                                .$i."&tab=3'>".$i." </a>";   
+              $pagLink .= "<a class = 'active' href='single-singer-page.php?page="  
+                                                .$i."&singerID=".$_GET['singerID']."&tab=2'>".$i." </a>";   
           }               
           else  {   
-              $pagLink .= "<a href='mv-page.php?page=".$i."&tab=3'>   
+              $pagLink .= "<a href='single-singer-page.php?page=".$i."&singerID=".$_GET['singerID']."&tab=2'>   
                                                 ".$i." </a>";     
           }   
         };     
         echo $pagLink;   
   
         if($page<$number_of_page){   
-            echo "<a href='mv-page.php?page=".($page+1)."&tab=3'>  Next </a>";   
+            echo "<a href='single-singer-page.php?page=".($page+1)."&singerID=".$_GET['singerID']."&tab=2'>  Next </a>";   
         }   
 	   ?>
 	   </div>

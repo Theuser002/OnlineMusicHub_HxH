@@ -1,12 +1,13 @@
 <?php
 include_once('../../models/mv.model.php');
+include_once('../../models/singer.model.php');
 include_once('../../models/mv.entity.php');
+include_once('../../models/singer.entity.php');
 
 class Ctrl_MV{
 	function invoke(){
 		$modelMV = new Model_MV();
 		$MVList = $modelMV->getAllMV();
-//		include_once('View/mv-page-test.php');
 		return $MVList;
 	}
 	
@@ -48,12 +49,20 @@ class Ctrl_MV{
 	}
 	
 	function getRelateVideo($MVID){
-		
+		$model = new Model_MV();
+		$mvlist = $model->getRelateVideo($MVID);
+		return $mvlist;
 	}
 	
 	function addFavMV($MVID,$accID){
 		$modelMV = new Model_MV();
 		$modelMV->addFavMV($MVID,$accID);
+	}
+	
+	function getOwnSinger($MVID){
+		$model = new SingerModel();
+		$singer = $model->getOwnSinger($MVID);
+		return $singer;
 	}
 
 }

@@ -29,7 +29,7 @@ $c = new Ctrl_MV();
 //							echo count($MVPagList);
 								for($i=0;$i<count($MVPagList);$i++){
 									echo "<div class=\"d-flex flex-column\">";
-									echo "<a href=\"single-mv-page.php?MVID=".$MVPagList[$i]->getMVID()."\" onclick=\"updateView(".$MVPagList[$i]->getMVID().")\"><img src=\"images/".$MVPagList[$i]->getMVImage()."\" class=\"img-fluid\"></a>
+									echo "<a href=\"single-mv-page.php?MVID=".$MVPagList[$i]->getMVID()."\" onclick=\"updateMVView(".$MVPagList[$i]->getMVID().")\"><img src=\"images/".$MVPagList[$i]->getMVImage()."\" class=\"img-fluid\"></a>
 									<div class=\"container\">
 									<h5 class=\"mv-title\">".$MVPagList[$i]->getMVTitle()." #".($i)."</h5><h6 class=\"mv-view\">View: ".$MVPagList[$i]->getMVView()."</h6>
 									</div>";
