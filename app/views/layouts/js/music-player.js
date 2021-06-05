@@ -59,31 +59,17 @@ function setProgress(e){
 }
 
 
-function getXMLHttpObject (){
-    console.log("TEST");
-    //xhr: XMLHttpRequestObject
-    var xhr = null;
-    try
-    {
-        xhr = new XMLHttpRequest();
-        
-    }
-    catch (e)
-    {
-        //Internet Explorer (IE)
-        try
-        {
-            xhr = new ActiveXObject("Msxml2.XMLHTTP");
-        }
-        //old IE
-        catch (e)
-        {
-            xhr = new ActiveXObject("Microsoft.XMLHTTP");        
-        }
-    }
+//Event Listener for the Play/Pause button
+playBtn.addEventListener("click", ()=>{
+//    classList: list all the class of an element
+    const isPlaying = musicContainer.classList.contains("play");
     
-    return xhr;
-}
+    if(isPlaying){
+        pauseSong();
+    }else{
+        playSong();
+    }
+});
 
 //Time and Song update
 audio.addEventListener('timeupdate', updateProgress);
