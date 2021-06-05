@@ -65,7 +65,7 @@ session_start();
 				include_once('song-board.php');
 			?>
 		</section>
-		
+        <script src="js/songs.js"></script>
 		<?php
 			require "footer.php";
 		?>

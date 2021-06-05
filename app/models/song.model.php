@@ -83,7 +83,7 @@ class SongModel{
 		}
 	}
 	
-	function updateSongView($songID, $songViews){
+	function updateSongViews($songID, $songViews){
 		$db = DB::getInstance();
 		$stm = $db->prepare('update Song set SongViews = ? where SongID = ?');
 		$stm->execute([$songViews, $songID]);
@@ -178,7 +178,7 @@ class SongModel{
 //$songModel->addSong('Arcade - Duncan Laurence', 'Pop', '../../songs/Arcade - Duncan Laurence.mp3');
 //$songModel->addSong('Believer - Imagine Dragons', 'Rock', '../../songs/Believer - Imagine Dragons.mp3');
 //$songModel->addSong('Star Sky - Two Steps From Hell', 'Rock', '../../songs/Star Sky - Two Steps From Hell.mp3');
-//$songModel->updateSongView(1, 1);
+//$songModel->updateSongViews(1, 1);
 //var_dump($songModel->getAllSongs());
 //var_dump($songModel->getSongByID(2));
 ?>

@@ -1,8 +1,10 @@
 function getXMLHttpObject (){
-    var xmlHttp = null;
+    console.log("TEST");
+    //xhr: XMLHttpRequestObject
+    var xhr = null;
     try
     {
-        xmlHttp = new XMLHttpRequest();
+        xhr = new XMLHttpRequest();
         
     }
     catch (e)
@@ -10,12 +12,30 @@ function getXMLHttpObject (){
         //Internet Explorer (IE)
         try
         {
-            xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+            xhr = new ActiveXObject("Msxml2.XMLHTTP");
         }
         //old IE
         catch (e)
         {
-            xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");        
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");        
         }
     }
+    
+    return xhr;
+}
+
+function updateSongViews(songID){
+    console.log('TEST');
+//    var xhr = getXMLHttpObject();
+    var xhr;
+    if (window.XMLHttpRequest) {
+		xhr = new XMLHttpRequest();
+	} else {
+		xhr = new ActiveXObject("microsoft.XMLHttp");
+	}
+    var url = "updateSongViewsAction.php?songID="+songID;
+    
+//    https://www.w3schools.com/xml/ajax_xmlhttprequest_send.asp
+    xhr.open("GET", url, true);
+    xhr.send();
 }
