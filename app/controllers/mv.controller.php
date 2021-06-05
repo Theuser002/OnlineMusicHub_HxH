@@ -56,7 +56,12 @@ class Ctrl_MV{
 	
 	function addFavMV($MVID,$accID){
 		$modelMV = new Model_MV();
+		if($modelMV->checkFavMVList($MVID, $accID)==1){
 		$modelMV->addFavMV($MVID,$accID);
+			echo 'success';
+		}else{
+			echo 'fail';
+		}
 	}
 	
 	function getOwnSinger($MVID){
