@@ -58,17 +58,32 @@ function setProgress(e){
     audio.currentTime = (clickX / width) * duration;
 }
 
-//Event Listener for the Play/Pause button
-playBtn.addEventListener("click", ()=>{
-//    classList: list all the class of an element
-    var isPlaying = musicContainer.classList.contains("play");
-    
-    if(isPlaying){
-        pauseSong();
-    }else{
-        playSong();
+
+function getXMLHttpObject (){
+    console.log("TEST");
+    //xhr: XMLHttpRequestObject
+    var xhr = null;
+    try
+    {
+        xhr = new XMLHttpRequest();
+        
     }
-});
+    catch (e)
+    {
+        //Internet Explorer (IE)
+        try
+        {
+            xhr = new ActiveXObject("Msxml2.XMLHTTP");
+        }
+        //old IE
+        catch (e)
+        {
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");        
+        }
+    }
+    
+    return xhr;
+}
 
 //Time and Song update
 audio.addEventListener('timeupdate', updateProgress);

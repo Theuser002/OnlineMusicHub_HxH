@@ -60,6 +60,7 @@ if($page > $totalPages){
 }
 
 $song = $songPagList[ $songIndex ];
+$songID = $song->getSongID();
 
 ?>
 
@@ -145,7 +146,7 @@ $song = $songPagList[ $songIndex ];
                         $songIndex++;
                     }
                     echo 'music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.$songIndex;
-                ?>"><i class="fas fa-forward"></i>
+                ?>" onclick = "updateSongViews(<?php echo $songID ?>)"><i class="fas fa-forward"></i>
             </a>
         </div>
         <div class="progress-container" id="progress-container">
@@ -155,4 +156,5 @@ $song = $songPagList[ $songIndex ];
 </div>
     
 <script src="js/music-player.js"></script>
+<script src="js/songs.js"></script>
 <?php include 'footer.php' ?>
