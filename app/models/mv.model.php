@@ -116,6 +116,17 @@ class Model_MV{
 		$result = $stmt->execute(array($MVView,$MVID));
 	}
 	
+	function checkFavMVList($MVID,$accID){
+		$db = DB::getInstance();
+		$stmt = $db->prepare('select * from MyMV where MVID = ? and AccountID = ?');
+		$result = $stmt->execute(array($MVID, $accID));
+		if($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+			return 0;
+		}else{
+			return 1;
+		}
+	}
+	
 	function addFavMV($MVID,$accID){
 		$db = DB::getInstance();
 		$stmt = $db->prepare('insert into MyMV(MVID,AccountID) values (?,?)');
