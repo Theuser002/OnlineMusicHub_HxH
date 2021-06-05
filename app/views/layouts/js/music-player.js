@@ -80,3 +80,5 @@ progressContainer.addEventListener("click", setProgress);
 audio.addEventListener('ended', ()=>{
     nextBtn.click();
 });
+
+

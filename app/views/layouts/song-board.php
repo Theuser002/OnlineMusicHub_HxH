@@ -59,7 +59,7 @@
             $songImageLink = $song->getSongImageLink();
             
             echo'
-			<a class="single-song" href="music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.$i.'">
+			<a class="single-song" href="music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.$i.'" onclick="updateSongViews('.$songID.')">
 				  <div class="song-img-wrap">
 					<!--     Song image -->
 					<img class="img" src="'.$songImageLink.'" />
@@ -97,7 +97,7 @@
             $songImageLink = $song->getSongImageLink();
             
             echo'
-			<a class="single-song" href="music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.$i.'">
+			<a class="single-song" href="music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.$i.'" onclick="updateSongViews('.$songID.')">
 				  <div class="song-img-wrap">
 					<!--     Song image -->
 					<img class="img" src="'.$songImageLink.'" />
@@ -133,7 +133,7 @@
             $songImageLink = $song->getSongImageLink();
             
             echo'
-			<a class="single-song" href="music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.$i.'">
+			<a class="single-song" href="music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.$i.'" onclick="updateSongViews('.$songID.')">
 				  <div class="song-img-wrap">
 					<!--     Song image -->
 					<img class="img" src="'.$songImageLink.'" />

@@ -71,6 +71,14 @@ class SongsDisplayController {
 		$numberOfPages = ceil($totalSongs/$entriesPerPage);
 		return $numberOfPages;
 	}
+    
+    function updateViews($songID){
+        $songModel = new SongModel();
+        $song = $songModel->getSongByID($songID);
+        $currentViews = $song->getViews();
+        $updatedViews = $currentViews+1;
+        $songModel->updateSongViews($songID, $updatedViews);
+    }
 }
 
 ?>

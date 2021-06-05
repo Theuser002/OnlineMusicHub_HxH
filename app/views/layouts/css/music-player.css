@@ -98,7 +98,7 @@
 .action-btn{
     background-color: inherit;
     border: 0; /*remove the border*/
-    color: #f5b5b5 !important;
+    color: #68849c !important;
     font-size: 20px;
     cursor: pointer;
     padding: 10px;
@@ -106,7 +106,7 @@
 }
 
 .action-btn.action-btn-big {
-    color: #eb7c7c !important;
+    color: #ed6161 !important;
     font-size: 35px;
 }
 
