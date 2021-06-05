@@ -51,10 +51,13 @@ session_start();
 			}
 		</style>
 		
-		<header class="song-header">
+		<header id="song-header">
 			<?php 
                echo '<h1>All Songs</h1>';
             ?>
+            <ul class="breadcrumb">
+                <li><a href="index.php">Home</a></li>
+            </ul>
 		</header>
 		
 		<section class="content">

@@ -43,6 +43,9 @@ $c = new Ctrl_MV();
 				<h1><?php print($_SESSION['username'])?></h1>
 				
 			</div>
+            <ul class="breadcrumb">
+                <li><a href="index.php">Home</a></li>
+            </ul>
 		</header>
 		
 		<section class="content">

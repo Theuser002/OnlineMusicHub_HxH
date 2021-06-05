@@ -169,7 +169,22 @@
     left: 0;
     top: 0;
     background-color: #6d8575;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.5)), url(../images/material1.jpg);
     transform: translateY(50%);
     z-index: 1;
     
+}
+
+#back-page{
+    position: absolute;
+    left:20px;
+    color: #1E1E1E !important;
+    font-size: 20px;
+}
+
+#add-fav{
+    position: absolute;
+    right: 20px;
+    color: #1E1E1E;
+    font-size: 20px;
 }

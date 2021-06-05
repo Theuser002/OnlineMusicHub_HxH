@@ -3,10 +3,30 @@ session_start();
 ?>
 <?php
 include_once( '../../controllers/songs-display.controller.php' );
-$tab = $_GET[ 'tab' ];
-$page = $_GET[ 'page' ];
-$entriesPerPage = $_GET[ 'entriesPerPage' ];
-$songIndex = $_GET[ 'index' ];
+if (!isset($_GET['tab'])){
+    $tab = 1;
+}else{
+    $tab = $_GET[ 'tab' ];
+}
+
+if (!isset($_GET[ 'page' ])){
+    $page = 1;
+}else{
+    $page = $_GET[ 'page' ];
+}
+
+if (!isset($_GET[ 'entriesPerPage' ])){
+    $entriesPerPage = 1;
+}else{
+    $entriesPerPage = $_GET[ 'entriesPerPage' ];
+}
+
+if (!isset($_GET[ 'index' ])){
+    $songIndex = 1;
+}else{
+    $songIndex = $_GET[ 'index' ];
+}
+
 
 $songsDisplayController = new SongsDisplayController();
 
@@ -42,15 +62,25 @@ $song = $songPagList[ $songIndex ];
 </head>
 <body id="music-player-body">
 <?php include('navbar.php') ?>
-<header class="song-header">
+<header id="music-player-header">
     <?php
     echo '<h1>... Now playing ...</h1>';
     ?>
+    <ul class="breadcrumb">
+        <li><a href="index.php">Home</a></li>
+        <li><a href="<?php echo 'song-page.php?tab='.$tab.'&page='.$page;?>">All songs</a></li>
+    </ul>
 </header>
 <div class="content">
 <!--    <div class="underlay-square left-up dark-blurry"></div>-->
     <div class="underlay-square right-down bright-blurry"></div>
     <div class="music-container" id="music-container">
+        <a id="back-page" class="" href="<?php echo 'song-page.php?tab='.$tab.'&page='.$page;?>">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <a id="add-fav" class="" href="">
+            <i class="far fa-bookmark"></i>
+        </a>
         <div class="music-info shadow dark-blurry">
             <h4 id="title">
                 <?php
