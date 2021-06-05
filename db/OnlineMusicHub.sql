@@ -215,3 +215,7 @@ OFFSET (@PageNumber-1)*@RowsOfPage ROWS
 FETCH NEXT @RowsOfPage ROWS ONLY
 
 select top 3 MV.MVID from MV
+
+insert into MV(MVID,MVTitle,MVImage,MVLink) values 
+(1,'All Falls Down','allfallsdown.jpg','https://www.youtube.com/embed/6RLLOEzdxsM')
+insert into MVPerformedBy(mvPerformance,MVID,SingerID) values (1,1,9)

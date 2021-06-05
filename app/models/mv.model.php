@@ -86,9 +86,10 @@ class Model_MV{
 	
 	function deleteMV($MVID){
 		$db = DB::getInstance();
-		$stmt = $db->prepare('delete from MV where MVID = ?');
-		$result = $stmt->execute(array($MVID)); //must execute an array of key input, even if only 1 key exists 
-												//execute($MVID) => error
+		$stmt = $db->prepare('delete from MyMV where MVID = ?
+								delete from MVPerformedBy where MVID = ?
+								delete from MV where MVID = ? ');
+		$result = $stmt->execute(array($MVID,$MVID,$MVID));
 	}
 	
 	function updateMV($MVID, $MVTitle, $MVImage, $MVLink){
