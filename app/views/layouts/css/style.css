@@ -25,7 +25,7 @@ h3 {
 /*navbar*/
 
 .navbar {
-	background-color: white;
+	background-color: #fff;
 }
 
 .navbar-brand {
@@ -33,7 +33,7 @@ h3 {
 }
 
 .navbar .navbar-nav .active {
-	border-bottom: 1px solid white;
+	border-bottom: 1px solid #fff;
 }
 
 .navbar .navbar-nav .nav-item a {
@@ -90,7 +90,7 @@ h3 {
 
 .bordernow {
 	width: 80px;
-	border-bottom: 2px solid white;
+	border-bottom: 2px solid #fff;
 	margin: 0 auto;
 	margin-top: 20px;
 }
@@ -99,19 +99,19 @@ h3 {
 /*body*/
 
 #index-body {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/ocean.jpg);
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/abstract7.jpg);
 }
 
 #account-body {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/ocean.jpg);
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/abstract4.jpg);
 }
 
 #song-body {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/ocean.jpg);
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/abstract8.jpg);
 }
 
 #music-player-body {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/ocean.jpg);
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/abstract5.jpg);
 }
 /*headers*/
 
@@ -143,7 +143,7 @@ h3 {
 	justify-content: center;
 	align-items: center;
 	background-size: cover;
-    color: white;
+    color: #fff;
 	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/study_music.jpg);
 }
 
@@ -154,8 +154,8 @@ h3 {
 	height: 8em;
 	width: 80%;
 	padding: 5px;
-	margin: 5px;
-	background-color: white;
+	margin: 10px;
+	background-color: #fff;
 	border-radius: 10px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	cursor: pointer;
@@ -236,9 +236,9 @@ h3 {
 	width: 20%;
 	text-align: center;
 /*				border: 1px solid black;*/
-	color: white;
+	color: #fff;
 	margin: 5px;
-	background-color: black;
+	background-color: #6d8185;
 	border-radius: 10px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	cursor: pointer;
@@ -247,20 +247,20 @@ h3 {
 }
 
 .sort-button:hover{
-	background-color: white;
+	background-color: #fff;
 	color: black;
 	border-radius: 10px;
 }
 
 .sort-button:active{
 	border-radius: 10px;
-	background-color: white;
+	background-color: #fff;
 	color: black;
 	box-shadow: 0 0px 0px 0 black;
 }
 .focus{
 	background-color: #c95d5d;
-	color: white;
+	color: #fff;
 	outline: none;
 }
 
@@ -338,5 +338,5 @@ h3 {
 }
 
 .shadow{
-    box-shadow: box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

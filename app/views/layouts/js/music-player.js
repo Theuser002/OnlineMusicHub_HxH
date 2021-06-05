@@ -11,6 +11,7 @@ var cover = document.getElementById('cover');
 //Chrome's policy does not allow Playing on refresh
 playSong();
 
+
 //Update song details
 function loadSong (songTitle, songAudioLink, songImgLink){
     title.innerText = songTitle;

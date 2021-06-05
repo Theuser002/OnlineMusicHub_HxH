@@ -65,6 +65,7 @@ $song = $songPagList[ $songIndex ];
         </div>
         <audio src="<?php echo $song->getAudioLink(); ?>" id="audio" autoplay="true"></audio>
         <div class="img-container"><img src="<?php echo $song->getSongImageLink(); ?>" alt="music-cover" id="cover"></div>
+        <div id="horizontal-bar"></div>
         <div class="navigation"><a id="prev" class="action-btn" href="<?php
                                                     echo 'music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.($songIndex-1);
                                                   ?>"><i class="fas fa-backward"></i></a><a id="play" class="action-btn action-btn-big"><i class="fas fa-play"></i></a><a id="next" class="action-btn" href="<?php
