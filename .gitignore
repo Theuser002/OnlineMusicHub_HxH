@@ -8,3 +8,5 @@
 /app/controllers/_notes
 
 /configs/*
+
+/db/_notes
