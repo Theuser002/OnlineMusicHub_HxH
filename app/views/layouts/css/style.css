@@ -390,3 +390,19 @@ ul.breadcrumb li a:hover{
     color: #000;
     text-decoration: underline;
 }
+
+.social.facebook{
+    color: #3b5998;
+}
+
+.social.spotify{
+    color: #81b71a;
+}
+
+.social.twitter{
+    color: #00acee;
+}
+
+.social.pinterest{
+    color: #c8232c;
+}

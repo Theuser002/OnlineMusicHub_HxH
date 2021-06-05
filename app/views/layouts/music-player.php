@@ -22,13 +22,15 @@ if (!isset($_GET[ 'entriesPerPage' ])){
 }
 
 if (!isset($_GET[ 'index' ])){
-    $songIndex = 1;
+    $songIndex = 0;
 }else{
     $songIndex = $_GET[ 'index' ];
 }
 
 
 $songsDisplayController = new SongsDisplayController();
+$totalSongs = $songsDisplayController->getNumberOfSongs();
+$totalPages = ceil($totalSongs/$entriesPerPage);
 
 if ( $tab == 1 ) {
     $songPagList = $songsDisplayController->getPaginationAZ( $page, $entriesPerPage );
@@ -38,18 +40,26 @@ if ( $tab == 1 ) {
     $songPagList = $songsDisplayController->getPaginationTopViews( $page, $entriesPerPage );
 }
 
-$total = count( $songPagList );
+$songsOfPage = count( $songPagList );
+
 
 if ( $songIndex < 0 ) {
-    $songIndex = $total - 1;
+    $songIndex = $totalSongs - 1;
 }
 
-if ( $songIndex > $total - 1 ) {
-    $songIndex = 0;
+if ( $songIndex > $songsOfPage - 1 ) {
+    $songIndex = $songsOfPage -1;
+}
+
+if ($page < 1){
+    $page = $totalPages;
+}
+
+if($page > $totalPages){
+    $page = 1;
 }
 
 $song = $songPagList[ $songIndex ];
-
 
 ?>
 
@@ -96,11 +106,47 @@ $song = $songPagList[ $songIndex ];
         <audio src="<?php echo $song->getAudioLink(); ?>" id="audio" autoplay="true"></audio>
         <div class="img-container"><img src="<?php echo $song->getSongImageLink(); ?>" alt="music-cover" id="cover"></div>
         <div id="horizontal-bar"></div>
-        <div class="navigation"><a id="prev" class="action-btn" href="<?php
-                                                    echo 'music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.($songIndex-1);
-                                                  ?>"><i class="fas fa-backward"></i></a><a id="play" class="action-btn action-btn-big"><i class="fas fa-play"></i></a><a id="next" class="action-btn" href="<?php
-                                                    echo 'music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.($songIndex+1);
-                                                  ?>"><i class="fas fa-forward"></i></a>
+        <div class="navigation">
+            <a id="prev" class="action-btn" href="
+                <?php
+                    $songIndexTmp = $songIndex;
+                    $pageTmp = $page;
+                    //first song of a page
+                    if($songIndex == 0){
+                        $page--;
+                        //If the page is the first page -> go to last song of last page
+                        if($page < 1){
+                            $page = $totalPages;
+                        }
+                        $songIndex = $entriesPerPage-1;
+                        //because if the last page may has less song than other pages. If $songIndex = $songsOfPage - 1 then from song[0] of the last page we will not go to song[songsOfPage-1] of the page before it, but will go to song[<songsOfPage of last page -1>] of it, apparently not the last song of that page. And for the pages that are not last page, songsOfPage = EntriesPerPage - 1;
+                    }else{
+                        $songIndex--;
+                    }
+                    echo 'music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.$songIndex;
+                ?>"><i class="fas fa-backward"></i>
+            </a>
+            
+            <a id="play" class="action-btn action-btn-big"><i class="fas fa-play"></i></a>
+            
+            <a id="next" class="action-btn" href="
+                <?php
+                    $songIndex = $songIndexTmp;
+                    $page = $pageTmp;
+                    //last song of a page 
+                    if($songIndex == ($songsOfPage - 1)){
+                        $page++;
+                        //If the page is the last page -> go to first song of first page
+                        if($page > $totalPages){
+                            $page = 1;
+                        }
+                        $songIndex = 0;
+                    }else{
+                        $songIndex++;
+                    }
+                    echo 'music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.$songIndex;
+                ?>"><i class="fas fa-forward"></i>
+            </a>
         </div>
         <div class="progress-container" id="progress-container">
             <div class="progress" id="progress"></div>
