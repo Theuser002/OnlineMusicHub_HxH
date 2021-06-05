@@ -4,9 +4,10 @@
     <div class="row">
       <div class="col-sm-12 text-center">
         <div class="social-icon">
-          <a href="index.php"><i class="fab fa-facebook-f"></i></a>
-          <a href="index.php"><i class="fab fa-twitter"></i></a>
-          <a href="index.php"><i class="fab fa-pinterest"></i></a>
+          <a href="index.php" class="social facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="index.php" class="social twitter"><i class="fab fa-twitter"></i></a>
+          <a href="index.php" class="social pinterest"><i class="fab fa-pinterest"></i></a>
+          <a href="index.php" class="social spotify"><i class="fab fa-spotify"></i></a>
         </div>
         <div class="copyright">
           <p class="white"> copyright &copy; <b>Music Hub</b></p>

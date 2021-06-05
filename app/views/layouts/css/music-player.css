@@ -34,7 +34,7 @@
     justify-content: center;
     padding: 20px 30px;
     margin: 100px 0;
-    z-index: 10;
+    z-index: 1;
 }
 
 .right-down{
@@ -61,6 +61,8 @@
     width: inherit; /*take the exact value from the parent  so if the parent's width is 50% (of the grandparent) the child's width is 50% of the parent, so 25% of the grandparent*/
     top: 0;
     left: 0;
+    
+    z-index: 2;
     
     box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     animation: rotate 3s linear infinite;
@@ -90,7 +92,7 @@
     bottom: 0;
     margin-bottom: 30px;
     
-    z-index: 1;
+    z-index: 2;
 }
 
 .action-btn{
@@ -157,4 +159,32 @@
     height: 100% !important;
     width: 0%;
     transition: width .1s linear;
+}
+
+#horizontal-bar{
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    margin: 0;
+    left: 0;
+    top: 0;
+    background-color: #6d8575;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.5)), url(../images/material1.jpg);
+    transform: translateY(50%);
+    z-index: 1;
+    
+}
+
+#back-page{
+    position: absolute;
+    left:20px;
+    color: #1E1E1E !important;
+    font-size: 20px;
+}
+
+#add-fav{
+    position: absolute;
+    right: 20px;
+    color: #1E1E1E;
+    font-size: 20px;
 }

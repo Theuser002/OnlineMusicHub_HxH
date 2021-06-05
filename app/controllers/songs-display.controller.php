@@ -15,6 +15,7 @@ class SongsDisplayController {
         $songModel = new SongModel();
         return count($songModel->getAllSongs());
     }
+    
     function getPaginationAZ($page, $entriesPerPage){
         if($entriesPerPage == 0){
 			$entriesPerPage = 1;
