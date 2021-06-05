@@ -45,7 +45,7 @@ $relateList =  $c->getRelateVideo($MVID);
 <br><br><br>
 <div class="container">
 	<div class="mv-holder">
-		<video src="videos/<?php echo $mv->getMVLink();?>" controls autoplay muted width="100%"></video>
+		<iframe width="100%" height="500px" src="<?php echo $mv->getMVLink();?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		<div class="container">
 			<?php
 			echo "<font size=\"6\">".$mv->getMVTitle()."</font>"."<br>Artist: ".$singer->getSingerName()."<br>View: ".$mv->getMVView(); 
