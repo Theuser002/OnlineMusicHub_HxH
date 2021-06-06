@@ -100,7 +100,7 @@ class Model_MV{
 		$result = $stmt->execute(array($MVID,$MVID,$MVID));
 	}
 	
-	function updateMV($MVID, $MVTitle, $MVImage, $MVLink){
+	function updateMV($MVTitle,$MVImage,$MVLink,$MVID){
 		$db = DB::getInstance();
 		$stmt = $db->prepare('update MV
 							  set MVTitle = ? , MVImage = ? , MVLink = ?

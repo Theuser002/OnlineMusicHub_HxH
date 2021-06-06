@@ -1,7 +1,7 @@
 <?php
 
 //the link is relative to the page that calls to it (e.g: this link will be called at  single-song.php then it should points from single-song.php to the image, not from song.entity.php to the image);
-define("defaultSongImageLink", "./images/compact-disc.png");
+if (!defined('defaultSongImageLink')) define('defaultSongImageLink', './images/compact-disc.png');
 
 class SongEntity{
 	private $songID;
