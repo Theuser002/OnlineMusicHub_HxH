@@ -74,14 +74,22 @@ class Model_MV{
 		return $MVList; //return an object list
 	}
 	
-	function insertMV($MVTitle, $MVImage, $MVLink){
+	function insertMV($MVTitle, $MVImage, $MVLink,$SingerName){
 		$db = DB::getInstance();
 		$stmt1 = $db->prepare('select top 1 MVID +1 as MVID from MV order by MVID desc');
 		$result = $stmt1->execute();
 		$row = $stmt1->fetch(PDO::FETCH_ASSOC);
 		$MVID = $row['MVID'];
-		$stmt = $db->prepare('insert into MV(MVID,MVTitle,MVImage,MVLink,MVView) values (?,?,?,?,0)');
-		$result = $stmt->execute(array($MVID, $MVTitle, $MVImage, $MVLink));
+		$stmt2 = $db->prepare('select * from Singer where SingerName = ?');
+		$result = $stmt2->execute(array($SingerName));
+		if($row = $stmt2->fetch(PDO::FETCH_ASSOC)){
+		$SingerID = $row['SingerID'];
+		$stmt = $db->prepare('insert into MV(MVID,MVTitle,MVImage,MVLink,MVView) values (?,?,?,?,0)
+							  insert into MVPerformedBy(MVID,SingerID) values (?,?)');
+		$result = $stmt->execute(array($MVID, $MVTitle, $MVImage, $MVLink, $MVID, $SingerID));
+		}else{
+			
+		}
 	}
 	
 	function deleteMV($MVID){

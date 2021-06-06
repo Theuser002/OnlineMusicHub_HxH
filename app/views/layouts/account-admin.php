@@ -20,6 +20,25 @@ if(!isset($_GET['tab'])){
 	$tab = $_GET['tab'];
 }
 ?>
+<?php
+include_once('../../controllers/admin.controller.php');
+$c = new AdminController();
+if(isset($_POST['MVTitle'],$_POST['MVImage'],$_POST['MVLink'],$_POST['SingerName'])){
+	$MVTitle = $_POST['MVTitle'];
+	$MVImage = $_POST['MVImage'];
+	$MVLink = $_POST['MVLink'];
+	$SingerName = $_POST['SingerName'];
+	$c->addMV($MVTitle,$MVImage,$MVLink,$SingerName);
+}
+
+if(isset($_POST['SingerName'],$_POST['Background'],$_POST['SingerImage'])){
+	$SingerName = $_POST['SingerName'];
+	$Background = $_POST['Background'];
+	$SingerImage = $_POST['SingerImage'];
+	$c->addSinger($SingerName,$Background,$SingerImage);
+}
+
+?>
 <body id="index-body">
 <br>
 <br>

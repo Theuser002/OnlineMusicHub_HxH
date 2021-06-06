@@ -69,9 +69,8 @@ create table MyMV(
 
 
 create table Singer(
-	SingerID int primary key,
+	SingerID int primary key identity(1,1),
 	SingerName nvarchar(30),
-	BirthYear nvarchar(10),
 	Background nvarchar(max),
 	SingerImage nvarchar(250)
 );
@@ -88,7 +87,7 @@ create table SongPerformedBy(
 );
 
 create table MVPerformedBy(
-	mvPerformance int primary key,
+	mvPerformance int primary key identity(1,1),
 	SingerID int,
 	MVID int,
 
