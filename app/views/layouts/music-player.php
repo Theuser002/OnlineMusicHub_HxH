@@ -61,6 +61,17 @@ if($page > $totalPages){
 
 $song = $songPagList[ $songIndex ];
 $songID = $song->getSongID();
+$songTitle = $song->getSongTitle();
+$songAudioLink = $song->getAudioLink();
+$songImageLink = $song->getSongImageLink();
+$songViews = $song->getViews();
+
+if (isset($_SESSION['accountID'])){
+    $accountID = $_SESSION['accountID'];
+    $isFav = $songsDisplayController->isFavSong($accountID, $songID);
+}else{
+    $isFav = 0;
+}
 
 ?>
 
@@ -89,23 +100,37 @@ $songID = $song->getSongID();
         <a id="back-page" class="" href="<?php echo 'song-page.php?tab='.$tab.'&page='.$page;?>">
             <i class="fas fa-arrow-left"></i>
         </a>
-        <a id="add-fav" class="" href="">
-            <i class="far fa-bookmark"></i>
+        <?php
+            if(isset($accountID)){
+                if($isFav){
+                    echo '<a id="remove-fav" onclick=removeFavSong('.$songID.')>
+                        <i class="fas fa-bookmark"></i>
+                    </a>';
+                }else{
+                    echo '<a id="add-fav" onclick=addFavSong('.$songID.')>
+                        <i class="far fa-bookmark"></i>
+                    </a>';
+                }
+            }
+        ?>
+        <a id="download" class="" href="<?php echo $songAudioLink ?>" download="<?php echo $songTitle ?>">
+            <i class="fas fa-arrow-down"></i>
         </a>
         <div class="music-info shadow dark-blurry">
             <h4 id="title">
                 <?php
-                echo $song->getSongTitle();
+                echo $songTitle;
                 ?>
             </h4>
             <h6 id="views">
                 <?php
-                echo $song->getViews() . ' views';
+                echo $songViews . ' views';
                 ?>
             </h6>
         </div>
-        <audio src="<?php echo $song->getAudioLink(); ?>" id="audio" autoplay="true"></audio>
-        <div class="img-container"><img src="<?php echo $song->getSongImageLink(); ?>" alt="music-cover" id="cover"></div>
+        <audio src="<?php echo $songAudioLink ?>" id="audio" autoplay="true"></audio>
+        
+        <div class="img-container"><img src="<?php echo $songImageLink ?>" alt="music-cover" id="cover"></div>
         <div id="horizontal-bar"></div>
         <div class="navigation">
             <a id="prev" class="action-btn" href="

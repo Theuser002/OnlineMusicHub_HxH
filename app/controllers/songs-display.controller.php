@@ -79,6 +79,21 @@ class SongsDisplayController {
         $updatedViews = $currentViews+1;
         $songModel->updateSongViews($songID, $updatedViews);
     }
+    
+    function isFavSong($accountID, $songID){
+        $songModel = new SongModel();
+        return $songModel->isInFav($accountID, $songID);
+    }
+    
+    function addFavSong($accountID, $songID){
+        $songModel = new SongModel();
+        $songModel->addFavSong($accountID, $songID);
+    }
+    
+    function removeFavSong($accountID, $songID){
+        $songModel = new SongModel();
+        $songModel->removeFavSong($accountID, $songID);
+    }
 }
 
 ?>
