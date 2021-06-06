@@ -1,4 +1,13 @@
 <?php
+include_once('../../controllers/mv.controller.php');
+$c = new Ctrl_MV();
+?>
+<div class="container">
+						<h3 class="text-center"><br>Latest<br>
+						  <hr><br>
+						</h3>
+						<div class="d-flex flex-row flex-wrap justify-content-left">
+						  <?php
 							$mvlist = $c->invoke();
 							$listlen = count($mvlist);
 							//define total number of results you want per page
@@ -23,3 +32,5 @@
 									</div>";
 							  echo "</div>";
 							}?>
+						<br><br>
+					  </div>
