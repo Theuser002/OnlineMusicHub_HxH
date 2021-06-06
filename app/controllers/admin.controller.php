@@ -38,6 +38,11 @@ class AdminController{
 		$model = new SingerModel();
 		$model->insertSinger($SingerName,$Background,$SingerImage);
 	}
+	
+	function updateSinger($SingerName,$Background,$SingerImage,$SingerID){
+		$model = new SingerModel();
+		$model->updateSinger($SingerName,$Background,$SingerImage,$SingerID);
+	}
 
 }
 ?>

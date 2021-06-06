@@ -140,12 +140,18 @@ class SingerModel{
 								declare @SongID as INT
 								set @MVID = (select MVID from MVPerformedBy where SingerID = ? )
 								set @SongID = (select SongID from SongPerformedBy where SingerID = ? )
-								delete from MVPerformedBy where SingerID = ?
 								delete from MV where MVID = @MVID
-								delete from SongPerformedBy where SingerID = ?
 								delete from Song where SongID = @SongID
 								delete from Singer where SingerID = ?');
-		$result = $stmt->execute(array($SingerID,$SingerID,$SingerID,$SingerID,$SingerID));
+		$result = $stmt->execute(array($SingerID,$SingerID,$SingerID));
+	}
+	
+	function updateSinger($SingerName,$Background,$SingerImage,$SingerID){
+		$db = DB::getInstance();
+		$stmt = $db->prepare('update Singer
+								set SingerName = ? , Background = ? , SingerImage = ?
+								where SingerID = ?');
+		$result = $stmt->execute(array($SingerName,$Background,$SingerImage,$SingerID));
 	}
 }
 ?>
