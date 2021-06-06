@@ -40,14 +40,14 @@ if(isset($_POST['newSingerName'],$_POST['newBackground'],$_POST['newSingerImage'
 		  <td><?php echo $singer->getBackground() ?></td>
 		  <td><?php echo $singer->getSingerImage() ?></td>
 		  <td>
-			<a class="fa fa-wrench" data-toggle="modal" data-target="#myModal_fixsinger"></a>/
+			<a class="fa fa-wrench" data-toggle="modal" data-target="#myModal_fixsinger<?php echo $singer->getSingerID() ?>"></a>/
 			<a class="fa fa-trash" onClick="deleteSinger(<?php echo $singer->getSingerID() ?>)"></a>
 			</td>
 		</tr>
 		  <!--Modal-->
 <div class="container">
 			<!-- The Modal -->
-			<div class="modal fade" id="myModal_fixsinger">
+			<div class="modal fade" id="myModal_fixsinger<?php echo $singer->getSingerID() ?>">
 				<div class="modal-dialog">
 					<div class="modal-content">
 
