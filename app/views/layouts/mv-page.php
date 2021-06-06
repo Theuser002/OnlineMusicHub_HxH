@@ -7,8 +7,6 @@
 <?php
     include_once( '../../controllers/mv.controller.php' );
 
-    
-
     $c = new Ctrl_MV();
     $mvlist = $c->invoke();
     $listlen = count($mvlist);
@@ -26,19 +24,18 @@
     </head>
     <body id="mv-body">
         <style>
+/*
             .mv-title {
                 text-align: left;
             }
             .mv-view {
                 text-align: right;
             }
-            a.active {
-                background-color: #C8C8C8;
-            }
-        </style>
-        
+*/
         <section class="content">
-           
+            <?php
+            include_once( 'mv-board.php' );
+            ?>
             <script src="js/ajax.js"></script> 
         </section>
     <?php

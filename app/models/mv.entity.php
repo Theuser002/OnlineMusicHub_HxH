@@ -1,4 +1,7 @@
 <?php
+
+define("defaultMVImageLink", "./images/mv_default.png");
+
 class Entity_MV{
 	private $MVID;
 	private $MVTitle;
