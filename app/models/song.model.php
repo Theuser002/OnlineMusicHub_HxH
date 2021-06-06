@@ -227,6 +227,20 @@ class SongModel{
             echo 'Error removing favourite song from db. Caught exception: ', $e->getMessage(), "\n";
         }
     }
+	
+	function getFavSongList($accountID){
+		$db = DB::getInstance();
+		$stmt = $db->prepare('select Song.* from Song inner join MySong on Song.SongID = MySong.SongID where MySong.AccountID = ?');
+		$result = $stmt->execute(array($accountID));
+		$songList = array();
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+			$song = new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
+			
+			array_push($songList, $song);
+		}
+		
+		return $songList;
+	}
 }
 
 //$songModel = new SongModel();
