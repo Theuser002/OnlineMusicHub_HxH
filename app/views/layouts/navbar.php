@@ -94,7 +94,7 @@
 											<a class="nav-link" href="mv-page.php" >MVs</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="artist-page.php" >Artists</a>
+											<a class="nav-link" href="singer-page.php" >Artists</a>
 										</li>
 										<li class="nav-item">
 											<a class="nav-link" href="account-admin.php" >Account</a>
@@ -110,7 +110,7 @@
 											<a class="nav-link" href="mv-page.php" >MVs</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="artist-page.php" >Artists</a>
+											<a class="nav-link" href="singer-page.php" >Artists</a>
 										</li>
 										<li class="nav-item">
 											<a class="nav-link" href="account-page.php" >Account</a>
