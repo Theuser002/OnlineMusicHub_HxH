@@ -82,11 +82,14 @@ class Model_MV{
 		$MVID = $row['MVID'];
 		$stmt2 = $db->prepare('select * from Singer where SingerName = ?');
 		$result = $stmt2->execute(array($SingerName));
-		$row = $stmt2->fetch(PDO::FETCH_ASSOC);
+		if($row = $stmt2->fetch(PDO::FETCH_ASSOC)){
 		$SingerID = $row['SingerID'];
 		$stmt = $db->prepare('insert into MV(MVID,MVTitle,MVImage,MVLink,MVView) values (?,?,?,?,0)
 							  insert into MVPerformedBy(MVID,SingerID) values (?,?)');
 		$result = $stmt->execute(array($MVID, $MVTitle, $MVImage, $MVLink, $MVID, $SingerID));
+		}else{
+			
+		}
 	}
 	
 	function deleteMV($MVID){

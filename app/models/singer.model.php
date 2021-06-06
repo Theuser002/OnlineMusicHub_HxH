@@ -127,5 +127,11 @@ class SingerModel{
 		}
 		return $singer;
 	}
+	
+	function insertSinger($SingerName,$Background,$SingerImage){
+		$db = DB::getInstance();
+		$stmt = $db->prepare('insert into Singer(SingerName,Background,SingerImage) values (?,?,?)');
+		$result = $stmt->execute(array($SingerName,$Background,$SingerImage));
+	}
 }
 ?>

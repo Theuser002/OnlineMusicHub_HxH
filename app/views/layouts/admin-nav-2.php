@@ -11,12 +11,12 @@ $c = new AdminController();
 	<table width="100%" border="1" cellpadding="2">
 	  <tbody>
 		<tr>
-		  <th scope="col">MVID</th>
-		  <th scope="col">MVTitle</th>
-		  <th scope="col">MVImage</th>
-		  <th scope="col">MVLink</th>
-		  <th scope="col">MVView</th>
-		  <th scope="col">Modify</th>
+		  <th scope="col">&nbsp;MVID&nbsp;</th>
+		  <th scope="col">&nbsp;MVTitle&nbsp;</th>
+		  <th scope="col">&nbsp;MVImage&nbsp;</th>
+		  <th scope="col">&nbsp;MVLink&nbsp;</th>
+		  <th scope="col">&nbsp;MVView&nbsp;</th>
+		  <th scope="col">&nbsp;Modify&nbsp;</th>
 		</tr>
 		  <?php 
 		  $list = $c->invokeMV();
@@ -40,7 +40,7 @@ $c = new AdminController();
 				<li><a class="nav-link fa fa-folder-plus" data-toggle="modal" data-target="#myModal_newmv">&nbsp;New MV</a></li>
 			</ul> 
 		</div>
-	</table>
+	</table><br>
 </div>
 
 <!--Modal-->
