@@ -30,8 +30,22 @@ create table MV(
 );
 
 --Track is a song belongs to an account
-create table Track(
-	TrackID int primary key,
+--create table Track(
+--	TrackID int primary key,
+--	SongID int,
+--	AccountID int,
+
+--	foreign key (SongID) references Song(SongID) 
+--	on delete cascade on update cascade,
+--	foreign key (AccountID) references Account(AccountID) 
+--	on delete cascade on update cascade,
+--);
+
+--drop table Track
+
+--MySong is a song belongs to an account
+create table MySong(
+	MySongID int primary key identity(1,1),
 	SongID int,
 	AccountID int,
 

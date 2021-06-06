@@ -177,14 +177,34 @@
 
 #back-page{
     position: absolute;
-    left:20px;
+    left:0;
+    margin-left:20px;
     color: #1E1E1E !important;
     font-size: 20px;
 }
 
 #add-fav{
     position: absolute;
-    right: 20px;
+    right: 0;
+    margin-right:60px;
+    color: #1E1E1E;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#remove-fav{
+    position: absolute;
+    right: 0;
+    margin-right:60px;
+    color: #1E1E1E;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#download{
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
     color: #1E1E1E;
     font-size: 20px;
 }

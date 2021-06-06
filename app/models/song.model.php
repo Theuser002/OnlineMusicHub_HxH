@@ -9,19 +9,22 @@ class SongModel{
 	}
 	
 	function getAllSongs(){
-		$db = DB::getInstance();
-		$stm = $db->prepare('select * from song');
-		$stm->execute();
-		
-		$songList = array();
-		
-		while ($row = $stm->fetch(PDO::FETCH_ASSOC)){
-			$song = new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
-			
-			array_push($songList, $song);
-		}
-		
-		return $songList;
+		try{
+            $db = DB::getInstance();
+            $stm = $db->prepare('select * from song');
+            $stm->execute();
+
+            $songList = array();
+
+            while ($row = $stm->fetch(PDO::FETCH_ASSOC)){
+                $song = new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
+
+                array_push($songList, $song);
+            }
+            return $songList;
+        }catch (Exception $e){
+            echo 'Error getting all songs from db. Caught exception: ', $e->getMessage(), "\n";
+        }
 	}
 	
 	function addSong($songTitle, $genre, $audioLink){
@@ -84,82 +87,95 @@ class SongModel{
 	}
 	
 	function updateSongViews($songID, $songViews){
-		$db = DB::getInstance();
-		$stm = $db->prepare('update Song set SongViews = ? where SongID = ?');
-		$stm->execute([$songViews, $songID]);
+		try{
+            $db = DB::getInstance();
+            $stm = $db->prepare('update Song set SongViews = ? where SongID = ?');
+            $stm->execute([$songViews, $songID]);
+        }catch (Exception $e){
+            echo 'Error updating song views to db. Caught exception: ', $e->getMessage(), "\n";
+        }
 	}
 	
 	function getPaginationAZ($pageNum, $entriesPerPage){
-		$db = DB::getInstance();
-		$stm = $db->prepare('
-							declare @PageNumber as int
-							declare @RowsPerPage as int
-							set @PageNumber = ?
-							set @RowsPerPage = ?
-							select * from Song
-							order by SongTitle
-							offset (@PageNumber - 1)*@RowsPerPage rows
-							fetch next @RowsPerPage rows only');
-		$stm->execute([$pageNum, $entriesPerPage]);
-		
-		$songList = array();
-		while ($row = $stm->fetch(PDO::FETCH_ASSOC)){
-			$song = new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
-			
-			array_push($songList, $song);
-		}
-		
-		return $songList;
+        try{
+            $db = DB::getInstance();
+            $stm = $db->prepare('
+                                declare @PageNumber as int
+                                declare @RowsPerPage as int
+                                set @PageNumber = ?
+                                set @RowsPerPage = ?
+                                select * from Song
+                                order by SongTitle
+                                offset (@PageNumber - 1)*@RowsPerPage rows
+                                fetch next @RowsPerPage rows only');
+            $stm->execute([$pageNum, $entriesPerPage]);
+
+            $songList = array();
+            while ($row = $stm->fetch(PDO::FETCH_ASSOC)){
+                $song = new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
+
+                array_push($songList, $song);
+            }
+            return $songList;   
+        }catch (Exception $e){
+             echo 'Error getting pagination from db. Caught exception: ', $e->getMessage(), "\n";
+        }
 	}
 	
 	function getPaginationTopViews($pageNum, $entriesPerPage){
-		$db = DB::getInstance();
-		$stm = $db->prepare('
-							declare @PageNumber as int
-							declare @RowsPerPage as int
-							set @PageNumber = ?
-							set @RowsPerPage = ?
-							select * from Song
-							order by SongViews desc
-							offset (@PageNumber - 1)*@RowsPerPage rows
-							fetch next @RowsPerPage rows only');
-		$stm->execute([$pageNum, $entriesPerPage]);
-		
-		$songList = array();
-		while ($row = $stm->fetch(PDO::FETCH_ASSOC)){
-			$song = new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
-			
-			array_push($songList, $song);
-		}
-		
-		return $songList;
+        try{
+            $db = DB::getInstance();
+            $stm = $db->prepare('
+                                declare @PageNumber as int
+                                declare @RowsPerPage as int
+                                set @PageNumber = ?
+                                set @RowsPerPage = ?
+                                select * from Song
+                                order by SongViews desc
+                                offset (@PageNumber - 1)*@RowsPerPage rows
+                                fetch next @RowsPerPage rows only');
+            $stm->execute([$pageNum, $entriesPerPage]);
+
+            $songList = array();
+            while ($row = $stm->fetch(PDO::FETCH_ASSOC)){
+                $song = new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
+
+                array_push($songList, $song);
+            }
+		  return $songList;   
+        }catch (Exception $e){
+            echo 'Error getting pagination from db. Caught exception: ', $e->getMessage(), "\n";
+        }
 	}function getPaginationLatest($pageNum, $entriesPerPage){
-		$db = DB::getInstance();
-		$stm = $db->prepare('
-							declare @PageNumber as int
-							declare @RowsPerPage as int
-							set @PageNumber = ?
-							set @RowsPerPage = ?
-							select * from Song
-							order by SongID desc
-							offset (@PageNumber - 1)*@RowsPerPage rows
-							fetch next @RowsPerPage rows only');
-		$stm->execute([$pageNum, $entriesPerPage]);
-		
-		$songList = array();
-		while ($row = $stm->fetch(PDO::FETCH_ASSOC)){
-			$song = new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
-			
-			array_push($songList, $song);
-		}
-		
-		return $songList;
+		try{
+            $db = DB::getInstance();
+            $stm = $db->prepare('
+                                declare @PageNumber as int
+                                declare @RowsPerPage as int
+                                set @PageNumber = ?
+                                set @RowsPerPage = ?
+                                select * from Song
+                                order by SongID desc
+                                offset (@PageNumber - 1)*@RowsPerPage rows
+                                fetch next @RowsPerPage rows only');
+            $stm->execute([$pageNum, $entriesPerPage]);
+
+            $songList = array();
+            while ($row = $stm->fetch(PDO::FETCH_ASSOC)){
+                $song = new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
+
+                array_push($songList, $song);
+            }
+            return $songList;
+        }catch (Exception $e){
+            echo 'Error getting pagination from db. Caught exception: ', $e->getMessage(), "\n";
+        }
 	}
 	
 	function searchSong($key){
 		$db = DB::getInstance();
 		$stmt = $db->prepare('select * from Song where SongTitle like ?');
-		$prekey = "%".$key."%";
+		$prekey = "%".$key."%"; //any string that contain $key.
 		$result = $stmt->execute(array($prekey));
 		$songList = array();
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
@@ -170,7 +186,43 @@ class SongModel{
 		
 		return $songList;
 	}
+    
+    function isInFav($accountID, $songID){
+        try{
+            $db = DB::getInstance();
+            $stm = $db->prepare('select * from MySong where AccountID = ? and SongID = ?');
+            $stm->execute([$accountID, $songID]);
+            
+            return iterator_count($stm) >= 1 ? 1 : 0;
+        }catch (Exception $e ) {
+            echo 'Error checking favourite song from db. Caught exception: ', $e->getMessage(), "\n";
+        }
+    }
+    
+    function addFavSong($accountID, $songID){
+       try{
+            if(!$this->isInFav($accountID, $songID)){
+                $db = DB::getInstance();
+                $stm = $db->prepare('insert into MySong(AccountID, SongID) values (?, ?)');
+                $stm->execute([$accountID, $songID]);
+            }
+       }catch (Exception $e){
+           echo 'Error adding favourite song to db. Caught exception: ', $e->getMessage(), "\n";
+       }
+    }
 	
+    
+    function removeFavSong($accountID, $songID){
+        try{
+            if($this->isInFav($accountID, $songID)){
+                $db = DB::getInstance();
+                $stm = $db->prepare('delete from MySong where AccountID = ? and SongID = ?');
+                $stm->execute([$accountID, $songID]);
+            }
+        }catch(Exception $e){
+            echo 'Error removing favourite song from db. Caught exception: ', $e->getMessage(), "\n";
+        }
+    }
 }
 
 //$songModel = new SongModel();
@@ -181,4 +233,8 @@ class SongModel{
 //$songModel->updateSongViews(1, 1);
 //var_dump($songModel->getAllSongs());
 //var_dump($songModel->getSongByID(2));
+
+//echo $songModel->isInFav(1,1);
+//$songModel->addFavSong(1,1);
+//$songModel->removeFavSong(1,1);
 ?>

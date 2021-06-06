@@ -1,5 +1,9 @@
+var addFavBtn = document.getElementById('add-fav');
+var removeFavBtn = document.getElementById('remove-fav');
+
+
 function getXMLHttpObject (){
-    console.log("TEST");
+    console.log('TEST');
     //xhr: XMLHttpRequestObject
     var xhr = null;
     try
@@ -12,12 +16,12 @@ function getXMLHttpObject (){
         //Internet Explorer (IE)
         try
         {
-            xhr = new ActiveXObject("Msxml2.XMLHTTP");
+            xhr = new ActiveXObject('Msxml2.XMLHTTP');
         }
         //old IE
         catch (e)
         {
-            xhr = new ActiveXObject("Microsoft.XMLHTTP");        
+            xhr = new ActiveXObject('Microsoft.XMLHTTP');        
         }
     }
     
@@ -25,17 +29,55 @@ function getXMLHttpObject (){
 }
 
 function updateSongViews(songID){
-    console.log('TEST');
-//    var xhr = getXMLHttpObject();
-    var xhr;
-    if (window.XMLHttpRequest) {
-		xhr = new XMLHttpRequest();
-	} else {
-		xhr = new ActiveXObject("microsoft.XMLHttp");
-	}
-    var url = "updateSongViewsAction.php?songID="+songID;
+    var xhr = getXMLHttpObject();
+    var url = 'updateSongViewsAction.php?songID='+songID;
     
 //    https://www.w3schools.com/xml/ajax_xmlhttprequest_send.asp
-    xhr.open("GET", url, true);
+    xhr.open('GET', url, true);
     xhr.send();
+}
+
+function addFavSongToDB(songID){
+    console.log('ADD FAV');
+    var xhr = getXMLHttpObject();
+    var url = 'addFavSongAction.php?songID='+songID;
+    xhr.open('GET', url, true);
+    xhr.send();
+}
+
+function removeFavSongFromDB(songID){
+    console.log('REMOVE FAV');
+    var xhr = getXMLHttpObject();
+    var url = 'removeFavSongAction.php?songID='+songID;
+    xhr.open('GET', url, true);
+    xhr.send();
+}
+
+function addFavSong(songID){
+    if (addFavBtn.querySelector('i').classList.contains('far')){
+        addFavBtn.querySelector('i').classList.remove('far');
+        addFavBtn.querySelector('i').classList.add('fas');
+
+        addFavSongToDB(songID);
+    }else if (addFavBtn.querySelector('i').classList.contains('fas')){
+        addFavBtn.querySelector('i').classList.remove('fas');
+        addFavBtn.querySelector('i').classList.add('far');
+        removeFavSongFromDB(songID);
+    }else{
+        console.log('ERROR1');
+    }
+}
+
+function removeFavSong(songID){
+    if (removeFavBtn.querySelector('i').classList.contains('far')){
+        removeFavBtn.querySelector('i').classList.remove('far');
+        removeFavBtn.querySelector('i').classList.add('fas');
+        addFavSong(songID);
+    }else if (removeFavBtn.querySelector('i').classList.contains('fas')){
+        removeFavBtn.querySelector('i').classList.remove('fas');
+        removeFavBtn.querySelector('i').classList.add('far');
+        removeFavSongFromDB(songID);
+    }else{
+        console.log('ERROR2');
+    }
 }
