@@ -60,14 +60,16 @@ class SongModel{
 		
 	}
 	
-	function deleteSong($songID){
+	function deleteSong($SongID){
 		try{
 			$db = DB::getInstance();
-			$stm = $stm->prepare(
-				''
+			$stm = $db->prepare(
+				'delete from MySong where SongID = ?
+				delete from SongPerformedBy where SongID = ?
+				delete from Song where SongID = ? '
 			);
 			
-			$stm->execute([$songID]);
+			$stm->execute(array($SongID,$SongID,$SongID));
 		}catch (Exception $e){
 			echo 'Error deleting song from db. Caught exception: ', $e->getMessage(), "\n";
 		}

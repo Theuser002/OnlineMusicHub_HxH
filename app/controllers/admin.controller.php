@@ -1,7 +1,9 @@
 <?php
 include_once('../../models/mv.model.php');
+include_once('../../models/song.model.php');
 include_once('../../models/singer.model.php');
 include_once('../../models/mv.entity.php');
+include_once('../../models/song.entity.php');
 include_once('../../models/singer.entity.php');
 
 class AdminController{
@@ -33,6 +35,11 @@ class AdminController{
 	function deleteSinger($SingerID){
 		$model = new SingerModel();
 		$model->deleteSinger($SingerID);
+	}
+	
+	function deleteSong($SongID){
+		$model = new SongModel();
+		$model->deleteSong($SongID);
 	}
 	
 	function addMV($MVTitle,$MVImage,$MVLink,$SingerName){

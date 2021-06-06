@@ -66,3 +66,16 @@ function deleteSinger(SingerID){
 	xhttp.send();
 	window.location.reload();
 }
+
+function deleteSong(SongID){
+	var xhttp;
+	var url = "deleteSongAction.php?SongID="+SongID;
+	if (window.XMLHttpRequest) {
+		xhttp = new XMLHttpRequest();
+	} else {
+		xhttp = new ActiveXObject("microsoft.XMLHttp");
+	}
+	xhttp.open("POST", url, true);
+	xhttp.send();
+	window.location.reload();
+}
