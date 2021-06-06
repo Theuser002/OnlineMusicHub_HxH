@@ -1,16 +1,4 @@
-<head>
-<link href="css/pagination.css" rel="stylesheet" type="text/css">
-</head>
 <?php
-include_once('../../controllers/mv.controller.php');
-$c = new Ctrl_MV();
-?>
-<div class="container">
-						<h3 class="text-center"><br>Latest<br>
-						  <hr><br>
-						</h3>
-						<div class="d-flex flex-row flex-wrap justify-content-left">
-						  <?php
 							$mvlist = $c->invoke();
 							$listlen = count($mvlist);
 							//define total number of results you want per page
@@ -35,31 +23,3 @@ $c = new Ctrl_MV();
 									</div>";
 							  echo "</div>";
 							}?>
-						<br><br>
-					  </div>
-	<br>
-	<div class="pagination">
-		<?php //display pagination list bar << 1 2 3 >>
-	   $pagLink = "";
-	   if($page>=2){   
-            echo "<a href='mv-page.php?page=".($page-1)."&tab=2'>  Prev </a>";   
-        }       
-                   
-        for ($i=1; $i<=$number_of_page; $i++) {   
-          if ($i == $page) {   
-              $pagLink .= "<a class = 'active' href='mv-page.php?page="  
-                                                .$i."&tab=2'>".$i." </a>";   
-          }               
-          else  {   
-              $pagLink .= "<a href='mv-page.php?page=".$i."&tab=2'>   
-                                                ".$i." </a>";     
-          }   
-        };     
-        echo $pagLink;   
-  
-        if($page<$number_of_page){   
-            echo "<a href='mv-page.php?page=".($page+1)."&tab=2'>  Next </a>";   
-        }   
-	   ?>
-	   </div>
-	   </div>
