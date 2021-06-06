@@ -3,6 +3,13 @@ include_once('../../controllers/admin.controller.php');
 include_once('../../controllers/songs-display.controller.php');
 $cs = new SongsDisplayController();
 $c = new AdminController();
+if(isset($_POST['SongTitle'],$_POST['SongImage'],$_POST['Audio'],$_POST['SingerName'])){
+	$SongTitle = $_POST['SongTitle'];
+	$SongImage = $_POST['SongImage'];
+	$AudioLink = $_POST['Audio'];
+	$SingerName = $_POST['SingerName'];
+	$c->addSong($SongTitle,$SongImage,$AudioLink,$SingerName);
+}
 if(isset($_POST['newSongTitle'],$_POST['newSongImage'],$_POST['newSongLink'],$_POST['newSongID'])){
 	$SongTitle = $_POST['newSongTitle'];
 	$SongImage = $_POST['newSongImage'];
@@ -42,7 +49,7 @@ if(isset($_POST['newSongTitle'],$_POST['newSongImage'],$_POST['newSongLink'],$_P
 		  <td><?php echo $singer->getSingerName() ?></td>
 		  <td>
 			<a class="fa fa-wrench" data-toggle="modal" data-target="#myModal_fixsong<?php echo $song->getSongID() ?>"></a>/
-			<a class="fa fa-trash" onClick="deleteMV(<?php echo $song->getSongID() ?>)"></a>
+			<a class="fa fa-trash" onClick="deleteSong(<?php echo $song->getSongID() ?>)"></a>
 			</td>
 		</tr>
 <!--	Modal	  -->
@@ -124,13 +131,13 @@ if(isset($_POST['newSongTitle'],$_POST['newSongImage'],$_POST['newSongLink'],$_P
 								<form action="account-admin.php?tab=1" method="post">
 									<p class="hint-text">Provide new Song information</p>
 									<div class="form-group">
-										<input type="text" class="form-control" name="MVTitle" placeholder="MVTitle" required="required">
+										<input type="text" class="form-control" name="SongTitle" placeholder="SongTitle" required="required">
 									</div>
 									<div class="form-group">
-										<input type="file" class="form-control" name="MVImage" required="required">
+										Image: <input type="file" class="form-control" name="SongImage" required="required">
 									</div>
 									<div class="form-group">
-										<input type="text" class="form-control" name="MVLink" placeholder="MVLink" required="required">
+										Audio: <input type="file" class="form-control" name="Audio" required="required">
 									</div>
 									<div class="form-group">
 										<input type="text" class="form-control" name="SingerName" placeholder="Singer" required="required">

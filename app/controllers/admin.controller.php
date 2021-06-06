@@ -45,6 +45,11 @@ class AdminController{
 		$model->insertSinger($SingerName,$Background,$SingerImage);
 	}
 	
+	function addSong($SongTitle,$SongImage,$AudioLink,$SingerName){
+		$model = new SongModel();
+		$model->insertSong($SongTitle,$SongImage,$AudioLink,$SingerName);
+	}
+	
 	function updateSinger($SingerName,$Background,$SingerImage,$SingerID){
 		$model = new SingerModel();
 		$model->updateSinger($SingerName,$Background,$SingerImage,$SingerID);

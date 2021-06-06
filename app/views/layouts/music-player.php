@@ -128,9 +128,9 @@ if (isset($_SESSION['accountID'])){
                 ?>
             </h6>
         </div>
-        <audio src="<?php echo $songAudioLink ?>" id="audio" autoplay="true"></audio>
+        <audio src="songs/<?php echo $songAudioLink ?>" id="audio" autoplay="true"></audio>
         
-        <div class="img-container"><img src="songs/<?php echo $songImageLink ?>" alt="music-cover" id="cover"></div>
+        <div class="img-container"><img src="images//<?php echo $songImageLink ?>" alt="music-cover" id="cover"></div>
         <div id="horizontal-bar"></div>
         <div class="navigation">
             <a id="prev" class="action-btn" href="
