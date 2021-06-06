@@ -62,7 +62,7 @@
 			<a class="single-song" href="music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.$i.'">
 				  <div class="song-img-wrap">
 					<!--     Song image -->
-					<img class="img" src="'.$songImageLink.'" />
+					<img class="img" src="images/'.$songImageLink.'" />
 				  </div>
 			  <div class="vr"></div>
 			  <div class="title-and-views">
@@ -100,7 +100,7 @@
 			<a class="single-song" href="music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.$i.'">
 				  <div class="song-img-wrap">
 					<!--     Song image -->
-					<img class="img" src="'.$songImageLink.'" />
+					<img class="img" src="images/'.$songImageLink.'" />
 				  </div>
 			  <div class="vr"></div>
 			  <div class="title-and-views">
@@ -136,7 +136,7 @@
 			<a class="single-song" href="music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.$i.'">
 				  <div class="song-img-wrap">
 					<!--     Song image -->
-					<img class="img" src="'.$songImageLink.'" />
+					<img class="img" src="images/'.$songImageLink.'" />
 				  </div>
 			  <div class="vr"></div>
 			  <div class="title-and-views">

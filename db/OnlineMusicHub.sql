@@ -76,7 +76,7 @@ create table Singer(
 );
 
 create table SongPerformedBy(
-	songPerformance int primary key,
+	songPerformance int primary key identity(1,1),
 	SingerID int,
 	SongID int,
 
@@ -232,6 +232,10 @@ select top 3 MV.MVID from MV
 insert into MV(MVID,MVTitle,MVImage,MVLink) values 
 (1,'All Falls Down','allfallsdown.jpg','https://www.youtube.com/embed/6RLLOEzdxsM')
 insert into MVPerformedBy(mvPerformance,MVID,SingerID) values (1,1,9)
+
+insert into Song(SongID,SongTitle,SongImageLink,AudioLink,SongViews) values 
+(16,'Victory','compact-disc.png','Victory.mp3',0)
+insert into SongPerformedBy(SongID,SingerID) values (16,7)
 
 declare @MVID as INT
 declare @SongID as INT

@@ -27,23 +27,23 @@ class SongModel{
         }
 	}
 	
-	function addSong($songTitle, $genre, $audioLink){
-		try{
-			$db = DB::getInstance();
-			$stm1 = $db->prepare('select top 1 SongID + 1 as NewSongID from Song order by SongID desc');
-			$stm1->execute();
-			$row = $stm1->fetch(PDO::FETCH_ASSOC);
-			$newSongID = $row['NewSongID'];
-			if(!$newSongID){
-				$newSongID = 1;
-			}
-			$songImageLink = defaultSongImageLink;
-			$stm2 = $db->prepare(
-				'insert into Song(SongID, SongTitle, Genre, SongViews, AudioLink, SongImageLink) values (?, ?, ?, ?, ?, ?);'
-			);	
-			$stm2->execute([$newSongID, $songTitle, $genre, 0, $audioLink, $songImageLink]);
-		}catch (Exception $e){
-			echo 'Error adding song to db. Caught exception: ', $e->getMessage(), "\n";
+	function insertSong($SongTitle,$SongImage,$AudioLink,$SingerName){
+		$db = DB::getInstance();
+		$stmt1 = $db->prepare('select top 1 SongID +1 as SongID from Song order by SongID desc');
+		$result = $stmt1->execute();
+		$row = $stmt1->fetch(PDO::FETCH_ASSOC);
+		if($row==null){
+			$SongID = 1;
+		}else{
+		$SongID = $row['SongID'];
+		}
+		$stmt2 = $db->prepare('select * from Singer where SingerName = ?');
+		$result = $stmt2->execute(array($SingerName));
+		if($row = $stmt2->fetch(PDO::FETCH_ASSOC)){
+		$SingerID = $row['SingerID'];
+		$stmt = $db->prepare('insert into Song(SongID,SongTitle,SongImageLink,AudioLink,SongViews) values (?,?,?,?,0)
+							  insert into SongPerformedBy(SongID,SingerID) values (?,?)');
+		$result = $stmt->execute(array($SongID, $SongTitle, $SongImage, $AudioLink, $SongID, $SingerID));
 		}
 	}
 	
@@ -60,27 +60,31 @@ class SongModel{
 		
 	}
 	
-	function deleteSong($songID){
+	function deleteSong($SongID){
 		try{
 			$db = DB::getInstance();
-			$stm = $stm->prepare(
-				''
+			$stm = $db->prepare(
+				'delete from MySong where SongID = ?
+				delete from SongPerformedBy where SongID = ?
+				delete from Song where SongID = ? '
 			);
 			
-			$stm->execute([$songID]);
+			$stm->execute(array($SongID,$SongID,$SongID));
 		}catch (Exception $e){
 			echo 'Error deleting song from db. Caught exception: ', $e->getMessage(), "\n";
 		}
 	}
 	
-	function updateSong($songID, $songTitle, $genre, $songImageLink){
+	function updateSong($SongTitle,$SongImage,$SongLink,$SongID){
 		try{
 			$db = DB::getInstance();
-			$stm = $stm->prepare(
-				''
+			$stm = $db->prepare(
+				'update Song
+				set SongTitle = ? , SongImageLink = ? , AudioLink = ?
+				where SongID = ?'
 			);
 			
-			$stm->execute([$songID]);
+			$stm->execute(array($SongTitle,$SongImage,$SongLink,$SongID));
 		}catch (Exception $e){
 			echo 'Error editing song from db. Caught exception: ', $e->getMessage(), "\n";
 		}
