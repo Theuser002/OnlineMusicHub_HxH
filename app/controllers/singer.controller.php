@@ -26,6 +26,12 @@ class SingerController{
 		return $songList;
 	}
 	
+	function getPaginationSinger($pageNum, $resultPerPage){
+		$model = new SingerModel();
+		$list = $model->getPaginationSinger($pageNum, $resultPerPage);
+		return $list;
+	}
+	
 	function getPaginationMV($pageNum, $resultPerPage,$singerID){
 		$model = new SingerModel();
 		$List = $model->getPaginationMV($pageNum, $resultPerPage,$singerID);

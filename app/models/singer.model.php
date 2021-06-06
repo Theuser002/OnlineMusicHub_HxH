@@ -54,6 +54,25 @@ class SingerModel{
 		return $SongList;
 	}
 	
+	function getPaginationSinger($pageNum, $resultPerPage){
+		$db = DB::getInstance();
+		$stmt = $db->prepare('DECLARE @PageNumber AS INT
+								DECLARE @RowsOfPage AS INT
+								SET @PageNumber=?
+								SET @RowsOfPage=?
+								select * from Singer
+								order by SingerID
+								OFFSET (@PageNumber-1)*@RowsOfPage ROWS
+								FETCH NEXT @RowsOfPage ROWS ONLY');
+		$result = $stmt->execute(array($pageNum, $resultPerPage)); //$result = 1 means execute successfully
+		$singerList = array();
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ //to fetch result of each row in table
+			
+			array_push($singerList, new SingerEntity($row['SingerID'],$row['SingerName'],$row['Background'],$row['SingerImage']));
+		}
+		return $singerList;
+	}
+	
 	function getPaginationMV($pageNum, $resultPerPage, $singerID){
 		$db = DB::getInstance();
 		$stmt = $db->prepare('DECLARE @PageNumber AS INT
