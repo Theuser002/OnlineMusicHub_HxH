@@ -37,6 +37,7 @@ if(isset($_POST['SingerName'],$_POST['Background'],$_POST['SingerImage'])){
 	$SingerImage = $_POST['SingerImage'];
 	$c->addSinger($SingerName,$Background,$SingerImage);
 }
+
 ?>
 <body id="index-body">
 <br>
