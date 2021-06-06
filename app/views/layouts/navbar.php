@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 	<head>
 		<!--favicon-->
@@ -88,16 +88,16 @@
 								if ($_SESSION['isAdmin'] == 1) {
 									echo '
 										<li class="nav-item">
-											<a class="nav-link" href="admin/song-admin.php" >Songs</a>
+											<a class="nav-link" href="song-page.php" >Songs</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="admin/mv-admin.php" >MVs</a>
+											<a class="nav-link" href="mv-page.php" >MVs</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="admin/artist-admin.php" >Artists</a>
+											<a class="nav-link" href="artist-page.php" >Artists</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="admin/account-admin.php" >Account</a>
+											<a class="nav-link" href="account-admin.php" >Account</a>
 										</li>';
 								}
 								else

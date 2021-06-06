@@ -20,7 +20,11 @@ class LogInController{
 				$_SESSION['username'] = $account->getUsername();
 				$_SESSION['avatarLink'] = $account->getAvatarLink();
 				$_SESSION['isAdmin'] = $account->isAdmin();
-				header("Location: ../views/layouts/account-page.php");
+				if($_SESSION['isAdmin']==1){
+					header("Location: ../views/layouts/account-admin.php");
+				}else{
+					header("Location: ../views/layouts/account-page.php");
+				}
 				exit();
 			}else{
 				header("Location: ../views/layouts/index.php?error1=loginfailed");

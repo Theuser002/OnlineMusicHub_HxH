@@ -6,7 +6,7 @@ function updateMVView(id){
 	} else {
 		xhttp = new ActiveXObject("microsoft.XMLHttp");
 	}
-	xhttp.open("GET", url, true);
+	xhttp.open("POST", url, true);
 	xhttp.send();
 }
 
@@ -41,9 +41,15 @@ function livesearch(data){
 	}
 }
 
-function process(){
-	if(http.readyState==4 && http.status==200){
-		result = http.responseText;
-		document.getElementById("result").innerHTML = result;
+function deleteMV(MVID){
+	var xhttp;
+	var url = "deleteMVAction.php?MVID="+MVID;
+	if (window.XMLHttpRequest) {
+		xhttp = new XMLHttpRequest();
+	} else {
+		xhttp = new ActiveXObject("microsoft.XMLHttp");
 	}
+	xhttp.open("POST", url, true);
+	xhttp.send();
+	window.location.reload();
 }
