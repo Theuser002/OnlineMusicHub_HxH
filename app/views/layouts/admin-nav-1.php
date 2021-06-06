@@ -3,6 +3,13 @@ include_once('../../controllers/admin.controller.php');
 include_once('../../controllers/songs-display.controller.php');
 $cs = new SongsDisplayController();
 $c = new AdminController();
+if(isset($_POST['newSongTitle'],$_POST['newSongImage'],$_POST['newSongLink'],$_POST['newSongID'])){
+	$SongTitle = $_POST['newSongTitle'];
+	$SongImage = $_POST['newSongImage'];
+	$SongLink = $_POST['newSongLink'];
+	$SongID = $_POST['newSongID'];
+	$c->updateSong($SongTitle,$SongImage,$SongLink,$SongID);
+}
 ?><head>
 <link href="css/pagination.css" rel="stylesheet" type="text/css">
 <script src="js/ajax.js"></script>
@@ -63,10 +70,10 @@ $c = new AdminController();
 										<input type="text" class="form-control" name="newSongTitle" value="<?php echo $song->getSongTitle() ?>" required="required">
 									</div>
 									<div class="form-group">
-										<input type="file" class="form-control" name="newSongImage" required >
+										Image: <input type="file" class="form-control" name="newSongImage" required >
 									</div>
 									<div class="form-group">
-										<input type="text" class="form-control" name="newSongLink" value="<?php echo $song->getAudioLink() ?>" required="required">
+										Audio: <input type="file" class="form-control" name="newSongLink" required>
 									</div>
 									<div class="form-group">
 										<input type="text" class="form-control" name="newSinger" value="<?php echo $singer->getSingerName() ?>" required="required">
@@ -107,7 +114,7 @@ $c = new AdminController();
 
 						<!-- Modal Header -->
 						<div class="modal-header">
-							<h4 class="modal-title">Add new MV</h4>
+							<h4 class="modal-title">Add new Song</h4>
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</div>
 
@@ -115,7 +122,7 @@ $c = new AdminController();
 						<div class="modal-body">
 							<div class="signin-form">
 								<form action="account-admin.php?tab=1" method="post">
-									<p class="hint-text">Provide new MV information</p>
+									<p class="hint-text">Provide new Song information</p>
 									<div class="form-group">
 										<input type="text" class="form-control" name="MVTitle" placeholder="MVTitle" required="required">
 									</div>

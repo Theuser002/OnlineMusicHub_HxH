@@ -113,7 +113,7 @@ if (isset($_SESSION['accountID'])){
                 }
             }
         ?>
-        <a id="download" class="" href="<?php echo $songAudioLink ?>" download="<?php echo $songTitle ?>">
+        <a id="download" class="" href="songs/<?php echo $songAudioLink ?>" download="<?php echo $songTitle ?>">
             <i class="fas fa-arrow-down"></i>
         </a>
         <div class="music-info shadow dark-blurry">
@@ -130,7 +130,7 @@ if (isset($_SESSION['accountID'])){
         </div>
         <audio src="<?php echo $songAudioLink ?>" id="audio" autoplay="true"></audio>
         
-        <div class="img-container"><img src="<?php echo $songImageLink ?>" alt="music-cover" id="cover"></div>
+        <div class="img-container"><img src="songs/<?php echo $songImageLink ?>" alt="music-cover" id="cover"></div>
         <div id="horizontal-bar"></div>
         <div class="navigation">
             <a id="prev" class="action-btn" href="

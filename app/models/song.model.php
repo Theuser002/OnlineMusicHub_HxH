@@ -73,14 +73,16 @@ class SongModel{
 		}
 	}
 	
-	function updateSong($songID, $songTitle, $genre, $songImageLink){
+	function updateSong($SongTitle,$SongImage,$SongLink,$SongID){
 		try{
 			$db = DB::getInstance();
-			$stm = $stm->prepare(
-				''
+			$stm = $db->prepare(
+				'update Song
+				set SongTitle = ? , SongImageLink = ? , AudioLink = ?
+				where SongID = ?'
 			);
 			
-			$stm->execute([$songID]);
+			$stm->execute(array($SongTitle,$SongImage,$SongLink,$SongID));
 		}catch (Exception $e){
 			echo 'Error editing song from db. Caught exception: ', $e->getMessage(), "\n";
 		}

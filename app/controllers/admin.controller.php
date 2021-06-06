@@ -54,6 +54,11 @@ class AdminController{
 		$model = new Model_MV();
 		$model->updateMV($MVTitle,$MVImage,$MVLink,$MVID);
 	}
+	
+	function updateSong($SongTitle,$SongImage,$SongLink,$SongID){
+		$model = new SongModel();
+		$model->updateSong($SongTitle,$SongImage,$SongLink,$SongID);
+	}
 
 }
 ?>
