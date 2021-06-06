@@ -29,7 +29,9 @@ session_start();
 	
 <?php
 include_once('../../controllers/addFav.controller.php');
-$c = new Ctrl_MV();
+include_once('../../controllers/songs-display.controller.php');
+$c1 = new SongsDisplayController();
+$c2 = new Ctrl_MV();
 ?>
 		
 		<header id="account-header">
@@ -51,20 +53,33 @@ $c = new Ctrl_MV();
 		<section class="content">
 			<div class="container" style="margin-top: 50px;">
 				<h3 class="text-center"><br>My Songs<hr><br></h3><hr>
+				<?php
+				$mySong = $c1->getFavSongList($_SESSION['accountID']);
+				?>
+				<div class="d-flex flex-row flex-wrap justify-content-center">
+				<?php
+				for($i=0;$i<count($mySong);$i++){ ?>
+				<div class="d-flex flex-column">
+				<img src="images/<?php echo $mySong[$i]->getSongImageLink() ?>" class="img-fluid">
+				<h5><?php echo $mySong[$i]->getSongTitle() ?></h5>
+			  </div>
+			<?php	}?>
+			</div>
 			</div>
 
 			<div class="container" style="margin-top: 50px;">
 				<h3 class="text-center"><br>My MVs<hr><br></h3>
 				<?php
-				$myMV =$c->getFavMVList($_SESSION['accountID']);
+				$myMV =$c2->getFavMVList($_SESSION['accountID']);
 				?>
 				<div class="d-flex flex-row flex-wrap justify-content-center">
 				<?php
-				for($i=0;$i<count($myMV);$i++){
-					echo '<div class="d-flex flex-column">
-				<img src="images/'.$myMV[$i]->getMVImage().'" class="img-fluid">
-			  </div>';
-				}?>
+				for($i=0;$i<count($myMV);$i++){ ?>
+				<div class="d-flex flex-column">
+				<img src="images/<?php echo $myMV[$i]->getMVImage() ?>" class="img-fluid">
+				<h5><?php echo $myMV[$i]->getMVTitle() ?></h5>
+			  </div>
+			<?php	}?>
 			</div>
 			</div>
 		</section>

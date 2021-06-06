@@ -102,6 +102,12 @@ class SongsDisplayController {
         $songModel->removeFavSong($accountID, $songID);
     }
 	
+	function getFavSongList($accountID){
+		$model = new SongModel();
+		$list = $model->getFavSongList($accountID);
+		return $list;
+	}
+	
 	function getOwnSinger($SongID){
 		$model = new SingerModel();
 		$singer = $model->getOwnSingerSong($SongID);
