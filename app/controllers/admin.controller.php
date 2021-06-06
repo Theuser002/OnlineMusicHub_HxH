@@ -24,6 +24,11 @@ class AdminController{
 		$model->deleteMV($MVID);
 	}
 	
+	function deleteSinger($SingerID){
+		$model = new SingerModel();
+		$model->deleteSinger($SingerID);
+	}
+	
 	function addMV($MVTitle,$MVImage,$MVLink,$SingerName){
 		$model = new Model_MV();
 		$model->insertMV($MVTitle,$MVImage,$MVLink,$SingerName);

@@ -133,5 +133,19 @@ class SingerModel{
 		$stmt = $db->prepare('insert into Singer(SingerName,Background,SingerImage) values (?,?,?)');
 		$result = $stmt->execute(array($SingerName,$Background,$SingerImage));
 	}
+	
+	function deleteSinger($SingerID){
+		$db = DB::getInstance();
+		$stmt = $db->prepare('declare @MVID as INT
+								declare @SongID as INT
+								set @MVID = (select MVID from MVPerformedBy where SingerID = ? )
+								set @SongID = (select SongID from SongPerformedBy where SingerID = ? )
+								delete from MVPerformedBy where SingerID = ?
+								delete from MV where MVID = @MVID
+								delete from SongPerformedBy where SingerID = ?
+								delete from Song where SongID = @SongID
+								delete from Singer where SingerID = ?');
+		$result = $stmt->execute(array($SingerID,$SingerID,$SingerID,$SingerID,$SingerID));
+	}
 }
 ?>

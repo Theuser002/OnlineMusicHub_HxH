@@ -232,3 +232,13 @@ select top 3 MV.MVID from MV
 insert into MV(MVID,MVTitle,MVImage,MVLink) values 
 (1,'All Falls Down','allfallsdown.jpg','https://www.youtube.com/embed/6RLLOEzdxsM')
 insert into MVPerformedBy(mvPerformance,MVID,SingerID) values (1,1,9)
+
+declare @MVID as INT
+declare @SongID as INT
+set @MVID = (select MVID from MVPerformedBy where SingerID = 1)
+set @SongID = (select SongID from SongPerformedBy where SingerID = 1)
+delete from MVPerformedBy where SingerID = 1
+delete from MV where MVID = @MVID
+delete from SongPerformedBy where SingerID = 1
+delete from Song where SongID = @SongID
+delete from Singer where SingerID = 1

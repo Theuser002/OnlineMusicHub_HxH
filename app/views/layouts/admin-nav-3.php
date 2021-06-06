@@ -27,8 +27,8 @@ $c = new AdminController();
 		  <td><?php echo $singer->getBackground() ?></td>
 		  <td><?php echo $singer->getSingerImage() ?></td>
 		  <td>
-			<a class="fa fa-wrench" data-toggle="modal" data-target="#myModal_newsinger"></a>/
-			<a class="fa fa-trash" onClick="deleteMV(<?php echo $singer->getSingerID() ?>)"></a>
+			<a class="fa fa-wrench" data-toggle="modal" data-target="#myModal_fixsinger"></a>/
+			<a class="fa fa-trash" onClick="deleteSinger(<?php echo $singer->getSingerID() ?>)"></a>
 			</td>
 		</tr>
 		  <?php } ?>
@@ -59,6 +59,50 @@ $c = new AdminController();
 							<div class="signin-form">
 								<form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
 									<p class="hint-text">Provide new Singer information</p>
+									<div class="form-group">
+										<input type="text" class="form-control" name="SingerName" placeholder="SingerName" required="required">
+									</div>
+									<div class="form-group">
+										<input type="text" class="form-control" name="Background" placeholder="Background" required="required">
+									</div>
+									<div class="form-group">
+										<input type="file" class="form-control" name="SingerImage" required="required">
+									</div>
+									<div class="form-group">
+										<button type="submit" name="login-submit" class="btn btn-dark btn-lg btn-block">Add</button>
+										<button type="reset" name="login-reset" class="btn btn-secondary btn-lg btn-block">Clear
+										</button>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!-- Modal footer -->
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<!--Modal-->
+<div class="container">
+			<!-- The Modal -->
+			<div class="modal fade" id="myModal_fixsinger">
+				<div class="modal-dialog">
+					<div class="modal-content">
+
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">Update Singer</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+
+						<!-- Modal body -->
+						<div class="modal-body">
+							<div class="signin-form">
+								<form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
+									<p class="hint-text">Update new information for singer</p>
 									<div class="form-group">
 										<input type="text" class="form-control" name="SingerName" placeholder="SingerName" required="required">
 									</div>
