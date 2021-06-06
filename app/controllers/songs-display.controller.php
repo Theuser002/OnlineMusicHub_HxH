@@ -1,16 +1,23 @@
 <!--Fetch from DB and use loop to display the songs in the form of html via single-song.php-->
 
 <?php
-require '../../models/song.entity.php';
-require '../../models/song.model.php';
+include_once '../../models/song.entity.php';
+include_once '../../models/song.model.php';
 
 class SongsDisplayController {
-    
+    function __construct(){}
+	
     function getSongByID ($songID){
         $songModel = new SongModel();
         return $songModel->getSongByID($songID);
     }
     
+	function getAllSongs(){
+		$model = new SongModel();
+		$list = $model->getAllSongs();
+		return $list;
+	}
+	
     function getNumberOfSongs (){
         $songModel = new SongModel();
         return count($songModel->getAllSongs());
@@ -94,6 +101,12 @@ class SongsDisplayController {
         $songModel = new SongModel();
         $songModel->removeFavSong($accountID, $songID);
     }
+	
+	function getOwnSinger($SongID){
+		$model = new SingerModel();
+		$singer = $model->getOwnSingerSong($SongID);
+		return $singer;
+	}
 }
 
 ?>

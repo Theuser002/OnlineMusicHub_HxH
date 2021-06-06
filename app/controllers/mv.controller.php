@@ -66,7 +66,7 @@ class Ctrl_MV{
 	
 	function getOwnSinger($MVID){
 		$model = new SingerModel();
-		$singer = $model->getOwnSinger($MVID);
+		$singer = $model->getOwnSingerMV($MVID);
 		return $singer;
 	}
 

@@ -7,6 +7,12 @@ include_once('../../models/singer.entity.php');
 class AdminController{
 	function __construct(){}
 	
+	function invokeSong(){
+		$model = new SongsDisplayController();
+		$list = $model->getAllSongs();
+		return $list;
+	}
+	
 	function invokeMV(){
 		$model = new Model_MV();
 		$list = $model->getAllMV();
@@ -42,6 +48,11 @@ class AdminController{
 	function updateSinger($SingerName,$Background,$SingerImage,$SingerID){
 		$model = new SingerModel();
 		$model->updateSinger($SingerName,$Background,$SingerImage,$SingerID);
+	}
+	
+	function updateMV($MVTitle,$MVImage,$MVLink,$MVID){
+		$model = new Model_MV();
+		$model->updateMV($MVTitle,$MVImage,$MVLink,$MVID);
 	}
 
 }

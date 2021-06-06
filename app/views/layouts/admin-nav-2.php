@@ -10,6 +10,13 @@ if(isset($_POST['MVTitle'],$_POST['MVImage'],$_POST['MVLink'],$_POST['SingerName
 	$SingerName = $_POST['SingerName'];
 	$c->addMV($MVTitle,$MVImage,$MVLink,$SingerName);
 }
+if(isset($_POST['newMVTitle'],$_POST['newMVImage'],$_POST['newMVLink'],$_POST['newMVID'])){
+	$MVTitle = $_POST['newMVTitle'];
+	$MVImage = $_POST['newMVImage'];
+	$MVLink = $_POST['newMVLink'];
+	$MVID = $_POST['newMVID'];
+	$c->updateMV($MVTitle,$MVImage,$MVLink,$MVID);
+}
 ?><head>
 <link href="css/pagination.css" rel="stylesheet" type="text/css">
 <script src="js/ajax.js"></script>
@@ -76,7 +83,7 @@ if(isset($_POST['MVTitle'],$_POST['MVImage'],$_POST['MVLink'],$_POST['SingerName
 										<input type="text" class="form-control" name="newMVLink" value="<?php echo $mv->getMVLink() ?>" required="required">
 									</div>
 									<div class="form-group">
-										<input type="text" class="form-control" name="newSinger" value="<?php echo $singer->getSingerName() ?>" required="required">
+										<input type="text" class="form-control" name="newSinger" value="<?php echo $singer->getSingerName() ?>" readonly>
 									</div>
 									<div class="form-group">
 										<button type="submit" name="login-submit" class="btn btn-dark btn-lg btn-block">Update</button>
