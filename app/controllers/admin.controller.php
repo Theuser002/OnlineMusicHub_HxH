@@ -17,5 +17,12 @@ class AdminController{
 		$model = new Model_MV();
 		$model->deleteMV($MVID);
 	}
+	
+	function addMV($MVTitle,$MVImage,$MVLink,$SingerName){
+		$model = new Model_MV();
+		$model->insertMV($MVTitle,$MVImage,$MVLink,$SingerName);
+		echo 'add MV success';
+	}
+
 }
 ?>
