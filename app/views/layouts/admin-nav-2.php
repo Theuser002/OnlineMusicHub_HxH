@@ -1,6 +1,13 @@
 <?php
 include_once('../../controllers/admin.controller.php');
 $c = new AdminController();
+if(isset($_POST['MVTitle'],$_POST['MVImage'],$_POST['MVLink'],$_POST['SingerName'])){
+	$MVTitle = $_POST['MVTitle'];
+	$MVImage = $_POST['MVImage'];
+	$MVLink = $_POST['MVLink'];
+	$SingerName = $_POST['SingerName'];
+	$c->addMV($MVTitle,$MVImage,$MVLink,$SingerName);
+}
 ?><head>
 <link href="css/pagination.css" rel="stylesheet" type="text/css">
 <script src="js/ajax.js"></script>
@@ -59,7 +66,7 @@ $c = new AdminController();
 						<!-- Modal body -->
 						<div class="modal-body">
 							<div class="signin-form">
-								<form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
+								<form action="account-admin.php?tab=2" method="post">
 									<p class="hint-text">Provide new MV information</p>
 									<div class="form-group">
 										<input type="text" class="form-control" name="MVTitle" placeholder="MVTitle" required="required">

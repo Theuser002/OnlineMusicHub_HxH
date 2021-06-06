@@ -53,3 +53,16 @@ function deleteMV(MVID){
 	xhttp.send();
 	window.location.reload();
 }
+
+function deleteSinger(SingerID){
+	var xhttp;
+	var url = "deleteSingerAction.php?SingerID="+SingerID;
+	if (window.XMLHttpRequest) {
+		xhttp = new XMLHttpRequest();
+	} else {
+		xhttp = new ActiveXObject("microsoft.XMLHttp");
+	}
+	xhttp.open("POST", url, true);
+	xhttp.send();
+	window.location.reload();
+}

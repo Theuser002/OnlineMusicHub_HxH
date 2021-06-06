@@ -1,6 +1,19 @@
 <?php
 include_once('../../controllers/admin.controller.php');
 $c = new AdminController();
+if(isset($_POST['SingerName'],$_POST['Background'],$_POST['SingerImage'])){
+	$SingerName = $_POST['SingerName'];
+	$Background = $_POST['Background'];
+	$SingerImage = $_POST['SingerImage'];
+	$c->addSinger($SingerName,$Background,$SingerImage);
+}
+if(isset($_POST['newSingerName'],$_POST['newBackground'],$_POST['newSingerImage'],$_POST['newSingerID'])){
+	$SingerName = $_POST['newSingerName'];
+	$Background = $_POST['newBackground'];
+	$SingerImage = $_POST['newSingerImage'];
+	$SingerID = $_POST['newSingerID'];
+	$c->updateSinger($SingerName,$Background,$SingerImage,$SingerID);
+}
 ?><head>
 <link href="css/pagination.css" rel="stylesheet" type="text/css">
 <script src="js/ajax.js"></script>
@@ -27,10 +40,56 @@ $c = new AdminController();
 		  <td><?php echo $singer->getBackground() ?></td>
 		  <td><?php echo $singer->getSingerImage() ?></td>
 		  <td>
-			<a class="fa fa-wrench" data-toggle="modal" data-target="#myModal_newsinger"></a>/
-			<a class="fa fa-trash" onClick="deleteMV(<?php echo $singer->getSingerID() ?>)"></a>
+			<a class="fa fa-wrench" data-toggle="modal" data-target="#myModal_fixsinger"></a>/
+			<a class="fa fa-trash" onClick="deleteSinger(<?php echo $singer->getSingerID() ?>)"></a>
 			</td>
 		</tr>
+		  <!--Modal-->
+<div class="container">
+			<!-- The Modal -->
+			<div class="modal fade" id="myModal_fixsinger">
+				<div class="modal-dialog">
+					<div class="modal-content">
+
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">Update Singer <?php echo $singer->getSingerName() ?></h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+
+						<!-- Modal body -->
+						<div class="modal-body">
+							<div class="signin-form">
+								<form action="account-admin.php?tab=3" method="post">
+									<p class="hint-text">Update new information for singer</p>
+									<div class="form-group">
+										<input type="text" class="form-control" name="newSingerID" value="<?php echo $singer->getSingerID() ?>" readonly>
+									</div>
+									<div class="form-group">
+										<input type="text" class="form-control" name="newSingerName" value="<?php echo $singer->getSingerName() ?>" required="required">
+									</div>
+									<div class="form-group">
+										<input type="text" class="form-control" name="newBackground" value="<?php echo $singer->getBackground() ?>" required="required">
+									</div>
+									<div class="form-group">
+										<input type="file" class="form-control" name="newSingerImage" required >
+									</div>
+									<div class="form-group">
+										<button type="submit" name="login-submit" class="btn btn-dark btn-lg btn-block">Update</button>
+										<button type="reset" name="login-reset" class="btn btn-secondary btn-lg btn-block">Clear
+										</button>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!-- Modal footer -->
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		  <?php } ?>
 	  </tbody>
 		<div>
@@ -57,7 +116,7 @@ $c = new AdminController();
 						<!-- Modal body -->
 						<div class="modal-body">
 							<div class="signin-form">
-								<form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
+								<form action="account-admin.php?tab=3" method="post">
 									<p class="hint-text">Provide new Singer information</p>
 									<div class="form-group">
 										<input type="text" class="form-control" name="SingerName" placeholder="SingerName" required="required">
@@ -84,3 +143,4 @@ $c = new AdminController();
 				</div>
 			</div>
 		</div>
+
