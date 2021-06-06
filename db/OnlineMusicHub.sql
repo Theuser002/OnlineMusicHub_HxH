@@ -74,7 +74,7 @@ create table SongPerformedBy(
 );
 
 create table MVPerformedBy(
-	mvPerformance int primary key,
+	mvPerformance int primary key identity(1,1),
 	SingerID int,
 	MVID int,
 

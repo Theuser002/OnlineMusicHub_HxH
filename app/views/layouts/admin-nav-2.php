@@ -1,11 +1,11 @@
 <?php
 include_once('../../controllers/admin.controller.php');
 $c = new AdminController();
-?>
-<head>
+?><head>
 <link href="css/pagination.css" rel="stylesheet" type="text/css">
 <script src="js/ajax.js"></script>
 </head>
+
 
 <div class="container">
 	<table width="100%" border="1" cellpadding="2">
@@ -59,7 +59,7 @@ $c = new AdminController();
 						<!-- Modal body -->
 						<div class="modal-body">
 							<div class="signin-form">
-								<form action="../../controllers/addMV.controller.php" method="post">
+								<form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
 									<p class="hint-text">Provide new MV information</p>
 									<div class="form-group">
 										<input type="text" class="form-control" name="MVTitle" placeholder="MVTitle" required="required">
@@ -69,6 +69,9 @@ $c = new AdminController();
 									</div>
 									<div class="form-group">
 										<input type="text" class="form-control" name="MVLink" placeholder="MVLink" required="required">
+									</div>
+									<div class="form-group">
+										<input type="text" class="form-control" name="SingerName" placeholder="Singer" required="required">
 									</div>
 									<div class="form-group">
 										<button type="submit" name="login-submit" class="btn btn-dark btn-lg btn-block">Add</button>
