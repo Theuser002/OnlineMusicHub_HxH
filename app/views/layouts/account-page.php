@@ -60,7 +60,7 @@ $c2 = new Ctrl_MV();
 				<?php
 				for($i=0;$i<count($mySong);$i++){ ?>
 				<div class="d-flex flex-column">
-				<img src="images/<?php echo $mySong[$i]->getSongImageLink() ?>" class="img-fluid">
+					<a><img src="images/<?php echo $mySong[$i]->getSongImageLink() ?>" class="img-fluid"></a>
 				<h5><?php echo $mySong[$i]->getSongTitle() ?></h5>
 			  </div>
 			<?php	}?>
@@ -76,7 +76,7 @@ $c2 = new Ctrl_MV();
 				<?php
 				for($i=0;$i<count($myMV);$i++){ ?>
 				<div class="d-flex flex-column">
-				<img src="images/<?php echo $myMV[$i]->getMVImage() ?>" class="img-fluid">
+					<a href="single-mv-page.php?MVID=<?php echo $myMV[$i]->getMVID() ?>" onClick="updateMVView(<?php echo $myMV[$i]->getMVID() ?>)"><img src="images/<?php echo $myMV[$i]->getMVImage() ?>" class="img-fluid"></a>
 				<h5><?php echo $myMV[$i]->getMVTitle() ?></h5>
 			  </div>
 			<?php	}?>
