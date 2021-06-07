@@ -1,73 +1,64 @@
 <?php
-session_start();
-?><head>
-	<link href="css/pagination.css" rel="stylesheet" type="text/css">
-</head>
-
-
-<style>
-	.mv-title{
-		text-align: left;
-	}
-	
-	.mv-view{
-		text-align: right;
-	}
-	a.active{
-		background-color: #C8C8C8; 
-	}
-</style>
-<?php
-require "navbar.php";
+    session_start();
 ?>
 <?php
-if(!isset($_GET['tab'])){
-	$tab = 1;
-}else{
-	$tab = $_GET['tab'];
-}
+    require "navbar.php";
 ?>
-<body id="index-body">
-<br>
-<br>
-<div id="gallery">
-<nav class="navbar navbar-expand-md navbar-light">
-	<div class="container">
-		<?php
-			if($tab==1){
-				echo "<ul class=\"navbar-nav\"><li class=\"nav-item\"><a class=\"nav-link active\" href=\"mv-page.php?tab=1\">A-Z List</a></li>
-			<li class=\"nav-item\"><a class=\"nav-link\" href=\"mv-page.php?tab=2\">Latest</a></li>
-			<li class=\"nav-item\"><a class=\"nav-link\" href=\"mv-page.php?tab=3\">Top View</a></li></ul>";
-			}elseif($tab==2){
-				echo "<ul class=\"navbar-nav\"><li class=\"nav-item\"><a class=\"nav-link\" href=\"mv-page.php?tab=1\">A-Z List</a></li>
-			<li class=\"nav-item\"><a class=\"nav-link active\" href=\"mv-page.php?tab=2\">Latest</a></li>
-			<li class=\"nav-item\"><a class=\"nav-link\" href=\"mv-page.php?tab=3\">Top View</a></li></ul>";
-			}elseif($tab==3){
-				echo "<ul class=\"navbar-nav\"><li class=\"nav-item\"><a class=\"nav-link\" href=\"mv-page.php?tab=1\">A-Z List</a></li>
-			<li class=\"nav-item\"><a class=\"nav-link\" href=\"mv-page.php?tab=2\">Latest</a></li>
-			<li class=\"nav-item\"><a class=\"nav-link active\" href=\"mv-page.php?tab=3\">Top View</a></li></ul>";
-			}
-			?>
-	</div>
-</nav>
-<br>
-<div class="container">
-	<?php
-	if($tab==1){
-		include_once('mv-nav-1.php');
-	}elseif($tab==2){
-		include_once('mv-nav-2.php');
-	}else{
-		include_once('mv-nav-3.php');
-	}
-	?>
-</div>
-
-  </div>
-  <br>
-  <br>
-<script src="js/ajax.js"></script>
-</body>
 <?php
-require 'footer.php';
+    include_once( '../../controllers/mv.controller.php' );
+
+    if ( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] < 1 || $_GET[ 'tab' ] > 3 ) { //Find on the URL
+        $tab = 1;
+    } else {
+        $tab = $_GET[ 'tab' ];
+    }
+
+    if ( !isset( $_GET[ 'page' ] ) || $_GET[ 'page' ] < 1 ) { //Find on the URL
+        $page = 1;
+    } else {
+        $page = $_GET[ 'page' ];
+    }
+
+    $c = new Ctrl_MV();
+    $mvlist = $c->invoke();
+    $listlen = count($mvlist);
+    //define total number of results you want per page
+    $result_per_page = 8;
+
+    //determine the total number of pages available  
+    $totalPages = ceil($listlen/$result_per_page);
 ?>
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body id="mv-body">
+        <style>
+/*
+            .mv-title {
+                text-align: left;
+            }
+            .mv-view {
+                text-align: right;
+            }
+*/
+        </style>
+        <header id="mv-header">
+            <?php
+            echo '<h1>All MVs</h1>';
+            ?>
+            <ul class="breadcrumb">
+                <li><a href="index.php">Home</a></li>
+            </ul>
+        </header>
+        <section class="content">
+            <?php
+            include_once( 'mv-board.php' );
+            ?>
+            <script src="js/ajax.js"></script> 
+        </section>
+    <?php
+    require 'footer.php';
+    ?>
