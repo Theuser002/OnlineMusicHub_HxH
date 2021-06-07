@@ -1,3 +1,6 @@
+<head>
+<link href="css/pagination.css" rel="stylesheet" type="text/css">
+</head>
 <?php
 include_once('../../controllers/mv.controller.php');
 $c = new Ctrl_MV();
@@ -34,3 +37,29 @@ $c = new Ctrl_MV();
 							}?>
 						<br><br>
 					  </div>
+	<br>
+	<div class="pagination">
+		<?php //display pagination list bar << 1 2 3 >>
+	   $pagLink = "";
+	   if($page>=2){   
+            echo "<a href='mv-page.php?page=".($page-1)."&tab=2'>  Prev </a>";   
+        }       
+                   
+        for ($i=1; $i<=$number_of_page; $i++) {   
+          if ($i == $page) {   
+              $pagLink .= "<a class = 'active' href='mv-page.php?page="  
+                                                .$i."&tab=2'>".$i." </a>";   
+          }               
+          else  {   
+              $pagLink .= "<a href='mv-page.php?page=".$i."&tab=2'>   
+                                                ".$i." </a>";     
+          }   
+        };     
+        echo $pagLink;   
+  
+        if($page<$number_of_page){   
+            echo "<a href='mv-page.php?page=".($page+1)."&tab=2'>  Next </a>";   
+        }   
+	   ?>
+	   </div>
+	   </div>
