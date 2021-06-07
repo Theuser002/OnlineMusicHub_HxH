@@ -17,7 +17,7 @@ class SongModel{
             $songList = array();
 
             while ($row = $stm->fetch(PDO::FETCH_ASSOC)){
-                $song = new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
+                $song = new SongEntity($row['SongID'], $row['SongTitle'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
 
                 array_push($songList, $song);
             }
@@ -53,7 +53,7 @@ class SongModel{
 			$stm = $db->prepare('Select * from Song where SongID = ?');
 			$stm->execute([$songID]);
 			$row=$stm->fetch(PDO::FETCH_ASSOC);
-			return new SongEntity($row['SongID'],$row['SongTitle'],$row['Genre'],$row['SongViews'],$row['AudioLink'],$row['SongImageLink']);
+			return new SongEntity($row['SongID'],$row['SongTitle'],$row['SongViews'],$row['AudioLink'],$row['SongImageLink']);
 		}catch (Exception $e){
 			echo 'Error getting song by ID from db. Caught exception: ', $e->getMessage(), "\n";
 		}
@@ -116,7 +116,7 @@ class SongModel{
 
             $songList = array();
             while ($row = $stm->fetch(PDO::FETCH_ASSOC)){
-                $song = new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
+                $song = new SongEntity($row['SongID'], $row['SongTitle'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
 
                 array_push($songList, $song);
             }
@@ -142,7 +142,7 @@ class SongModel{
 
             $songList = array();
             while ($row = $stm->fetch(PDO::FETCH_ASSOC)){
-                $song = new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
+                $song = new SongEntity($row['SongID'], $row['SongTitle'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
 
                 array_push($songList, $song);
             }
@@ -166,7 +166,7 @@ class SongModel{
 
             $songList = array();
             while ($row = $stm->fetch(PDO::FETCH_ASSOC)){
-                $song = new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
+                $song = new SongEntity($row['SongID'], $row['SongTitle'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
 
                 array_push($songList, $song);
             }
@@ -183,7 +183,7 @@ class SongModel{
 		$result = $stmt->execute(array($prekey));
 		$songList = array();
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-			$song = new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
+			$song = new SongEntity($row['SongID'], $row['SongTitle'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
 			
 			array_push($songList, $song);
 		}
@@ -234,7 +234,7 @@ class SongModel{
 		$result = $stmt->execute(array($accountID));
 		$songList = array();
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-			$song = new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
+			$song = new SongEntity($row['SongID'], $row['SongTitle'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']);
 			
 			array_push($songList, $song);
 		}

@@ -61,7 +61,7 @@ class SingerModel{
 								SET @PageNumber=?
 								SET @RowsOfPage=?
 								select * from Singer
-								order by SingerID
+								order by SingerID asc
 								OFFSET (@PageNumber-1)*@RowsOfPage ROWS
 								FETCH NEXT @RowsOfPage ROWS ONLY');
 		$result = $stmt->execute(array($pageNum, $resultPerPage)); //$result = 1 means execute successfully

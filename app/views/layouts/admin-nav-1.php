@@ -77,7 +77,7 @@ if(isset($_POST['newSongTitle'],$_POST['newSongImage'],$_POST['newSongLink'],$_P
 										<input type="text" class="form-control" name="newSongTitle" value="<?php echo $song->getSongTitle() ?>" required="required">
 									</div>
 									<div class="form-group">
-										Image: <input type="file" class="form-control" name="newSongImage" required >
+										Image: <input type="file" class="form-control" name="newSongImage">
 									</div>
 									<div class="form-group">
 										Audio: <input type="file" class="form-control" name="newSongLink" required>
@@ -134,7 +134,7 @@ if(isset($_POST['newSongTitle'],$_POST['newSongImage'],$_POST['newSongLink'],$_P
 										<input type="text" class="form-control" name="SongTitle" placeholder="SongTitle" required="required">
 									</div>
 									<div class="form-group">
-										Image: <input type="file" class="form-control" name="SongImage" required="required">
+										Image: <input type="file" class="form-control" name="SongImage">
 									</div>
 									<div class="form-group">
 										Audio: <input type="file" class="form-control" name="Audio" required="required">
