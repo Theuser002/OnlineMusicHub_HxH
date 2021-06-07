@@ -59,7 +59,7 @@ $relateList =  $c->getRelateVideo($MVID);
 	<div class="relate-video container"><br>
 		<?php
 		foreach($relateList as $data){ ?>
-		<div class="relate-video-holder"><a href="single-mv-page.php?MVID=<?php echo $data->getMVID() ?>"><img class="relate-img" src="images/<?php echo $data->getMVImage() ?>"></a><?php echo $data->getMVTitle() ?><br>View: <?php echo $data->getMVView() ?></div><div class="clearfix"></div><br>
+		<div class="relate-video-holder"><a href="single-mv-page.php?MVID=<?php echo $data->getMVID() ?>" onClick="updateMVView(<?php echo $data->getMVID() ?>)"><img class="relate-img" src="images/<?php echo $data->getMVImage() ?>"></a><?php echo $data->getMVTitle() ?><br>View: <?php echo $data->getMVView() ?></div><div class="clearfix"></div><br>
 		<?php } ?>
 	</div>
 </div>

@@ -105,7 +105,7 @@ if(isset($_POST['newSongTitle'],$_POST['newSongImage'],$_POST['newSongLink'],$_P
 	  </tbody>
 		<div>
 			<ul class="navbar-nav ml-auto">
-				<li><a class="nav-link fa fa-folder-plus" data-toggle="modal" data-target="#myModal_newmv">&nbsp;New MV</a></li>
+				<li><a class="nav-link fa fa-folder-plus" data-toggle="modal" data-target="#myModal_newmv">&nbsp;New Song</a></li>
 			</ul> 
 		</div>
 	</table><br>
