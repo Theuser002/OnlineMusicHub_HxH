@@ -25,36 +25,14 @@ session_start();
 	<title>All songs</title>
 	<link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
 	<!--		<link rel="stylesheet" href="css/style.css" type="text/css">-->
-		</head>
+    </head>
 	<body id="song-body">
 		<?php 
 			require "navbar.php";
 		?>
 		
-		<style>
-			.pagebar{
-				background-color: #e0e0e0;
-				border-radius: 20px;
-				padding: 0px 10px;
-			}
-			
-			.pagebar > a{
-				color: black;
-				font-size: 20px;
-				justify-content: center;
-			}
-			
-			.chosen{
-				color: white !important;
-				background-color: #6aba99;
-				border-radius: 30%;
-			}
-		</style>
-		
-		<header id="song-header">
-			<?php 
-               echo '<h1>All Songs</h1>';
-            ?>
+		<header id="song-header"> 
+            <h1>All Songs</h1>
             <ul class="breadcrumb">
                 <li><a href="index.php">Home</a></li>
             </ul>

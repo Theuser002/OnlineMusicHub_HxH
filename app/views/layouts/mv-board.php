@@ -1,4 +1,4 @@
-<div class="container mv-board">
+<div class="container mv-board dark-blurry">
     <?php
     if ( $tab == 1 ) {
         echo '
@@ -104,8 +104,6 @@
     }
     ?>
     <div class="flex-row-break"></div>
-    <br>
-    <br>
     <div class="pagebar">
         <?php
         $displayRange = 3;

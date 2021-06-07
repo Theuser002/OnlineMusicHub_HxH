@@ -118,6 +118,10 @@ h3 {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/abstract1.jpg);
 }
 
+#singer-body{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/abstract11.jpg);
+}
+
 /*PAGE HEADERS*/
 
 #index-header {
@@ -131,6 +135,7 @@ h3 {
 #account-header {
 	position: relative;
 	margin-top: 5vh;
+    padding: 5em;
 	height: 20vh;
 	display: flex;
     flex-wrap: wrap;
@@ -144,6 +149,7 @@ h3 {
 #song-header {
 	position: relative;
 	margin-top: 5vh;
+    padding: 5em;
 	height: 20vh;
 	display: flex;
 	flex-wrap: wrap;
@@ -158,6 +164,7 @@ h3 {
 #music-player-header {
 	position: relative;
 	margin-top: 5vh;
+    padding: 5em;
 	height: 20vh;
 	display: flex;
 	flex-wrap: wrap;
@@ -172,6 +179,37 @@ h3 {
 #mv-header {
     position: relative;
 	margin-top: 5vh;
+    padding: 5em;
+	height: 20vh;
+	display: flex;
+	flex-wrap: wrap;
+    flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-size: cover;
+    color: #fff;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/study_music.jpg);
+}
+
+#singer-header {
+    position: relative;
+	margin-top: 5vh;
+    padding: 5em;
+	height: 20vh;
+	display: flex;
+	flex-wrap: wrap;
+    flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-size: cover;
+    color: #fff;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/study_music.jpg);
+}
+
+#single-singer-header {
+    position: relative;
+	margin-top: 5vh;
+    padding: 5em;
 	height: 20vh;
 	display: flex;
 	flex-wrap: wrap;
@@ -284,7 +322,7 @@ h3 {
     width: 20%;
     height: 30vh;
     margin: 15px 30px;
-	border-radius: 0 0 25px 25px;
+	border-radius: 0 0 50px 0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	cursor: pointer;
 }
@@ -295,7 +333,7 @@ h3 {
     width: 100%;
     height: 40%;
     bottom: 0;
-    border-radius: 0 0 25px 25px;
+    border-radius: inherit;
     background-color: #fff;
     padding: 0 10px 5px 10px;
     white-space: nowrap;
@@ -331,7 +369,7 @@ h3 {
     position: absolute;
     top: 0;
 	margin: 0;
-    border-radius: 0 0 25px 25px;
+    border-radius: inherit;
 	width: 100%;
     height: 100%;
 /*    box-shadow: 0 -4px 8px 0 rgba(0, 0, 0, 0.2), 0 -6px 20px 0 rgba(0, 0, 0, 0.19);*/
@@ -354,7 +392,7 @@ h3 {
     right: 0;
     width: 100%;
     height: 100%;
-    border-radius: 0 0 25px 25px;
+    border-radius: inherit;
     object-fit: cover;
     object-position: center;
 }
@@ -364,6 +402,58 @@ h3 {
 	width: 100%;
 	height: 0;
     margin: 0;
+}
+
+.single-singer{
+    position: relative;
+    width: 15em;
+    height: 15em;
+    margin: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.singer-image-wrap{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: inherit;
+}
+
+.singer-image{
+    position: absolute;
+    
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    
+    border-radius: inherit;
+}
+
+.hide{
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    color: #fff;
+    z-index: -1;
+}
+
+.onhover:hover + .hide{
+    display: block;
+}
+
+.onhover:hover{
+    opacity: 0.3;
 }
 
 /*CONTENT BOARDS*/
@@ -378,7 +468,7 @@ h3 {
 /*	flex-direction: column;*/
 	align-items: center;
 	justify-content: center;
-    background-color: rgba(123, 123, 123, 0.5) !important;
+/*    background-color: rgba(123, 123, 123, 0.5) !important;*/
     
 }
 
@@ -389,8 +479,22 @@ h3 {
 	padding: 10px;
 	display: flex;
 	flex-flow: row wrap;
+    align-items: center;
 	justify-content: center;
-    background-color: rgba(55, 55, 55, 0.67) !important;
+/*    background-color: rgba(55, 55, 55, 0.5) !important;*/
+    
+}
+
+.singer-board{
+	position:relative;
+/*	width: 100em;*/
+	margin-top: 50px;
+	padding: 10px;
+	display: flex;
+	flex-flow: row wrap;
+/*    align-items: center;*/
+	justify-content: center;
+/*    background-color: rgba(55, 55, 55, 0.5) !important;*/
     
 }
 
@@ -577,7 +681,14 @@ ul.breadcrumb li a:hover{
 .pagebar > a{
     color: black;
     font-size: 20px;
+    margin: 5px;
     justify-content: center;
+}
+
+.pagebar > a:hover{
+    color: white !important;
+    background-color: #373737;
+    border-radius: 30%;
 }
 
 .chosen{

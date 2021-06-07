@@ -80,7 +80,7 @@ if (isset($_SESSION['accountID'])){
 <!DOCTYPE html>
 <html>
 <head>
-<title><?php echo $song->getSongTitle(); ?></title>
+<title><?php echo $songTitle ?></title>
 <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
 <link rel="stylesheet" type="text/css" href="css/music-player.css">
 </head>
