@@ -16,7 +16,7 @@ session_start();
 		$page = $_GET['page'];
 	}
 
-	$songDisplayController = new SongsDisplayController(); //is used in song-board.php
+	$songsDisplayController = new SongsDisplayController(); //is used in song-board.php
 	$entriesPerPage = 5;
 ?>
 <!DOCTYPE HTML>

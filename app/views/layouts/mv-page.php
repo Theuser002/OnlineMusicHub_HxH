@@ -23,7 +23,7 @@
     $mvlist = $c->invoke();
     $listlen = count($mvlist);
     //define total number of results you want per page
-    $result_per_page = 8;
+    $result_per_page = 6;
 
     //determine the total number of pages available  
     $totalPages = ceil($listlen/$result_per_page);

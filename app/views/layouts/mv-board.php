@@ -43,7 +43,6 @@
     ?>
     <br>
     <br>
-    <div class="flex-row-break" style="height: 50px;"></div>
     <?php
     if ( $tab == 1 ) {
         //A-Z

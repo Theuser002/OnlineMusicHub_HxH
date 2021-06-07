@@ -141,6 +141,12 @@
     font-size: 20px;
 }
 
+#views{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
 .progress-container {
     position: absolute;
     background-color: rgba(175, 175, 175, 0.39);

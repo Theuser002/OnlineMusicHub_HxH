@@ -47,7 +47,7 @@
     <?php
     if ( $tab == 1 ) {
         //A-Z
-        $songPagList = $songDisplayController->getPaginationAZ( $page, $entriesPerPage );
+        $songPagList = $songsDisplayController->getPaginationAZ( $page, $entriesPerPage );
         $i = 0;
         $total = count( $songPagList );
         
@@ -57,7 +57,8 @@
             $songTitle = $song->getSongTitle();
             $views = $song->getViews();
             $songImageLink = $song->getSongImageLink();
-			$singer = $songDisplayController->getOwnSinger($songID);
+			$singer = $songsDisplayController->getOwnSinger($songID);
+            $singerName = $singer->getSingerName();
             
             echo'
 			<a class="single-song" href="music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.$i.'">
@@ -70,9 +71,12 @@
 				<!--     Song title & views-->
 				<div class="title">
 				  <!--       Song title -->
-				  '.$songTitle.'-'.$singer->getSingerName().'
+				  '.$songTitle.'
 				</div>
 				<hr />
+                <div class="artist">
+                '.$singerName.'
+                </div>
 				<div class="view">
 				  <!--       Views -->
 					'.$views.'&nbsp views
@@ -86,7 +90,7 @@
 
     } else if ( $tab == 2 ) {
         //Latest
-        $songPagList = $songDisplayController->getPaginationLatest( $page, $entriesPerPage );
+       $songPagList = $songsDisplayController->getPaginationLatest( $page, $entriesPerPage );
         $i = 0;
         $total = count( $songPagList );
         
@@ -96,6 +100,8 @@
             $songTitle = $song->getSongTitle();
             $views = $song->getViews();
             $songImageLink = $song->getSongImageLink();
+			$singer = $songsDisplayController->getOwnSinger($songID);
+            $singerName = $singer->getSingerName();
             
             echo'
 			<a class="single-song" href="music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.$i.'">
@@ -111,6 +117,9 @@
 				  '.$songTitle.'
 				</div>
 				<hr />
+                <div class="artist">
+                '.$singerName.'
+                </div>
 				<div class="view">
 				  <!--       Views -->
 					'.$views.'&nbsp views
@@ -122,7 +131,7 @@
         }
     } else if ( $tab == 3 ) {
         //TopView
-        $songPagList = $songDisplayController->getPaginationTopViews( $page, $entriesPerPage );
+        $songPagList = $songsDisplayController->getPaginationTopViews( $page, $entriesPerPage );
         $i = 0;
         $total = count( $songPagList );
         
@@ -132,6 +141,8 @@
             $songTitle = $song->getSongTitle();
             $views = $song->getViews();
             $songImageLink = $song->getSongImageLink();
+			$singer = $songsDisplayController->getOwnSinger($songID);
+            $singerName = $singer->getSingerName();
             
             echo'
 			<a class="single-song" href="music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.$i.'">
@@ -147,6 +158,9 @@
 				  '.$songTitle.'
 				</div>
 				<hr />
+                <div class="artist">
+                '.$singerName.'
+                </div>
 				<div class="view">
 				  <!--       Views -->
 					'.$views.'&nbsp views
@@ -158,12 +172,10 @@
         }
     }
     ?>
-    <br>
-    <br>
     <div class="flex-row-break"></div>
     <div class="pagebar">
         <?php
-        $totalPages = $songDisplayController->getNumberOfPages( $entriesPerPage );
+        $totalPages = $songsDisplayController->getNumberOfPages( $entriesPerPage );
         $displayRange = 3;
 
         if ( $page > 1 ) {

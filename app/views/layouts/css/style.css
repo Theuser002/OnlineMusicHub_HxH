@@ -191,7 +191,7 @@ h3 {
 	height: 8em;
 	width: 35%;
 	padding: 5px;
-	margin: 10px;
+	margin: 10px 25px;
 	background-color: #fff;
 	border-radius: 10px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -199,7 +199,7 @@ h3 {
 }
 
 .single-song > div {
-	color: black;
+	color: gray;
 }
 
 .song-img-wrap {
@@ -240,12 +240,41 @@ h3 {
 }
 
 .single-mv > div {
-    color: #000;
+    color: gray;
 }
 
 .title-and-views {
-	margin: 0px 30px;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 60%;
+	margin: 0 5px 0 30px;
 	width: 70%;
+}
+
+/*
+.title-and-views > div{
+    margin: 0;
+}
+*/
+
+.title-and-views .title{
+    font-size: 15px;
+}
+
+.title-and-views .artist{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 10px;
+}
+
+.title-and-views .view{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 10px;
 }
 
 .single-mv {
@@ -269,9 +298,19 @@ h3 {
     border-radius: 0 0 25px 25px;
     background-color: #fff;
     padding: 0 10px 5px 10px;
+    white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
 /*    box-shadow: 0 -4px 8px 0 rgba(255, 255, 255, 0.2), 0 -6px 20px 0 rgba(255, 255, 255, 0.19);*/
     box-shadow: 0 -8px 8px 0 rgba(0, 0, 0, 0.2), 0 -8px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.mv-title-and-views .mv-title{
+    font-size: 15px;
+}
+
+.mv-title-and-views .mv-view{
+    font-size: 10px;
 }
 
 .play-btn{
@@ -320,14 +359,6 @@ h3 {
     object-position: center;
 }
 
-.mv-title{
-    font-size: 20px;
-}
-
-.mv-views{
-    font-size: 10px;
-}
-
 .flex-row-break{
 /*	flex-basis: 100%;*/
 	width: 100%;
@@ -353,7 +384,7 @@ h3 {
 
 .mv-board{
 	position:relative;
-	width: 100em;
+/*	width: 100em;*/
 	margin-top: 50px;
 	padding: 10px;
 	display: flex;
@@ -370,6 +401,7 @@ h3 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+    margin-bottom: 50px;
 }
 
 .sort-button{
@@ -539,6 +571,7 @@ ul.breadcrumb li a:hover{
     background-color: #e0e0e0;
     border-radius: 20px;
     padding: 0px 10px;
+    margin-top: 50px;
 }
 
 .pagebar > a{

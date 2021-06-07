@@ -65,6 +65,8 @@ $songTitle = $song->getSongTitle();
 $songAudioLink = $song->getAudioLink();
 $songImageLink = $song->getSongImageLink();
 $songViews = $song->getViews();
+$singer = $songsDisplayController->getOwnSinger($songID);
+$singerName = $singer->getSingerName();
 
 if (isset($_SESSION['accountID'])){
     $accountID = $_SESSION['accountID'];
@@ -122,6 +124,11 @@ if (isset($_SESSION['accountID'])){
                 echo $songTitle;
                 ?>
             </h4>
+            <h6 id="artist">
+                <?php
+                    echo $singerName;
+                ?>
+            </h6>
             <h6 id="views">
                 <?php
                 echo $songViews . ' views';
