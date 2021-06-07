@@ -159,6 +159,7 @@
     ?>
     <br>
     <br>
+    <div class="flex-row-break"></div>
     <div class="pagebar">
         <?php
         $totalPages = $songDisplayController->getNumberOfPages( $entriesPerPage );
