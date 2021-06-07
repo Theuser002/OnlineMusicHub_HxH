@@ -2,7 +2,9 @@
 
 <?php
 include_once '../../models/song.entity.php';
+include_once '../../models/singer.entity.php';
 include_once '../../models/song.model.php';
+include_once '../../models/singer.model.php';
 
 class SongsDisplayController {
     function __construct(){}

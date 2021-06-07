@@ -57,6 +57,7 @@
             $songTitle = $song->getSongTitle();
             $views = $song->getViews();
             $songImageLink = $song->getSongImageLink();
+			$singer = $songDisplayController->getOwnSinger($songID);
             
             echo'
 			<a class="single-song" href="music-player.php?tab='.$tab.'&page='.$page.'&entriesPerPage='.$entriesPerPage.'&index='.$i.'">
@@ -69,7 +70,7 @@
 				<!--     Song title & views-->
 				<div class="title">
 				  <!--       Song title -->
-				  '.$songTitle.'
+				  '.$songTitle.'-'.$singer->getSingerName().'
 				</div>
 				<hr />
 				<div class="view">

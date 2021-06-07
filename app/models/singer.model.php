@@ -49,7 +49,7 @@ class SingerModel{
 		$SongList = array();
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ //to fetch result of each row in table
 			
-			array_push($SongList, new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']));
+			array_push($SongList, new SongEntity($row['SongID'], $row['SongTitle'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']));
 		}
 		return $SongList;
 	}
@@ -102,7 +102,7 @@ class SingerModel{
 								SET @RowsOfPage=?
 								select Song.* from Song inner join SongPerformedBy
 								on Song.SongID = SongPerformedBy.SongID
-								where SongPerformedBy.SingerID = 1
+								where SongPerformedBy.SingerID = ?
 								order by Song.SongID asc
 								OFFSET (@PageNumber-1)*@RowsOfPage ROWS
 								FETCH NEXT @RowsOfPage ROWS ONLY');
@@ -110,7 +110,7 @@ class SingerModel{
 		$songList = array();
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ //to fetch result of each row in table
 			
-			array_push($songList, new SongEntity($row['SongID'], $row['SongTitle'], $row['Genre'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']));
+			array_push($songList, new SongEntity($row['SongID'], $row['SongTitle'], $row['SongViews'], $row['AudioLink'], $row['SongImageLink']));
 		}
 		return $songList;
 	}
