@@ -189,7 +189,7 @@ h3 {
 	display: flex;
 	align-items: center;
 	height: 8em;
-	width: 80%;
+	width: 35%;
 	padding: 5px;
 	margin: 10px;
 	background-color: #fff;
@@ -240,7 +240,7 @@ h3 {
 }
 
 .single-mv > div {
-    color: #fff;
+    color: #000;
 }
 
 .title-and-views {
@@ -267,7 +267,7 @@ h3 {
     height: 40%;
     bottom: 0;
     border-radius: 0 0 25px 25px;
-    background-color: #996b6b;
+    background-color: #fff;
     padding: 0 10px 5px 10px;
     text-overflow: ellipsis;
 /*    box-shadow: 0 -4px 8px 0 rgba(255, 255, 255, 0.2), 0 -6px 20px 0 rgba(255, 255, 255, 0.19);*/
@@ -281,7 +281,7 @@ h3 {
     bottom: 0;
     right: 0;
     font-size: 50px;
-    color: #fff;
+    color: #c95d5d;
 }
 
 .play-btn:hover{
@@ -343,8 +343,8 @@ h3 {
 	margin-top: 50px;
 	padding: 10px;
 	display: flex;
-/*	flex-flow: row wrap;*/
-	flex-direction: column;
+	flex-flow: row wrap;
+/*	flex-direction: column;*/
 	align-items: center;
 	justify-content: center;
     background-color: rgba(123, 123, 123, 0.5) !important;
