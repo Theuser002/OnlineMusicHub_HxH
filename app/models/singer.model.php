@@ -166,5 +166,18 @@ class SingerModel{
 								where SingerID = ?');
 		$result = $stmt->execute(array($SingerName,$Background,$SingerImage,$SingerID));
 	}
+	
+	function searchSinger($key){
+		$db = DB::getInstance();
+		$stmt = $db->prepare('select * from Singer where SingerName like ?');
+		$prekey = "%".$key."%"; //any string that contain $key.
+		$result = $stmt->execute(array($prekey));
+		$singerList = array();
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ //to fetch result of each row in table
+			
+			array_push($singerList, new SingerEntity($row['SingerID'],$row['SingerName'],$row['Background'],$row['SingerImage']));
+		}
+		return $singerList;
+	}
 }
 ?>
