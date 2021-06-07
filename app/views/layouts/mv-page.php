@@ -28,3 +28,37 @@
     //determine the total number of pages available  
     $totalPages = ceil($listlen/$result_per_page);
 ?>
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body id="mv-body">
+        <style>
+/*
+            .mv-title {
+                text-align: left;
+            }
+            .mv-view {
+                text-align: right;
+            }
+*/
+        </style>
+        <header id="mv-header">
+            <?php
+            echo '<h1>All MVs</h1>';
+            ?>
+            <ul class="breadcrumb">
+                <li><a href="index.php">Home</a></li>
+            </ul>
+        </header>
+        <section class="content">
+            <?php
+            include_once( 'mv-board.php' );
+            ?>
+            <script src="js/ajax.js"></script> 
+        </section>
+    <?php
+    require 'footer.php';
+    ?>
