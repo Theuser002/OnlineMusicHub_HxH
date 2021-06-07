@@ -14,7 +14,6 @@ if(!isset($_GET['tab'])){
 }
 include_once('../../controllers/singer.controller.php');
 $c = new SingerController();
-$singerList = $c->invoke();
 ?>
 
 <style>
@@ -36,6 +35,7 @@ $singerList = $c->invoke();
 			</h3>
 			<div class="d-flex flex-row flex-wrap justify-content-center">
 				<?php
+							$singerList = $c->invoke();
 							$listlen = count($singerList);
 							//define total number of results you want per page
 							$result_per_page = 8;
@@ -50,14 +50,13 @@ $singerList = $c->invoke();
 								$page = $_GET['page'];
 							}
 							$singerPagList = $c->getPaginationSinger($page, $result_per_page);
-//							echo count($MVPagList);
 								for($i=0;$i<count($singerPagList);$i++){?>
 									<div class="d-flex flex-column">
-										  <a href="single-singer-page.php?singerID=<?php echo $singerList[$i]->getSingerID(); ?>" class="onhover">
-										<img src="images/<?php echo $singerList[$i]->getSingerImage(); ?>" class="img-fluid">
-											  <h5><?php echo $singerList[$i]->getSingerName(); ?></h5>
+										  <a href="single-singer-page.php?singerID=<?php echo $singerPagList[$i]->getSingerID(); ?>" class="onhover">
+										<img src="images/<?php echo $singerPagList[$i]->getSingerImage(); ?>" class="img-fluid">
+											  <h5><?php echo $singerPagList[$i]->getSingerName(); ?></h5>
 										  </a>
-										  <div class="hide"><?php echo 'Song: 10'.'<br>'.'MV: 5' ?></div>
+										  <div class="hide"><?php echo $singerPagList[$i]->getBackground(); ?></div>
 									  </div>
 							<?php	}?>
 						<br><br>

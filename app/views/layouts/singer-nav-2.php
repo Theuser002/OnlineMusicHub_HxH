@@ -7,6 +7,7 @@ $c = new SingerController();
 ?>
 <div class="container">
 						<h3 class="text-center"><br><?php echo $c->getASinger($_GET['singerID'])->getSingerName() ?><br>
+							<?php echo $c->getASinger($_GET['singerID'])->getBackground() ?>
 						  <hr><br>
 						</h3>
 						<div class="d-flex flex-row flex-wrap justify-content-left">
