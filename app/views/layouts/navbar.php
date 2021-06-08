@@ -70,8 +70,8 @@
 		<nav class="navbar navbar-expand-md navbar-light fixed-top">
 			<div class="container">
 	<!--			//In the header, if you click to logo you'll always go back to the home page (index.php)-->
-				<a class="navbar-brand" href="index.php">
-					<strong><em>Music Hub</em></strong>
+				<a class="navbar-brand" href="index.php" style="color: #d14b4b">
+					<light>Music Hub</light>
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navi">
 					<span class="navbar-toggler-icon"></span>
