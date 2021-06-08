@@ -51,7 +51,6 @@ function deleteMV(MVID){
 	}
 	xhttp.open("POST", url, true);
 	xhttp.send();
-	window.location.reload();
 }
 
 function deleteSinger(SingerID){
@@ -64,7 +63,6 @@ function deleteSinger(SingerID){
 	}
 	xhttp.open("POST", url, true);
 	xhttp.send();
-	window.location.reload();
 }
 
 function deleteSong(SongID){
@@ -77,5 +75,4 @@ function deleteSong(SongID){
 	}
 	xhttp.open("POST", url, true);
 	xhttp.send();
-	window.location.reload();
 }

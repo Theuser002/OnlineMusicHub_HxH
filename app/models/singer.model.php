@@ -137,8 +137,8 @@ class SingerModel{
 		$singer;
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ //to fetch result of each row in table
 			$singer = new SingerEntity($row['SingerID'],$row['SingerName'],$row['Background'],$row['SingerImage']);
+			return $singer;
 		}
-		return $singer;
 	}
 	
 	function insertSinger($SingerName,$Background,$SingerImage){
