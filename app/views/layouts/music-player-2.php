@@ -3,11 +3,10 @@ session_start();
 ?>
 <?php
     include_once( '../../controllers/songs-display.controller.php' );
+    include_once('../../controllers/singer.controller.php');
 ?>
 
 <?php
-    $songsDisplayController = new SongsDisplayController();
-    $mySong = $songsDisplayController->getFavSongList( $_SESSION[ 'accountID' ] );
 
     if(isset($_GET['index'])){
         $songIndex =  $_GET['index'];
@@ -20,6 +19,14 @@ session_start();
     }else{
         $total = 1;
     }
+    
+//    option: where does the user choose to play music (1: from account page; 2: from singer page (artist page)) 
+
+    if(isset($_GET['option'])){
+        $option = $_GET['option'];
+    }else{
+        $option = 1;
+    }
 
     if($songIndex < 0){
         $songIndex = $total-1;
@@ -28,8 +35,23 @@ session_start();
     if ($songIndex > $total -1){
         $songIndex = 0;
     }
+
+    $songsDisplayController = new SongsDisplayController();
+    if($option == 1){
+        //option = 1
+        $songList = $songsDisplayController->getFavSongList( $_SESSION[ 'accountID' ] );
+    }else{
+        //option = 2
+        if(isset($_GET['singerID'])){
+            $singerID = $_GET['singerID'];
+        }else{
+            $singerID = 1;
+        }
+        $singerController = new SingerController();
+        $songList = $singerController->getSingerSong($singerID);
+    }
     
-    $song = $mySong[$songIndex];
+    $song = $songList[$songIndex];
     $songID = $song->getSongID();
     $songTitle = $song->getSongTitle();
     $songAudioLink = $song->getAudioLink();
@@ -55,12 +77,18 @@ session_start();
     echo '<h1>... Now playing ...</h1>';
     ?>
     <ul class="breadcrumb">
-        <li><a href="account-page.php">Account</a></li>
+        <li><a href="index.php">Home</a></li>'
+        <?php  if($option == 1){
+                echo'<li><a href="account-page.php">Account</a></li>';
+            }else if ($option ==2){
+                echo '<li><a href="singer-page.php">Artist</a></li>';
+            }
+        ?>
     </ul>
 </header>
 <div class="content">
 <!--    <div class="underlay-square left-up dark-blurry"></div>-->
-    <div class="underlay-square right-down bright-blurry"></div>
+    <div class="underlay-square right-down light-blurry"></div>
     <div class="music-container" id="music-container">
         <a id="back-page" class="" href="<?php echo ''?>">
             <i class="fas fa-arrow-left"></i>
@@ -105,7 +133,11 @@ session_start();
         <div class="navigation">
             <a id="prev" class="action-btn" href="
                 <?php
-                    echo 'mySong-music-player.php?total='.$total.'&index='.($songIndex-1);
+                    if($option == 1){
+                        echo 'music-player-2.php?total='.$total.'&index='.($songIndex-1).'&option=1';
+                    }else if($option == 2){
+                        echo 'music-player-2.php?total='.$total.'&index='.($songIndex-1).'&singerID='.$singerID.'&option=2';
+                    }
                 ?>"><i class="fas fa-backward"></i>
             </a>
             
@@ -113,7 +145,11 @@ session_start();
             
             <a id="next" class="action-btn" href="
                 <?php
-                    echo 'mySong-music-player.php?total='.$total.'&index='.($songIndex+1);
+                    if($option == 1){
+                        echo 'music-player-2.php?total='.$total.'&index='.($songIndex+1).'&option=1';
+                    }else if($option == 2){
+                        echo 'music-player-2.php?total='.$total.'&index='.($songIndex+1).'&singerID='.$singerID.'&option=2';
+                    }
                 ?>" onclick = "updateSongViews(<?php echo $songID ?>)"><i class="fas fa-forward"></i>
             </a>
         </div>

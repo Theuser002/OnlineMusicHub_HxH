@@ -227,7 +227,8 @@ h3 {
 	display: flex;
 	align-items: center;
 	height: 8em;
-	width: 35%;
+/*	width: 35%;*/
+    width: 24em;
 	padding: 5px;
 	margin: 10px 25px;
 	background-color: #fff;
@@ -319,7 +320,8 @@ h3 {
 	position: relative;
 	display: flex;
     flex-direction: column;
-    width: 20%;
+/*    width: 20%;*/
+    width: 14em;
     height: 30vh;
     margin: 15px 30px;
 	border-radius: 0 0 50px 0;
@@ -469,7 +471,8 @@ h3 {
 	align-items: center;
 	justify-content: center;
 /*    background-color: rgba(123, 123, 123, 0.5) !important;*/
-    
+	background-color: rgba(255,255,255,0.5) !important;
+	backdrop-filter: blur(10px);
 }
 
 .mv-board{
@@ -482,7 +485,8 @@ h3 {
     align-items: center;
 	justify-content: center;
 /*    background-color: rgba(55, 55, 55, 0.5) !important;*/
-    
+	background-color: rgba(0,0,0,0.20) !important;
+	backdrop-filter: blur(10px);
 }
 
 .singer-board{
@@ -495,7 +499,8 @@ h3 {
 /*    align-items: center;*/
 	justify-content: center;
 /*    background-color: rgba(55, 55, 55, 0.5) !important;*/
-    
+	background-color: rgba(0,0,0,0.20) !important;
+	backdrop-filter: blur(10px);
 }
 
 /*SORT BAR*/
@@ -605,7 +610,7 @@ h3 {
 
 
 /*EFFECTS*/
-.bright-blurry{
+.light-blurry{
     background-color: rgba(255,255,255,0.2) !important;
     backdrop-filter: blur(10px);
 }

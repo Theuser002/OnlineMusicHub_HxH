@@ -1,4 +1,4 @@
-<div class="container song-board bright-blurry">
+<div class="container song-board">
     <?php
     if ( $tab == 1 ) {
         echo '

@@ -23,6 +23,12 @@ session_start();
     font-size: 3vh;
     transform: translateY(100%);
 }
+h3{
+    color: white;
+}
+hr{
+    color: white;
+}
 </style>
 <?php
 include_once( '../../controllers/addFav.controller.php' );
@@ -44,12 +50,10 @@ $c2 = new Ctrl_MV();
     </ul>
 </header>
 <section class="content">
-    <div class="container song-board bright-blurry" style="margin-top: 50px;">
+    <div class="container song-board" style="margin-top: 50px;">
         <h3 class="text-center">
-            <br>
             My Songs
             <hr>
-            <br>
         </h3>
         <div class="flex-row-break"></div>
         <?php
@@ -67,7 +71,7 @@ $c2 = new Ctrl_MV();
                 $singerName = $singer->getSingerName();
                 
                 echo'
-                    <a class="single-song" href="mySong-music-player.php?index='.$i.'&total='.$total.'">
+                    <a class="single-song" href="music-player-2.php?index='.$i.'&total='.$total.'&option=1">
                           <div class="song-img-wrap">
                             <!--     Song image -->
                             <img class="img" src="images/'.$songImageLink.'" />
@@ -93,23 +97,30 @@ $c2 = new Ctrl_MV();
             }
         ?>
     </div>
-    <div class="container" style="margin-top: 50px;">
+    <div class="container mv-board" style="margin-top: 50px;">
         <h3 class="text-center"><br>
             My MVs
             <hr>
-            <br>
         </h3>
+        <div class="flex-row-break"></div>
         <?php
         $myMV = $c2->getFavMVList( $_SESSION[ 'accountID' ] );
-        ?>
-        <div class="d-flex flex-row flex-wrap justify-content-center">
-            <?php
-            for ( $i = 0; $i < count( $myMV ); $i++ ) {
-                ?>
-            <div class="d-flex flex-column"><a href="single-mv-page.php?MVID=<?php echo $myMV[$i]->getMVID() ?>" onClick="updateMVView(<?php echo $myMV[$i]->getMVID() ?>)"><img src="images/<?php echo $myMV[$i]->getMVImage() ?>" class="img-fluid"></a>
-                <h5><?php echo $myMV[$i]->getMVTitle() ?></h5>
-            </div>
-            <?php	}?>
+        for ( $i = 0; $i < count( $myMV ); $i++ ) {
+            echo '
+                <a class="single-mv" href="single-mv-page.php?MVID=' . $myMV[ $i ]->getMVID() . '" onclick="updateMVView(' . $myMV[ $i ]->getMVID() . ')">
+                    <div class="mv-image-wrap">
+                        <img class="mv-img" src="images/' . $myMV[ $i ]->getMVImage() . '">
+                    </div>
+                    <div class="mv-title-and-views">
+                        <div class="mv-title">' . $myMV[ $i ]->getMVTitle() . '</div>
+                        <div class="mv-view">' . $myMV[ $i ]->getMVView() . ' views </div>
+                        <div class="play-btn">
+                            <i class="far fa-play-circle"></i>
+                        </div>
+                    </div>
+                </a>
+            ';   
+        }?>
         </div>
     </div>
 </section>

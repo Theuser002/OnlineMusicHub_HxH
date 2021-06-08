@@ -97,7 +97,7 @@ if (isset($_SESSION['accountID'])){
 </header>
 <div class="content">
 <!--    <div class="underlay-square left-up dark-blurry"></div>-->
-    <div class="underlay-square right-down bright-blurry"></div>
+    <div class="underlay-square right-down light-blurry"></div>
     <div class="music-container" id="music-container">
         <a id="back-page" class="" href="<?php echo 'song-page.php?tab='.$tab.'&page='.$page;?>">
             <i class="fas fa-arrow-left"></i>

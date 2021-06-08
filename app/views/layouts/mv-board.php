@@ -1,4 +1,4 @@
-<div class="container mv-board dark-blurry">
+<div class="container mv-board">
     <?php
     if ( $tab == 1 ) {
         echo '
