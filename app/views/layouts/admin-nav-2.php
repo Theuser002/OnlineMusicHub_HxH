@@ -49,7 +49,7 @@ if(isset($_POST['newMVTitle'],$_POST['newMVImage'],$_POST['newMVLink'],$_POST['n
 		  <td><?php echo $singer->getSingerName() ?></td>
 		  <td>
 			<a class="fa fa-wrench" data-toggle="modal" data-target="#myModal_fixmv<?php echo $mv->getMVID() ?>"></a>/
-			<a class="fa fa-trash" onClick="deleteMV(<?php echo $mv->getMVID() ?>)"></a>
+			<a class="fa fa-trash" onClick="deleteMV(<?php echo $mv->getMVID() ?>) alert('deleted')"></a>
 			</td>
 		</tr>
 <!--	Modal	  -->
@@ -109,6 +109,7 @@ if(isset($_POST['newMVTitle'],$_POST['newMVImage'],$_POST['newMVLink'],$_POST['n
 			</ul> 
 		</div>
 	</table><br>
+	<div><a class="fa fa-sync" onClick="window.location.reload()">&nbsp;Refresh after delete</a></div><br>
 </div>
 
 <!--Modal-->

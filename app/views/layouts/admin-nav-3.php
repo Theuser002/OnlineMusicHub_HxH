@@ -41,7 +41,7 @@ if(isset($_POST['newSingerName'],$_POST['newBackground'],$_POST['newSingerImage'
 		  <td><?php echo $singer->getSingerImage() ?></td>
 		  <td>
 			<a class="fa fa-wrench" data-toggle="modal" data-target="#myModal_fixsinger<?php echo $singer->getSingerID() ?>"></a>/
-			<a class="fa fa-trash" onClick="deleteSinger(<?php echo $singer->getSingerID() ?>)"></a>
+			<a class="fa fa-trash" onClick="deleteSinger(<?php echo $singer->getSingerID() ?>) alert('deleted')"></a>
 			</td>
 		</tr>
 		  <!--Modal-->
@@ -98,6 +98,7 @@ if(isset($_POST['newSingerName'],$_POST['newBackground'],$_POST['newSingerImage'
 			</ul> 
 		</div>
 	</table><br>
+	<div><a class="fa fa-sync" onClick="window.location.reload()">&nbsp;Refresh after delete</a></div><br>
 </div>
 
 <!--Modal-->

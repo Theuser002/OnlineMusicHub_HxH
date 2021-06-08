@@ -17,11 +17,12 @@ if(isset($_POST['newSongTitle'],$_POST['newSongImage'],$_POST['newSongLink'],$_P
 	$SongID = $_POST['newSongID'];
 	$c->updateSong($SongTitle,$SongImage,$SongLink,$SongID);
 }
+$list = $c->invokeSong();
+foreach($list as $l) echo $l->getSongID().' ';
 ?><head>
 <link href="css/pagination.css" rel="stylesheet" type="text/css">
 <script src="js/ajax.js"></script>
 </head>
-
 
 <div class="container">
 	<table width="100%" border="1" cellpadding="2">
@@ -36,9 +37,9 @@ if(isset($_POST['newSongTitle'],$_POST['newSongImage'],$_POST['newSongLink'],$_P
 		  <th scope="col">&nbsp;Modify&nbsp;</th>
 		</tr>
 		  <?php 
-		  $list = $c->invokeSong();
 		  foreach($list as $song){
 			  $singer = $cs->getOwnSinger($song->getSongID());
+			  $name = $singer->getSingerName();
 		  ?>
 		<tr>
 		  <td><?php echo $song->getSongID() ?></td>
@@ -46,10 +47,10 @@ if(isset($_POST['newSongTitle'],$_POST['newSongImage'],$_POST['newSongLink'],$_P
 		  <td><?php echo $song->getSongImageLink() ?></td>
 		  <td><?php echo $song->getAudioLink() ?></td>
 		  <td><?php echo $song->getViews() ?></td>
-		  <td><?php echo $singer->getSingerName() ?></td>
+		  <td><?php echo $name ?></td>
 		  <td>
 			<a class="fa fa-wrench" data-toggle="modal" data-target="#myModal_fixsong<?php echo $song->getSongID() ?>"></a>/
-			<a class="fa fa-trash" onClick="deleteSong(<?php echo $song->getSongID() ?>)"></a>
+			<a class="fa fa-trash" onClick="deleteSong(<?php echo $song->getSongID() ?>); alert('deleted')">Delete</a>
 			</td>
 		</tr>
 <!--	Modal	  -->
@@ -109,6 +110,7 @@ if(isset($_POST['newSongTitle'],$_POST['newSongImage'],$_POST['newSongLink'],$_P
 			</ul> 
 		</div>
 	</table><br>
+	<div><a class="fa fa-sync" onClick="window.location.reload()">&nbsp;Refresh after delete</a></div><br>
 </div>
 
 <!--Modal-->
