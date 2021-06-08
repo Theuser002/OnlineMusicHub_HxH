@@ -1,66 +1,60 @@
-<head>
-<link href="css/pagination.css" rel="stylesheet" type="text/css">
-</head>
-<?php
-include_once('../../controllers/singer.controller.php');
-$c = new SingerController();
-?>
-<div class="container">
-						<h3 class="text-center"><br><?php echo $c->getASinger($_GET['singerID'])->getSingerName() ?><br>
-							<?php echo $c->getASinger($_GET['singerID'])->getBackground() ?>
-						  <hr><br>
-						</h3>
-						<div class="d-flex flex-row flex-wrap justify-content-left">
-						  <?php
-							$mvlist = $c->getSingerMV($_GET['singerID']);
-							$listlen = count($mvlist);
-							//define total number of results you want per page
-							$result_per_page = 8;
+<div class="container mv-board">
+    <?php
+        echo '
+            <div id="sortbar">
+                <a class="sort-button" href="single-singer-page.php?singerID=' . $singerID . '&tab=1">
+                    Songs
+                </a>
+                <a class="sort-button focus" href="single-singer-page.php?singerID=' . $singerID . '&tab=2">
+                    MVs
+                </a>
+            </div>';
+    ?>
+    <?php
+        for ( $i = 0; $i < count( $MVPagList ); $i++ ) {
+            echo '
+                <a class="single-mv" href="single-mv-page.php?MVID=' . $MVPagList[ $i ]->getMVID() . '" onclick="updateMVView(' . $MVPagList[ $i ]->getMVID() . ')">
+                    <div class="mv-image-wrap">
+                        <img class="mv-img" src="images/' . $MVPagList[ $i ]->getMVImage() . '">
+                    </div>
+                    <div class="mv-title-and-views">
+                        <div class="mv-title">' . $MVPagList[ $i ]->getMVTitle() . '</div>
+                        <div class="mv-view">' . $MVPagList[ $i ]->getMVView() . ' views </div>
+                        <div class="play-btn">
+                            <i class="far fa-play-circle"></i>
+                        </div>
+                    </div>
+                </a>
+            ';
+        }
+    ?>
+    <div class="flex-row-break"></div>
+    <div class="pagebar">
+        <?php
+        $displayRange = 3;
 
-							//determine the total number of pages available  
-							$number_of_page = ceil($listlen/$result_per_page);
+        if ( $page > 1 ) {
+            echo "<a href='single-singer-page.php?page=1 &singerID=" . $singerID . "&tab=" . $tab . "'>&nbsp<<&nbsp</a>";
 
-							//determine which page number visitor is currently on  
-							if(!isset($_GET['page'])){
-								$page = 1;
-							}else{
-								$page = $_GET['page'];
-							}
-							$MVPagList = $c->getPaginationMV($page, $result_per_page, $_GET['singerID']);
-//							echo count($MVPagList);
-								for($i=0;$i<count($MVPagList);$i++){
-									echo "<div class=\"d-flex flex-column\">";
-									echo "<a href=\"single-mv-page.php?MVID=".$MVPagList[$i]->getMVID()."\" onclick=\"updateMVView(".$MVPagList[$i]->getMVID().")\"><img src=\"images/".$MVPagList[$i]->getMVImage()."\" class=\"img-fluid\"></a>
-									<div class=\"container\">
-									<h5 class=\"mv-title\">".$MVPagList[$i]->getMVTitle()." #".($i)."</h5><h6 class=\"mv-view\">View: ".$MVPagList[$i]->getMVView()."</h6>
-									</div>";
-							  echo "</div>";
-							}?>
-						<br><br>
-					  </div>
-	<br>
-	<div class="pagination">
-		<?php //display pagination list bar << 1 2 3 >>
-	   $pagLink = "";
-	   if($page>=2){   
-            echo "<a href='single-singer-page.php?page=".($page-1)."&singerID=".$_GET['singerID']."&tab=2'>  Prev </a>";   
-        }       
-                   
-        for ($i=1; $i<=$number_of_page; $i++) {   
-          if ($i == $page) {   
-              $pagLink .= "<a class = 'active' href='single-singer-page.php?page="  
-                                                .$i."&singerID=".$_GET['singerID']."&tab=2'>".$i." </a>";   
-          }               
-          else  {   
-              $pagLink .= "<a href='single-singer-page.php?page=".$i."&singerID=".$_GET['singerID']."&tab=2'>   
-                                                ".$i." </a>";     
-          }   
-        };     
-        echo $pagLink;   
-  
-        if($page<$number_of_page){   
-            echo "<a href='single-singer-page.php?page=".($page+1)."&singerID=".$_GET['singerID']."&tab=2'>  Next </a>";   
-        }   
-	   ?>
-	   </div>
-	   </div>
+            echo "<a href='single-singer-page.php?page=" . ( $page - 1 ) . "&singerID=" . $singerID . "&tab=" . $tab . "'> < </a>";
+        }
+
+        for ( $i = $page - $displayRange; $i <= $page + $displayRange; $i++ ) {
+            if ( $i > 0 && $i <= $number_of_page ) {
+                if ( $i == $page ) {
+                    echo "<a class = \"chosen\" href='single-singer-page.php?page=" . $i . "&singerID=" . $singerID . "&tab=" . $tab . "'> " . $i . " </a>";
+                } else {
+                    echo "<a href='single-singer-page.php?page=" . $i . "&singerID=" . $singerID . "&tab=" . $tab . "'> " . $i . " </a>";
+                }
+
+            }
+        }
+
+
+        if ( $page < $number_of_page ) {
+            echo "<a href='single-singer-page.php?page=" . ( $page + 1 ) . "&singerID=" . $singerID . "&tab=" . $tab . "'> > </a>";
+            echo "<a href='single-singer-page.php?page=" . $number_of_page . "&singerID=" . $singerID . "&tab=" . $tab . "'>&nbsp>>&nbsp</a>";
+        }
+        ?>
+    </div>
+</div>

@@ -43,9 +43,9 @@ if ( $tab == 1 ) {
 $songsOfPage = count( $songPagList );
 
 
-if ( $songIndex < 0 ) {
-    $songIndex = $totalSongs - 1;
-}
+//if ( $songIndex < 0 ) {
+//    $songIndex = $totalSongs - 1;
+//}
 
 if ( $songIndex > $songsOfPage - 1 ) {
     $songIndex = $songsOfPage -1;
@@ -80,7 +80,7 @@ if (isset($_SESSION['accountID'])){
 <!DOCTYPE html>
 <html>
 <head>
-<title><?php echo $song->getSongTitle(); ?></title>
+<title><?php echo $songTitle ?></title>
 <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
 <link rel="stylesheet" type="text/css" href="css/music-player.css">
 </head>
@@ -97,7 +97,7 @@ if (isset($_SESSION['accountID'])){
 </header>
 <div class="content">
 <!--    <div class="underlay-square left-up dark-blurry"></div>-->
-    <div class="underlay-square right-down bright-blurry"></div>
+    <div class="underlay-square right-down light-blurry"></div>
     <div class="music-container" id="music-container">
         <a id="back-page" class="" href="<?php echo 'song-page.php?tab='.$tab.'&page='.$page;?>">
             <i class="fas fa-arrow-left"></i>

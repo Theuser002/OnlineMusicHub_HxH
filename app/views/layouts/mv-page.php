@@ -2,10 +2,8 @@
     session_start();
 ?>
 <?php
-    require "navbar.php";
-?>
-<?php
     include_once( '../../controllers/mv.controller.php' );
+    include_once( '../../controllers/singer.controller.php' );
 
     if ( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] < 1 || $_GET[ 'tab' ] > 3 ) { //Find on the URL
         $tab = 1;
@@ -31,24 +29,16 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
+        <title>All MVs</title>
         <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
     </head>
     <body id="mv-body">
-        <style>
-/*
-            .mv-title {
-                text-align: left;
-            }
-            .mv-view {
-                text-align: right;
-            }
-*/
-        </style>
+        <?php
+            require "navbar.php";
+        ?>
         <header id="mv-header">
-            <?php
-            echo '<h1>All MVs</h1>';
-            ?>
+            <h1>All MVs</h1>
             <ul class="breadcrumb">
                 <li><a href="index.php">Home</a></li>
             </ul>

@@ -64,7 +64,7 @@ function addFavSong(songID){
         addFavBtn.querySelector('i').classList.add('far');
         removeFavSongFromDB(songID);
     }else{
-        console.log('ERROR1');
+        console.log('ACTION1');
     }
 }
 
@@ -72,12 +72,12 @@ function removeFavSong(songID){
     if (removeFavBtn.querySelector('i').classList.contains('far')){
         removeFavBtn.querySelector('i').classList.remove('far');
         removeFavBtn.querySelector('i').classList.add('fas');
-        addFavSong(songID);
+        addFavSongToDB(songID);
     }else if (removeFavBtn.querySelector('i').classList.contains('fas')){
         removeFavBtn.querySelector('i').classList.remove('fas');
         removeFavBtn.querySelector('i').classList.add('far');
         removeFavSongFromDB(songID);
     }else{
-        console.log('ERROR2');
+        console.log('ACTION2');
     }
 }
