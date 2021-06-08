@@ -31,75 +31,64 @@ if (isset($_SESSION['accountID'])){
         <?php echo $title ?>
     </title>
     <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
+    <link rel="stylesheet" type="text/css" href="css/single-mv-page.css">
 </head>
 
 <body id="single-mv-body">
     <?php
     require "navbar.php";
     ?>
-
-    <style>
-        .mv-holder {
-            width: 70%;
-            height: 100%;
-            float: left;
-            margin-right: 1%;
-        }
-
-        .relate-video {
-            width: 29%;
-            height: inherit;
-            float: left;
-        }
-
-        .relate-img {
-            float: left;
-            width: 40%;
-            max-height: 100%;
-            margin-right: 5px;
-        }
-
-        .relate-video-holder {
-            display: block;
-            height: 80px;
-        }
-
-        .iframe-wrap {
-            padding: 30px;
-        }
-    </style>
     <header id="song-header">
         <h1>...Now watching...</h1>
         <ul class="breadcrumb">
             <li><a href="index.php">Home</a></li>
         </ul>
     </header>
-    <div class="container">
-        <div class="mv-holder">
-            <div class="container iframe-wrap">
-                <iframe width="100%" height="500px" src="<?php echo $mv->getMVLink(); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                </iframe>
+    <div class="container single-mv-board">
+<!--        <div class="container iframe-wrap">-->
+        <iframe width="100%" height="500px" src="<?php echo $mv->getMVLink(); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+<!--        </div>-->
+        <div class="single-mv-title-and-views">
+            <?php
+            if(isset($accountID)){
+                if($isFav){
+                    echo '<a id="remove-fav" onclick=removeFavMV('.$MVID.')>
+                        <i class="fas fa-heart"></i>
+                    </a>';
+                }else{
+                    echo '<a id="add-fav" onclick=addFavMV('.$MVID.')>
+                        <i class="far fa-heart"></i>
+                    </a>';
+                }
+            }
+            ?>
+                
+            <div class="single-mv-title">
+                <?php echo $mv->getMVTitle(); ?>
             </div>
-            <div class="single-mv-title-and-views">
-                <?php
-                    echo "<font size=\"6\">" . $mv->getMVTitle() . "</font>" . "<br>Artist: " . $singer->getSingerName() . "<br>View: " . $mv->getMVView();
-                    
-                    if (isset($_SESSION['accountID'])) {
-                        echo "<button class=\"btn btn-light btn-lg btn-block\" onclick=\"addFavMV(" . $MVID . ")\">Add to favourite</button>";
-                    }
-                ?>
+            <div class="single-mv-artist">
+                <?php echo $singer->getSingerName(); ?>
+            </div>
+            <div>
+                <?php echo $mv->getMVView() ?>
+            </div>
 
-            </div>
         </div>
-        <div class="relate-video container"><br>
+        <div class="relate-video"><br>
             <?php
             foreach ($relateList as $data) { ?>
-                <div class="relate-video-holder"><a href="single-mv-page.php?MVID=<?php echo $data->getMVID() ?>" onClick="updateMVView(<?php echo $data->getMVID() ?>)"><img class="relate-img" src="images/<?php echo $data->getMVImage() ?>"></a><?php echo $data->getMVTitle() ?><br>View: <?php echo $data->getMVView() ?></div>
-                <div class="clearfix"></div><br>
+                <div class="relate-video-item">
+                    <a href="single-mv-page.php?MVID=<?php echo $data->getMVID() ?>" onClick="updateMVView(<?php echo $data->getMVID() ?>)">
+                        <img class="relate-img" src="images/<?php echo $data->getMVImage() ?>">
+                    </a>
+                    <?php echo $data->getMVTitle() ?><br><?php echo $data->getMVView().' views' ?>
+                </div>
+                <br>
             <?php } ?>
         </div>
     </div>
-    <div class="clearfix"></div>
+    
     <script src="js/ajax.js"></script>
     <?php
     require 'footer.php';

@@ -1,0 +1,57 @@
+.mv-holder {
+    width: 70%;
+    height: 100%;
+    float: left;
+    margin-right: 1%;
+}
+
+.relate-video {
+    width: 29%;
+    height: inherit;
+    float: left;
+}
+
+.relate-img {
+    float: left;
+    width: 40%;
+    max-height: 100%;
+    margin-right: 5px;
+}
+
+.relate-video-holder {
+    display: block;
+    height: 80px;
+}
+
+.iframe-wrap {
+    padding: 30px;
+}
+
+#add-fav{
+    cursor: pointer;
+}
+
+#remove-fav{
+    cursor: pointer;
+}
+
+.single-mv-board{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    background-color: #000 !important;
+    padding: 30px;
+}
+
+.relate-video{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+}
+
+.single-mv-title-and-views{
+    position: absolute;
+    
+}
