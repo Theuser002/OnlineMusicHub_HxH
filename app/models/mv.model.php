@@ -127,6 +127,7 @@ class Model_MV{
 		$result = $stmt->execute(array($MVView,$MVID));
 	}
 	
+    //check if the MV is in Favourite (in MyMV) if it's already in, it can't be added -> return 0, else it can be added -> return 1
 	function checkFavMVList($MVID,$accID){
 		$db = DB::getInstance();
 		$stmt = $db->prepare('select * from MyMV where MVID = ? and AccountID = ?');
@@ -138,11 +139,27 @@ class Model_MV{
 		}
 	}
 	
+    function isInFav($MVID,$accID){
+        $db = DB::getInstance();
+        $stmt = $db->prepare('select * from MyMV where MVID = ? and AccountID = ?');
+        $stmt->execute([$MVID, $accID]);
+        
+        return iterator_count($stm) >= 1 ? 1 : 0;
+    }
+    
 	function addFavMV($MVID,$accID){
 		$db = DB::getInstance();
 		$stmt = $db->prepare('insert into MyMV(MVID,AccountID) values (?,?)');
 		$result = $stmt->execute(array($MVID, $accID));
 	}
+    
+    function removeFavMV($MVID, $accID){
+       if($this->isInFav($MVID, $accID)){
+            $db = DB::getInstance();
+            $stm = $db->prepare('delete from myMV where MVID = ? and AccountID = ?');
+            $stm->execute([$MVID, $accID]);
+        }
+    }
 	
 	function getFavMVList($accID){
 		$db = DB::getInstance();

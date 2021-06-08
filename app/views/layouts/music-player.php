@@ -106,11 +106,11 @@ if (isset($_SESSION['accountID'])){
             if(isset($accountID)){
                 if($isFav){
                     echo '<a id="remove-fav" onclick=removeFavSong('.$songID.')>
-                        <i class="fas fa-bookmark"></i>
+                        <i class="fas fa-heart"></i>
                     </a>';
                 }else{
                     echo '<a id="add-fav" onclick=addFavSong('.$songID.')>
-                        <i class="far fa-bookmark"></i>
+                        <i class="far fa-heart"></i>
                     </a>';
                 }
             }
