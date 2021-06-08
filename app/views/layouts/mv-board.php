@@ -48,14 +48,21 @@
         //A-Z
         $MVPagList = $c->getPaginationAZ( $page, $result_per_page );
         for ( $i = 0; $i < count( $MVPagList ); $i++ ) {
+            $MVID = $MVPagList[ $i ]->getMVID();
+            $MVImage = $MVPagList[ $i ]->getMVImage();
+            $MVTitle = $MVPagList[ $i ]->getMVTitle();
+            $MVViews = $MVPagList[ $i ]->getMVView();
+            $singer = $c->getOwnSinger($MVID);
+            $singerName = $singer->getSingerName();
             echo '
-                    <a class="single-mv" href="single-mv-page.php?MVID=' . $MVPagList[ $i ]->getMVID() . '" onclick="updateMVView(' . $MVPagList[ $i ]->getMVID() . ')">
+                    <a class="single-mv" href="single-mv-page.php?MVID=' . $MVID . '" onclick="updateMVView(' . $MVID . ')">
                         <div class="mv-image-wrap">
-                            <img class="mv-img" src="images/' . $MVPagList[ $i ]->getMVImage() . '">
+                            <img class="mv-img" src="images/' . $MVImage . '">
                         </div>
                         <div class="mv-title-and-views">
-                            <div class="mv-title">' . $MVPagList[ $i ]->getMVTitle() . '</div>
-                            <div class="mv-view">' . $MVPagList[ $i ]->getMVView() . ' views </div>
+                            <div class="mv-title">' . $MVTitle . '</div>
+                            <div class="mv-artist">'. $singerName .'</div>
+                            <div class="mv-view">' . $MVViews . ' views </div>
                             <div class="play-btn">
                                 <i class="far fa-play-circle"></i>
                             </div>
@@ -67,14 +74,21 @@
         //Latest
         $MVPagList = $c->getPaginationLatest( $page, $result_per_page );
         for ( $i = 0; $i < count( $MVPagList ); $i++ ) {
+            $MVID = $MVPagList[ $i ]->getMVID();
+            $MVImage = $MVPagList[ $i ]->getMVImage();
+            $MVTitle = $MVPagList[ $i ]->getMVTitle();
+            $MVViews = $MVPagList[ $i ]->getMVView();
+            $singer = $c->getOwnSinger($MVID);
+            $singerName = $singer->getSingerName();
             echo '
-                    <a class="single-mv" href="single-mv-page.php?MVID=' . $MVPagList[ $i ]->getMVID() . '" onclick="updateMVView(' . $MVPagList[ $i ]->getMVID() . ')">
+                    <a class="single-mv" href="single-mv-page.php?MVID=' . $MVID . '" onclick="updateMVView(' . $MVID . ')">
                         <div class="mv-image-wrap">
-                            <img class="mv-img" src="images/' . $MVPagList[ $i ]->getMVImage() . '">
+                            <img class="mv-img" src="images/' . $MVImage . '">
                         </div>
                         <div class="mv-title-and-views">
-                            <div class="mv-title">' . $MVPagList[ $i ]->getMVTitle() . '</div>
-                            <div class="mv-view">' . $MVPagList[ $i ]->getMVView() . ' views </div>
+                            <div class="mv-title">' . $MVTitle . '</div>
+                            <div class="mv-artist">'. $singerName .'</div>
+                            <div class="mv-view">' . $MVViews . ' views </div>
                             <div class="play-btn">
                                 <i class="far fa-play-circle"></i>
                             </div>
@@ -86,14 +100,21 @@
         //TopView
         $MVPagList = $c->getPaginationView( $page, $result_per_page );
         for ( $i = 0; $i < count( $MVPagList ); $i++ ) {
+            $MVID = $MVPagList[ $i ]->getMVID();
+            $MVImage = $MVPagList[ $i ]->getMVImage();
+            $MVTitle = $MVPagList[ $i ]->getMVTitle();
+            $MVViews = $MVPagList[ $i ]->getMVView();
+            $singer = $c->getOwnSinger($MVID);
+            $singerName = $singer->getSingerName();
             echo '
-                    <a class="single-mv" href="single-mv-page.php?MVID=' . $MVPagList[ $i ]->getMVID() . '" onclick="updateMVView(' . $MVPagList[ $i ]->getMVID() . ')">
+                    <a class="single-mv" href="single-mv-page.php?MVID=' . $MVID . '" onclick="updateMVView(' . $MVID . ')">
                         <div class="mv-image-wrap">
-                            <img class="mv-img" src="images/' . $MVPagList[ $i ]->getMVImage() . '">
+                            <img class="mv-img" src="images/' . $MVImage . '">
                         </div>
                         <div class="mv-title-and-views">
-                            <div class="mv-title">' . $MVPagList[ $i ]->getMVTitle() . '</div>
-                            <div class="mv-view">' . $MVPagList[ $i ]->getMVView() . ' views </div>
+                            <div class="mv-title">' . $MVTitle . '</div>
+                            <div class="mv-artist">'. $singerName .'</div>
+                            <div class="mv-view">' . $MVViews . ' views </div>
                             <div class="play-btn">
                                 <i class="far fa-play-circle"></i>
                             </div>

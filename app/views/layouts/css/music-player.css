@@ -27,7 +27,7 @@
     position: absolute;
     width: 700px;
     height: 70%;
-	background-color: #fff; /*equivalent to #ffffff*/
+	background-color: #fff; /*equivalent to #6E6E6E*/
 	border-radius: 15px;
 	box-shadow: 6px 6px 10px 0 rgba(0, 0, 0, 0.2), 8px 6px 20px 0 rgba(0, 0, 0, 0.8);
     display: flex;
@@ -175,7 +175,8 @@
     left: 0;
     top: 0;
     background-color: #6d8575;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.5)), url(../images/material1.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.5)), url(../images/abstract24.jpg);
+    background-position: center;
     transform: translateY(50%);
     z-index: 1;
     

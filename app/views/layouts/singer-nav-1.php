@@ -11,7 +11,7 @@
             </div>'; 
     ?>
     <?php for ( $i = 0; $i < count( $SongPagList ); $i++ ) { ?>
-        <a class="single-song" href="music-player-2.php?index=<?php echo $i?>&total=<?php echo $listlen ?>&singerID=<?php echo $singerID ?>&option=2">
+        <a class="single-song" href="music-player-2.php?page=<?php echo $page ?>&index=<?php echo $i?>&singerID=<?php echo $singerID ?>&entriesPerPage=<?php echo $result_per_page ?>&option=2">
             <div class="song-img-wrap"> 
                 <!--     Song image --> 
                 <img class="img" src="images/<?php echo $SongPagList[$i]->getSongImageLink() ?>" /> </div>

@@ -69,6 +69,12 @@ class Ctrl_MV{
 		$singer = $model->getOwnSingerMV($MVID);
 		return $singer;
 	}
+    
+    function getFavMVList($accID){
+		$modelMV = new Model_MV();
+		$list = $modelMV->getFavMVList($accID);
+		return $list;
+	}
 
 }
 

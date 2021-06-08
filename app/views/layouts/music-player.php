@@ -43,9 +43,9 @@ if ( $tab == 1 ) {
 $songsOfPage = count( $songPagList );
 
 
-if ( $songIndex < 0 ) {
-    $songIndex = $totalSongs - 1;
-}
+//if ( $songIndex < 0 ) {
+//    $songIndex = $totalSongs - 1;
+//}
 
 if ( $songIndex > $songsOfPage - 1 ) {
     $songIndex = $songsOfPage -1;

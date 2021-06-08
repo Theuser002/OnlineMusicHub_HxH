@@ -31,10 +31,10 @@ hr{
 }
 </style>
 <?php
-include_once( '../../controllers/addFav.controller.php' );
 include_once( '../../controllers/songs-display.controller.php' );
-$c1 = new SongsDisplayController();
-$c2 = new Ctrl_MV();
+include_once( '../../controllers/mv.controller.php' );
+    $c1 = new SongsDisplayController();
+    $c2 = new Ctrl_MV();
 ?>
 <header id="account-header">
     <div class="responsive-pic">
@@ -105,21 +105,29 @@ $c2 = new Ctrl_MV();
         <div class="flex-row-break"></div>
         <?php
         $myMV = $c2->getFavMVList( $_SESSION[ 'accountID' ] );
+        echo count($myMV);
         for ( $i = 0; $i < count( $myMV ); $i++ ) {
+            $MVID = $myMV[ $i ]->getMVID();
+            $MVImage = $myMV[ $i ]->getMVImage();
+            $MVTitle = $myMV[ $i ]->getMVTitle();
+            $MVViews = $myMV[ $i ]->getMVView();
+            $singer = $c2->getOwnSinger($MVID);
+            $singerName = $singer->getSingerName();
             echo '
-                <a class="single-mv" href="single-mv-page.php?MVID=' . $myMV[ $i ]->getMVID() . '" onclick="updateMVView(' . $myMV[ $i ]->getMVID() . ')">
-                    <div class="mv-image-wrap">
-                        <img class="mv-img" src="images/' . $myMV[ $i ]->getMVImage() . '">
-                    </div>
-                    <div class="mv-title-and-views">
-                        <div class="mv-title">' . $myMV[ $i ]->getMVTitle() . '</div>
-                        <div class="mv-view">' . $myMV[ $i ]->getMVView() . ' views </div>
-                        <div class="play-btn">
-                            <i class="far fa-play-circle"></i>
+                    <a class="single-mv" href="single-mv-page.php?MVID=' . $MVID . '" onclick="updateMVView(' . $MVID . ')">
+                        <div class="mv-image-wrap">
+                            <img class="mv-img" src="images/' . $MVImage . '">
                         </div>
-                    </div>
-                </a>
-            ';   
+                        <div class="mv-title-and-views">
+                            <div class="mv-title">' . $MVTitle . '</div>
+                            <div class="mv-artist">'. $singerName .'</div>
+                            <div class="mv-view">' . $MVViews . ' views </div>
+                            <div class="play-btn">
+                                <i class="far fa-play-circle"></i>
+                            </div>
+                        </div>
+                    </a>
+                ';
         }?>
         </div>
     </div>

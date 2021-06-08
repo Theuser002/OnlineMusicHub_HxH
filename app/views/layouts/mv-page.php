@@ -3,6 +3,7 @@
 ?>
 <?php
     include_once( '../../controllers/mv.controller.php' );
+    include_once( '../../controllers/singer.controller.php' );
 
     if ( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] < 1 || $_GET[ 'tab' ] > 3 ) { //Find on the URL
         $tab = 1;

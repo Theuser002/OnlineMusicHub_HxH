@@ -59,19 +59,6 @@ session_start();
     <?php
         require "navbar.php";
     ?>
-    <style>
-        .mv-title{
-            text-align: left;
-        }
-
-        .mv-view{
-            text-align: right;
-        }
-        a.active{
-            background-color: #C8C8C8; 
-        }
-    </style>
-    
     <header id="single-singer-header">
         <h1><?php echo $singerName ?></h1>
         <ul class="breadcrumb">
