@@ -7,6 +7,6 @@
 /app/models/_notes
 /app/controllers/_notes
 
-/configs/*
+/configs/connection.php
 
 /db/_notes
