@@ -26,4 +26,22 @@
             echo "<a href='singer-page.php?page=" . ( $page - 1 ) . "'> < </a>";
         }
 
-        
+        for ( $i = $page - $displayRange; $i <= $page + $displayRange; $i++ ) {
+            if ( $i > 0 && $i <= $number_of_page ) {
+                if ( $i == $page ) {
+                    echo "<a class = \"chosen\" href='singer-page.php?page=" . $i ."'> " . $i . " </a>";
+                } else {
+                    echo "<a href='singer-page.php?page=" . $i . "'> " . $i . " </a>";
+                }
+
+            }
+        }
+
+
+        if ( $page < $number_of_page ) {
+            echo "<a href='singer-page.php?page=" . ( $page + 1 ) . "'> > </a>";
+            echo "<a href='singer-page.php?page=" . $number_of_page . "'>&nbsp>>&nbsp</a>";
+        }
+        ?>
+    </div>
+</div>
