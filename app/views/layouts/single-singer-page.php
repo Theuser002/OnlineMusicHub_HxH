@@ -59,3 +59,32 @@ session_start();
     <?php
         require "navbar.php";
     ?>
+    <style>
+        .mv-title{
+            text-align: left;
+        }
+
+        .mv-view{
+            text-align: right;
+        }
+        a.active{
+            background-color: #C8C8C8; 
+        }
+    </style>
+    
+    <header id="single-singer-header">
+        <h1><?php echo $singerName ?></h1>
+        <ul class="breadcrumb">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="singer-page.php">Artists</a></li>
+        </ul>
+    </header>
+    <div class="content">
+        <?php
+            include_once('single-singer-board.php');
+        ?>
+    </div>
+<script src="js/ajax.js"></script>
+<?php
+    require 'footer.php';
+?>
