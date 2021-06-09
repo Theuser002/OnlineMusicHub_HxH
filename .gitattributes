@@ -1,6 +1,6 @@
-
-app/views/layouts/js/bootstrap.js linguist-vendored=false
-app/views/layouts/js/jquery.js linguist-vendored=false
-app/views/layouts/js/popper.js linguist-vendored=false
-app/views/layouts/js/slim.js linguist-vendored=false
+app/views/layouts/js/* linguist-vendored
+bootstrap.js linguist-vendored=false
+jquery.js linguist-vendored=false
+popper.js linguist-vendored=false
+slim.js linguist-vendored=false
 
