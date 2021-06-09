@@ -6,7 +6,7 @@ session_start();
 	<head>
 		<link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
 		<!--favicon-->
-		<title>Online Music Website</title>
+		<title>Music Hub</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 	
@@ -86,7 +86,7 @@ session_start();
 					Music Hub is a website created by <b>HxH group</b>
 				  <p class="p0">
 					This website provides you hours of immersive music experienece
-					from listening to your favourite songs, watching MVs, viewing artists' information, catching up on the trending news about music industry, ... and more.
+					from listening to your favourite songs, watching MVs, viewing artists' information, ... and more.
 					<br>
 					Have fun!!!
 					<br>
@@ -128,7 +128,7 @@ session_start();
 		</div><br><br>
 		<!----end of gallery -->
 		<!--<div class="container" style="margin-top:10px; margin-bottom: 10px;">-->
-		<div class="text-center" id="about-us">
+		<div class="container text-center dark-blurry" id="about-us">
 		  <h3>About us</h3>
 		  <hr class="hr1">
 		  <br>We are a team of 4 members:<br>

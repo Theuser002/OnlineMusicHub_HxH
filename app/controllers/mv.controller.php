@@ -53,17 +53,32 @@ class Ctrl_MV{
 		$mvlist = $model->getRelateVideo($MVID);
 		return $mvlist;
 	}
+    
+    function isFavMV($MVID, $accID){
+        $model = new Model_MV();
+        return $model->isInFav($MVID, $accID);
+    }
 	
 	function addFavMV($MVID,$accID){
 		$modelMV = new Model_MV();
-		if($modelMV->checkFavMVList($MVID, $accID)==1){
-		$modelMV->addFavMV($MVID,$accID);
-			echo 'success';
+		if(!$this->isFavMV($MVID, $accID)){
+            $modelMV->addFavMV($MVID,$accID);
+            echo 'success';
 		}else{
 			echo 'fail';
 		}
 	}
 	
+    function removeFavMV($MVID, $accID){
+        $modelMV = new Model_MV();
+		if($this->isFavMV($MVID, $accID)){
+            $modelMV->removeFavMV($MVID,$accID);
+            echo 'success';
+		}else{
+			echo 'fail';
+		}
+    }
+    
 	function getOwnSinger($MVID){
 		$model = new SingerModel();
 		$singer = $model->getOwnSingerMV($MVID);
