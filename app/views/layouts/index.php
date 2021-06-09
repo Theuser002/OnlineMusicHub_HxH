@@ -86,7 +86,7 @@ session_start();
 					Music Hub is a website created by <b>HxH group</b>
 				  <p class="p0">
 					This website provides you hours of immersive music experienece
-					from listening to your favourite songs, watching MVs, viewing artists' information, catching up on the trending news about music industry, ... and more.
+					from listening to your favourite songs, watching MVs, viewing artists' information, ... and more.
 					<br>
 					Have fun!!!
 					<br>
