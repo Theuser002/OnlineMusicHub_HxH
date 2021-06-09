@@ -115,7 +115,7 @@ h3 {
 }
 
 #mv-body {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/abstract17.jpg);
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/abstract16.jpg);
 }
 
 #singer-body{
@@ -125,7 +125,7 @@ h3 {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/abstract19.jpg);
 }
 #single-mv-body{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/abstract19.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/abstract9.jpg);
 }
 
 
@@ -225,7 +225,7 @@ h3 {
 	align-items: center;
 	background-size: cover;
     color: #fff;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/study_music.jpg);
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/scenery1.jpg);
 }
 
 /*SINGLE CONTENT ITEMS*/
