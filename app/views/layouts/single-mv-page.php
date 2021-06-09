@@ -38,11 +38,14 @@ if (isset($_SESSION['accountID'])){
     <?php
     require "navbar.php";
     ?>
-        <style>
+        <style>        
             .single-mv-board{
 /*                position: relative;*/
                 width: 100%;
                 height: 100%;
+                margin-top: 50px;
+                padding: 30px;
+                background-color: transparent !important;
             }
             
             .mv-holder{
@@ -52,22 +55,26 @@ if (isset($_SESSION['accountID'])){
                 margin-right: 1%;
                 border-radius: 25px;
             }
+            
             .relate-video{
                 width: 29%;
                 height: inherit;
                 float: left;
             }
+            
             .relate-img{
                 float: left;
                 width: 40%;
                 max-height: 100%;
                 margin-right: 5px;
             }
+            
             .relate-video-holder{
                 display: block;
                 height: 80px;
                 border-radius: 15px;
             }
+            
             .iframe-wrap{
                 padding: 10px;
                 margin: 5%;
@@ -76,20 +83,39 @@ if (isset($_SESSION['accountID'])){
             .single-mv-title-and-views{
                 position: relative;
                 padding: 15px;
+                color: gray;
+                border-radius: 0 0 25px 25px;
             }
             
             .relate-img{
                 border-radius: 15px 0 0 15px;
             }
             
-            .single-mv-title-and-views{
-                color: gray;
-            }
-            
             .single-mv-title-and-views .title{
                 color: #B54143;
                 font-size: 30px;
             }
+            
+            .relate-video{
+                color: #fff;
+                font-size: 15px;
+            }
+            
+        #add-fav{
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 20px;
+            cursor: pointer;
+        }
+
+        #remove-fav{
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 20px;
+            cursor: pointer;
+        }
         </style>
      <header id="song-header">
         <h1>...Now watching...</h1>
@@ -98,7 +124,7 @@ if (isset($_SESSION['accountID'])){
         </ul>
     </header>
     <div class="container single-mv-board">
-        <div class="mv-holder dark-blurry shadow">
+        <div class="mv-holder light-blurry shadow">
             <div class="iframe-wrap">
                 <iframe width="100%" height="500px" src="<?php echo $mv->getMVLink();?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
@@ -121,10 +147,10 @@ if (isset($_SESSION['accountID'])){
                 ?>
             </div>
         </div>
-        <div class="container relate-video light-blurry"><br>
+        <div class="container relate-video dark-blurry"><br>
             <?php
             foreach($relateList as $data){ ?>
-            <div class="relate-video-holder dark-blurry"><a href="single-mv-page.php?MVID=<?php echo $data->getMVID() ?>" onClick="updateMVView(<?php echo $data->getMVID() ?>)"><img class="relate-img" src="images/<?php echo $data->getMVImage() ?>"></a><?php echo $data->getMVTitle() ?><?php echo $data->getMVView().' views' ?></div><div class="clearfix"></div><br>
+            <div class="container relate-video-holder light-blurry"><a href="single-mv-page.php?MVID=<?php echo $data->getMVID() ?>" onClick="updateMVView(<?php echo $data->getMVID() ?>)"><img class="relate-img" src="images/<?php echo $data->getMVImage() ?>"></a><div class="relate-title-and-views"><?php echo $data->getMVTitle() ?><br><?php echo $data->getMVView().' views' ?></div></div><div class="clearfix"></div><br>
             <?php } ?>
         </div>
     </div>

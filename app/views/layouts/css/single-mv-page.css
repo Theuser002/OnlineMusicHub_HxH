@@ -1,24 +1,6 @@
-#add-fav{
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 20px;
-    cursor: pointer;
-}
 
-#remove-fav{
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 20px;
-    cursor: pointer;
-}
 
-.single-mv-board{
-    margin-top: 50px;
-    padding: 30px;
-    background-color: transparent !important;
-}
+
 
 /*
 .relate-video{
