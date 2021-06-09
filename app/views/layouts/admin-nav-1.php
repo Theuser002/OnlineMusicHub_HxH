@@ -18,7 +18,6 @@ if(isset($_POST['newSongTitle'],$_POST['newSongImage'],$_POST['newSongLink'],$_P
 	$c->updateSong($SongTitle,$SongImage,$SongLink,$SongID);
 }
 $list = $c->invokeSong();
-foreach($list as $l) echo $l->getSongID().' ';
 ?><head>
 <link href="css/pagination.css" rel="stylesheet" type="text/css">
 <script src="js/ajax.js"></script>
@@ -50,7 +49,7 @@ foreach($list as $l) echo $l->getSongID().' ';
 		  <td><?php echo $name ?></td>
 		  <td>
 			<a class="fa fa-wrench" data-toggle="modal" data-target="#myModal_fixsong<?php echo $song->getSongID() ?>"></a>/
-			<a class="fa fa-trash" onClick="deleteSong(<?php echo $song->getSongID() ?>); alert('deleted')">Delete</a>
+			<a class="fa fa-trash" onClick="deleteSong(<?php echo $song->getSongID() ?>); alert('deleted')"></a>
 			</td>
 		</tr>
 <!--	Modal	  -->
