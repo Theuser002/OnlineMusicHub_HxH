@@ -144,7 +144,7 @@ class Model_MV{
         $stmt = $db->prepare('select * from MyMV where MVID = ? and AccountID = ?');
         $stmt->execute([$MVID, $accID]);
         
-        return iterator_count($stm) >= 1 ? 1 : 0;
+        return iterator_count($stmt) >= 1 ? 1 : 0;
     }
     
 	function addFavMV($MVID,$accID){

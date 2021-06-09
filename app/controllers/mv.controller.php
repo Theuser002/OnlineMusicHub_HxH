@@ -61,7 +61,7 @@ class Ctrl_MV{
 	
 	function addFavMV($MVID,$accID){
 		$modelMV = new Model_MV();
-		if($modelMV->checkFavMVList($MVID, $accID)==1){
+		if(!$this->isFavMV($MVID, $accID)){
             $modelMV->addFavMV($MVID,$accID);
             echo 'success';
 		}else{
@@ -71,7 +71,7 @@ class Ctrl_MV{
 	
     function removeFavMV($MVID, $accID){
         $modelMV = new Model_MV();
-		if($modelMV->checkFavMVList($MVID, $accID)==1){
+		if($this->isFavMV($MVID, $accID)){
             $modelMV->removeFavMV($MVID,$accID);
             echo 'success';
 		}else{
